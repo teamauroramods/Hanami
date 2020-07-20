@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "hanami:block/sakura_leaves"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "hanami:block/leaf_carpet",
+  "textures": {
+    "all": "hanami:block/sakura_leaves"
+  }
+}

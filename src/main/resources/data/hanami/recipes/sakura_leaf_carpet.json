@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "hanami:sakura_leaves"
+    }
+  },
+  "result": {
+    "item": "hanami:sakura_leaf_carpet",
+    "count": 3
+  }
+}
