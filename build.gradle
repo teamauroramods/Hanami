@@ -118,5 +118,6 @@ dependencies {
 
     implementation fg.deobf("curse.maven:abnormals-core:2989106")
     implementation fg.deobf("curse.maven:buzzier-bees:3007348")
+    implementation fg.deobf("curse.maven:jei:2995910")
 
 }
