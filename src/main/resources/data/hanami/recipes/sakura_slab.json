@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hanami:sakura_planks"
+    }
+  },
+  "result": {
+    "item": "hanami:sakura_slab",
+    "count": 6
+  }
+}

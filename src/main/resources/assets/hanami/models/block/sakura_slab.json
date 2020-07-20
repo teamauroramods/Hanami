@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "hanami:block/sakura_planks",
+    "top": "hanami:block/sakura_planks",
+    "side": "hanami:block/sakura_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "bottom": "hanami:block/sakura_door_bottom",
+    "top": "hanami:block/sakura_door_top"
+  }
+}

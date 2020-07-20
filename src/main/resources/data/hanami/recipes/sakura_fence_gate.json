@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "x#x",
+    "x#x"
+  ],
+  "key": {
+    "#": {
+      "item": "hanami:sakura_planks"
+    },
+    "x": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "hanami:sakura_fence_gate"
+  }
+}

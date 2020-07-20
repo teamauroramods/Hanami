@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "hanami:block/sakura_slab" },
+    "type=top": { "model": "hanami:block/sakura_slab_top" },
+    "type=double": { "model": "hanami:block/sakura_planks" }
+  }
+}
