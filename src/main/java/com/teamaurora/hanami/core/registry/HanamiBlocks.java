@@ -26,6 +26,10 @@ public class HanamiBlocks {
     // Put Here: Sakura Log
     // Put Here: Stripped Sakura Wood
     // Put Here: Sakura Wood
+    public static final RegistryObject<Block> STRIPPED_SAKURA_LOG = HELPER.createBlock("stripped_sakura_log", ()->new StrippedLogBlock(Block.Properties.from(Blocks.STRIPPED_OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SAKURA_LOG = HELPER.createBlock("sakura_log", ()->new AbnormalsLogBlock(STRIPPED_SAKURA_LOG, Block.Properties.from(Blocks.OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> STRIPPED_SAKURA_WOOD = HELPER.createBlock("stripped_sakura_wood", ()->new StrippedWoodBlock(Block.Properties.from(Blocks.STRIPPED_OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SAKURA_WOOD = HELPER.createBlock("sakura_wood", ()->new WoodBlock(STRIPPED_SAKURA_WOOD, Block.Properties.from(Blocks.OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_PLANKS = HELPER.createBlock("sakura_planks", ()->new PlanksBlock(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_SLAB = HELPER.createBlock("sakura_slab", ()->new WoodSlabBlock(Block.Properties.from(Blocks.OAK_SLAB)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_STAIRS = HELPER.createBlock("sakura_stairs", ()->new WoodStairsBlock(SAKURA_PLANKS.get().getDefaultState(), Block.Properties.from(Blocks.OAK_STAIRS)), ItemGroup.BUILDING_BLOCKS);

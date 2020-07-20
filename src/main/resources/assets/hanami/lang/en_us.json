@@ -1,5 +1,9 @@
 {
   "_comment": "Sakura Wood Set",
+  "block.hanami.stripped_sakura_log": "Stripped Sakura Log",
+  "block.hanami.sakura_log": "Sakura Log",
+  "block.hanami.stripped_sakura_wood": "Stripped Sakura Wood",
+  "block.hanami.sakura_wood": "Sakura Wood",
   "block.hanami.sakura_planks": "Sakura Planks",
   "block.hanami.sakura_slab": "Sakura Slab",
   "block.hanami.sakura_stairs": "Sakura Stairs",
