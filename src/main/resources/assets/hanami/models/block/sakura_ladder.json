@@ -1,0 +1,8 @@
+{
+  "parent": "block/ladder",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "hanami:block/sakura_ladder",
+    "texture": "hanami:block/sakura_ladder"
+  }
+}

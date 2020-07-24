@@ -1,0 +1,6 @@
+{
+  "parent": "hanami:block/vertical_planks",
+  "textures": {
+    "all": "hanami:block/sakura_planks"
+  }
+}

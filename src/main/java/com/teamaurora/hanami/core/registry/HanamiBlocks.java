@@ -1,8 +1,9 @@
 package com.teamaurora.hanami.core.registry;
 
 import com.mojang.datafixers.util.Pair;
-import com.teamabnormals.abnormals_core.common.blocks.AbnormalsBeehiveBlock;
-import com.teamabnormals.abnormals_core.common.blocks.LeafCarpetBlock;
+import com.teamabnormals.abnormals_core.common.blocks.*;
+import com.teamabnormals.abnormals_core.common.blocks.chest.AbnormalsChestBlock;
+import com.teamabnormals.abnormals_core.common.blocks.chest.AbnormalsTrappedChestBlock;
 import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsStandingSignBlock;
 import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsWallSignBlock;
 import com.teamabnormals.abnormals_core.common.blocks.wood.*;
@@ -14,6 +15,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.ItemGroup;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 
@@ -22,10 +24,6 @@ public class HanamiBlocks {
     public static final RegistryHelper HELPER = Hanami.REGISTRY_HELPER;
 
     // sakura wood set
-    // Put Here: Stripped Sakura Log
-    // Put Here: Sakura Log
-    // Put Here: Stripped Sakura Wood
-    // Put Here: Sakura Wood
     public static final RegistryObject<Block> STRIPPED_SAKURA_LOG = HELPER.createBlock("stripped_sakura_log", ()->new StrippedLogBlock(Block.Properties.from(Blocks.STRIPPED_OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_LOG = HELPER.createBlock("sakura_log", ()->new AbnormalsLogBlock(STRIPPED_SAKURA_LOG, Block.Properties.from(Blocks.OAK_LOG)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> STRIPPED_SAKURA_WOOD = HELPER.createBlock("stripped_sakura_wood", ()->new StrippedWoodBlock(Block.Properties.from(Blocks.STRIPPED_OAK_WOOD)), ItemGroup.BUILDING_BLOCKS);
@@ -50,6 +48,11 @@ public class HanamiBlocks {
     // Put Here: Sakura Bookshelf
     // Put Here: Sakura Ladder
     // Put Here: Sakura Chests
+    public static final RegistryObject<Block> VERTICAL_SAKURA_PLANKS = HELPER.createCompatBlock("quark","vertical_sakura_planks", ()->new Block(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SAKURA_VERTICAL_SLAB = HELPER.createCompatBlock("quark","sakura_vertical_slab", ()->new VerticalSlabBlock(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SAKURA_BOOKSHELF = HELPER.createCompatBlock("quark","sakura_bookshelf", ()->new BookshelfBlock(Block.Properties.from(Blocks.BOOKSHELF)), ItemGroup.BUILDING_BLOCKS);
+    public static final RegistryObject<Block> SAKURA_LADDER = HELPER.createCompatBlock("quark","sakura_ladder", ()->new AbnormalsLadderBlock(Block.Properties.from(Blocks.LADDER).harvestTool(ToolType.AXE)), ItemGroup.DECORATIONS);
+    public static final Pair<RegistryObject<AbnormalsChestBlock>, RegistryObject<AbnormalsTrappedChestBlock>> SAKURA_CHESTS = HELPER.createCompatChestBlocks("sakura", MaterialColor.ADOBE);
 
     public static final RegistryObject<Block> SAKURA_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "sakura_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
 
