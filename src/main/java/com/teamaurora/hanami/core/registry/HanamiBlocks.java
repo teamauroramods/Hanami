@@ -9,11 +9,10 @@ import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsWallSignBloc
 import com.teamabnormals.abnormals_core.common.blocks.wood.*;
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.core.Hanami;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.block.trees.OakTree;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -40,14 +39,9 @@ public class HanamiBlocks {
     public static final Pair<RegistryObject<AbnormalsStandingSignBlock>, RegistryObject<AbnormalsWallSignBlock>> SAKURA_SIGNS = HELPER.createSignBlock("sakura", MaterialColor.PINK);
     public static final RegistryObject<Block> SAKURA_LEAVES = HELPER.createBlock("sakura_leaves", ()->new AbnormalsLeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)), ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> SAKURA_LEAF_CARPET = HELPER.createBlock("sakura_leaf_carpet", ()->new LeafCarpetBlock(Block.Properties.from(SAKURA_LEAVES.get())), ItemGroup.DECORATIONS);
-    // Put Here: Sakura Sapling
-    // Put Here: Potted Sakura Sapling
+    public static final RegistryObject<Block> SAKURA_SAPLING = HELPER.createBlock("sakura_sapling", () -> new AbnormalsSaplingBlock(new OakTree(), Block.Properties.create(Material.PLANTS, MaterialColor.RED).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), ItemGroup.DECORATIONS); // temporarily grows oak tree
+    public static final RegistryObject<Block> POTTED_SAKURA_SAPLING = HELPER.createBlockNoItem("potted_sakura_sapling", () -> new FlowerPotBlock(SAKURA_SAPLING.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
 
-    // Put Here: Vertical Sakura Planks
-    // Put Here: Sakura Vertical Slab
-    // Put Here: Sakura Bookshelf
-    // Put Here: Sakura Ladder
-    // Put Here: Sakura Chests
     public static final RegistryObject<Block> VERTICAL_SAKURA_PLANKS = HELPER.createCompatBlock("quark","vertical_sakura_planks", ()->new Block(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_VERTICAL_SLAB = HELPER.createCompatBlock("quark","sakura_vertical_slab", ()->new VerticalSlabBlock(Block.Properties.from(Blocks.OAK_PLANKS)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> SAKURA_BOOKSHELF = HELPER.createCompatBlock("quark","sakura_bookshelf", ()->new BookshelfBlock(Block.Properties.from(Blocks.BOOKSHELF)), ItemGroup.BUILDING_BLOCKS);
