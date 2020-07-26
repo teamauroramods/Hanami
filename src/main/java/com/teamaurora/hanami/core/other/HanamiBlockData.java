@@ -13,6 +13,8 @@ public class HanamiBlockData {
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAF_CARPET.get());
 
         DataUtils.registerCompostable(0.65F, HanamiItems.CHERRIES.get());
+        DataUtils.registerCompostable(1F, HanamiItems.CHERRY_PIE.get());
+        DataUtils.registerCompostable(1F, HanamiBlocks.BLACK_FOREST_GATEAU.get());
     }
 
     public static void registerFlammables() {
