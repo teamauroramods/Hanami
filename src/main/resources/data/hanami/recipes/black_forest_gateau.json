@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "BMB",
+    "WSW"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "C": {
+      "item": "hanami:cherries"
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "hanami:black_forest_gateau"
+  }
+}
