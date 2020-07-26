@@ -25,5 +25,10 @@
   "block.hanami.vertical_sakura_planks": "Vertical Sakura Planks",
   "block.hanami.sakura_beehive": "Sakura Beehive",
 
-  "item.hanami.sakura_boat": "Sakura Boat"
+  "item.hanami.sakura_boat": "Sakura Boat",
+
+  "_comment2": "Food stuff",
+  "effect.hanami.instability": "Instability",
+  "effect.hanami.nourishing": "Nourishing",
+  "effect.hanami.unsalutary": "Unsalutary"
 }

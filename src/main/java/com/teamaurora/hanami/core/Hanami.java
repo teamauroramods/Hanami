@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.core.other.HanamiBlockData;
+import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,6 +39,8 @@ public class Hanami
 
         REGISTRY_HELPER.getDeferredItemRegister().register(eventBus);
         REGISTRY_HELPER.getDeferredBlockRegister().register(eventBus);
+
+        HanamiEffects.EFFECTS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
