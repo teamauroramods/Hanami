@@ -17,4 +17,5 @@ public class HanamiItems {
     public static final RegistryObject<Item> CHERRIES = HELPER.createItem("cherries", ()->new Item(new Item.Properties().food(HanamiFoods.CHERRIES).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> CHERRY_JUICE = HELPER.createItem("cherry_juice", ()->new DrinkItem(new Item.Properties().food(HanamiFoods.CHERRY_JUICE).maxStackSize(16).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> CHERRY_KOMBUCHA = HELPER.createItem("cherry_kombucha", ()->new DrinkItem(new Item.Properties().food(HanamiFoods.CHERRY_KOMBUCHA).maxStackSize(16).group(ItemGroup.FOOD)));
+    public static final RegistryObject<Item> CHERRY_PIE = HELPER.createItem("cherry_pie", ()->new Item(new Item.Properties().food(HanamiFoods.CHERRY_PIE).group(ItemGroup.FOOD)));
 }
