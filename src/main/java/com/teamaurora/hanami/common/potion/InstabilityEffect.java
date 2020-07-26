@@ -6,6 +6,6 @@ import net.minecraft.potion.EffectType;
 public class InstabilityEffect extends Effect {
 
     public InstabilityEffect() {
-        super(EffectType.NEUTRAL, 3145554); // TODO: change color
+        super(EffectType.NEUTRAL, 14599813); // TODO: change color
     }
 }
