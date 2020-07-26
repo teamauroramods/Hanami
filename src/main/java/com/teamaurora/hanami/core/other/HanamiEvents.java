@@ -43,5 +43,19 @@ public class HanamiEvents {
                 }
             }
         }
+
+        // UNSALUTARY //
+        if (entity.isPotionActive(HanamiEffects.UNSALUTARY.get())) {
+            int amplifier = entity.getActivePotionEffect(HanamiEffects.UNSALUTARY.get()).getAmplifier();
+            if (item.isFood()) {
+                Food food = item.getItem().getFood();
+                int foodToRemove = Math.min(2 * (amplifier + 1), food.getHealing());
+                float satToRemove = Math.min(0.2F * (amplifier + 1), food.getSaturation());
+                if (entity instanceof PlayerEntity) {
+                    PlayerEntity player = (PlayerEntity) entity;
+                    player.getFoodStats().addStats(foodToRemove * -1, satToRemove * -1);
+                }
+            }
+        }
     }
 }
