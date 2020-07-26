@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "hanami:cherries"
+    }
+  ],
+  "result": {
+    "item": "minecraft:red_dye",
+    "count": 1
+  }
+}

@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core.other;
 
 import com.teamabnormals.abnormals_core.core.utils.DataUtils;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
+import com.teamaurora.hanami.core.registry.HanamiItems;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
@@ -10,6 +11,8 @@ public class HanamiBlockData {
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAVES.get());
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_SAPLING.get());
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAF_CARPET.get());
+
+        DataUtils.registerCompostable(0.65F, HanamiItems.CHERRIES.get());
     }
 
     public static void registerFlammables() {

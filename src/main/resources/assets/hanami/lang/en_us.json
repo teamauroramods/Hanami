@@ -30,5 +30,7 @@
   "_comment2": "Food stuff",
   "effect.hanami.instability": "Instability",
   "effect.hanami.nourishing": "Nourishing",
-  "effect.hanami.unsalutary": "Unsalutary"
+  "effect.hanami.unsalutary": "Unsalutary",
+
+  "item.hanami.cherries": "Cherries"
 }
