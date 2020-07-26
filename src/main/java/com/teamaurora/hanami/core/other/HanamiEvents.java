@@ -3,6 +3,8 @@ package com.teamaurora.hanami.core.other;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
@@ -30,8 +32,16 @@ public class HanamiEvents {
         LivingEntity entity = event.getEntityLiving();
 
         // NOURISHING //
-        if (event.getEntityLiving().isPotionActive(HanamiEffects.NOURISHING.get())) {
-            int amplifier =
+        if (entity.isPotionActive(HanamiEffects.NOURISHING.get())) {
+            int amplifier = entity.getActivePotionEffect(HanamiEffects.NOURISHING.get()).getAmplifier();
+            if (item.isFood()) {
+                int foodToAdd = 2 * (amplifier + 1);
+                float satToAdd = 0.2F * (amplifier + 1);
+                if (entity instanceof PlayerEntity) {
+                    PlayerEntity player = (PlayerEntity) entity;
+                    player.getFoodStats().addStats(foodToAdd, satToAdd);
+                }
+            }
         }
     }
 }
