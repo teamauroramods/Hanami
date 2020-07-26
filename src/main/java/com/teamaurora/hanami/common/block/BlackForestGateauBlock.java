@@ -68,7 +68,7 @@ public class BlackForestGateauBlock extends Block {
             }
             int j = flag ? p_226911_4_.getActivePotionEffect(HanamiEffects.UNSALUTARY.get()).getAmplifier() : -1;
             p_226911_4_.removeActivePotionEffect(HanamiEffects.UNSALUTARY.get());
-            p_226911_4_.addPotionEffect(new EffectInstance(HanamiEffects.UNSALUTARY.get(), 1600, j < 10 ? j + 1 : 10, false, false, true));
+            p_226911_4_.addPotionEffect(new EffectInstance(HanamiEffects.UNSALUTARY.get(), 1600, j < 9 ? j + 1 : 9, false, false, true));
             int i = p_226911_3_.get(BITES);
             if (i < 13) {
                 p_226911_1_.setBlockState(p_226911_2_, p_226911_3_.with(BITES, Integer.valueOf(i + 1)), 3);
