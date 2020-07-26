@@ -1,6 +1,7 @@
 package com.teamaurora.hanami.core.registry;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
+import com.teamaurora.hanami.common.item.DrinkItem;
 import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -14,5 +15,5 @@ public class HanamiItems {
     public static final RegistryObject<Item> SAKURA_BOAT = HELPER.createBoatItem("sakura", HanamiBlocks.SAKURA_PLANKS);
 
     public static final RegistryObject<Item> CHERRIES = HELPER.createItem("cherries", ()->new Item(new Item.Properties().food(HanamiFoods.CHERRIES).group(ItemGroup.FOOD)));
-    //public static final
+    public static final RegistryObject<Item> CHERRY_JUICE = HELPER.createItem("cherry_juice", ()->new DrinkItem(new Item.Properties().food(HanamiFoods.CHERRY_JUICE).maxStackSize(16).group(ItemGroup.FOOD)));
 }

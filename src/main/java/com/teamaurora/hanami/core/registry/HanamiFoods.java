@@ -10,5 +10,5 @@ import net.minecraftforge.fml.common.Mod;
 public class HanamiFoods {
     public static final Food CHERRIES = new Food.Builder().hunger(4).saturation(0.6F).build();
 
-    public static final Food CHERRY_JUICE = new Food.Builder().hunger(2).saturation(0.1F).effect(new EffectInstance(HanamiEffects.NOURISHING.get(), 800, 0), 1.0F).build();
+    public static final Food CHERRY_JUICE = new Food.Builder().hunger(2).saturation(0.1F).effect(() -> new EffectInstance(HanamiEffects.NOURISHING.get(), 800, 0, false, false, true), 1.0F).setAlwaysEdible().build();
 }
