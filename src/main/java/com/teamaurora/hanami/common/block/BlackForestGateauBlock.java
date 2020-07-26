@@ -59,8 +59,9 @@ public class BlackForestGateauBlock extends Block {
             return ActionResultType.PASS;
         } else {
             p_226911_4_.addStat(Stats.EAT_CAKE_SLICE);
-            p_226911_4_.getFoodStats().addStats(8, 0.3F);
             int j = p_226911_4_.isPotionActive(HanamiEffects.UNSALUTARY.get()) ? p_226911_4_.getActivePotionEffect(HanamiEffects.UNSALUTARY.get()).getAmplifier() : -1;
+            int k = p_226911_4_.isPotionActive(HanamiEffects.NOURISHING.get()) ? p_226911_4_.getActivePotionEffect(HanamiEffects.NOURISHING.get()).getAmplifier() : -1;
+            p_226911_4_.getFoodStats().addStats(Math.max(8 - 2 * (j+1) + 2 * (k+1), 0), Math.max(0.3F - 0.2F * (j+1) + 0.2F * (k+1), 0));
             p_226911_4_.removeActivePotionEffect(HanamiEffects.UNSALUTARY.get());
             p_226911_4_.addPotionEffect(new EffectInstance(HanamiEffects.UNSALUTARY.get(), 1600, j < 9 ? j + 1 : 9, false, false, true));
             int i = p_226911_3_.get(BITES);
