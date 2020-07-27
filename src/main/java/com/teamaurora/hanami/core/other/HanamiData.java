@@ -33,12 +33,4 @@ public class HanamiData {
         DataUtils.registerFlammable(HanamiBlocks.SAKURA_VERTICAL_SLAB.get(), 5, 20);
         DataUtils.registerFlammable(HanamiBlocks.SAKURA_BOOKSHELF.get(), 5, 20);
     }
-
-    public static void setupRenderLayer() {
-        RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_DOOR.get(), RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_TRAPDOOR.get(), RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_LEAF_CARPET.get(), RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_LADDER.get(), RenderType.getCutoutMipped());
-        RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_SAPLING.get(), RenderType.getCutoutMipped());
-    }
 }

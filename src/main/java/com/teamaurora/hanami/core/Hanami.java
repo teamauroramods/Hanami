@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.core.other.HanamiData;
+import com.teamaurora.hanami.core.other.HanamiRender;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -47,6 +48,6 @@ public class Hanami
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        DeferredWorkQueue.runLater(HanamiData::setupRenderLayer);
+        DeferredWorkQueue.runLater(HanamiRender::setupRenderLayer);
     }
 }
