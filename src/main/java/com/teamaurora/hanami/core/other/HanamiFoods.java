@@ -1,6 +1,7 @@
-package com.teamaurora.hanami.core.registry;
+package com.teamaurora.hanami.core.other;
 
 import com.teamaurora.hanami.core.Hanami;
+import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
 import net.minecraftforge.fml.common.Mod;

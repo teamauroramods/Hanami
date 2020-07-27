@@ -1,29 +1,18 @@
 package com.teamaurora.hanami.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
-import com.teamaurora.hanami.core.other.HanamiBlockData;
+import com.teamaurora.hanami.core.other.HanamiData;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.util.stream.Collectors;
 import static com.teamaurora.hanami.core.Hanami.MODID;
 
 @Mod(MODID)
@@ -52,12 +41,12 @@ public class Hanami
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(() -> {
-            HanamiBlockData.registerCompostables();
-            HanamiBlockData.registerFlammables();
+            HanamiData.registerCompostables();
+            HanamiData.registerFlammables();
         });
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        DeferredWorkQueue.runLater(HanamiBlockData::setupRenderLayer);
+        DeferredWorkQueue.runLater(HanamiData::setupRenderLayer);
     }
 }

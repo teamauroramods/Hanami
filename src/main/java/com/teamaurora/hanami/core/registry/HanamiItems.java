@@ -3,6 +3,7 @@ package com.teamaurora.hanami.core.registry;
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.common.item.DrinkItem;
 import com.teamaurora.hanami.core.Hanami;
+import com.teamaurora.hanami.core.other.HanamiFoods;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
