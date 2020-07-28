@@ -10,6 +10,8 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldWriter;
@@ -41,7 +43,7 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
         int branchSouth2 = -1;
         int randChooser;
 
-        int branchChance = 4; // one in n
+        int branchChance = 2; // one in n
 
         if (logHeight == 4) {
             if (rand.nextInt(branchChance) == 0) {
@@ -119,6 +121,10 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                 }
             }
         }
+        Vector3i[] leafOffsets = new Vector3i[4];
+        for (int i2 = 0; i2 < 4; ++i2) {
+            leafOffsets[i2] = new Vector3i(rand.nextInt(3) - 1, 0, rand.nextInt(3) - 1);
+        }
 
         boolean flag = true;
         if (position.getY() >= 1 && position.getY() + logHeight + 2 <= worldIn.getHeight()) {
@@ -133,38 +139,42 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
                 BlockPos.Mutable blockpos$mutableblockpos = new BlockPos.Mutable();
 
+                BlockPos posOffset = position.add(leafOffsets[0]);
                 if (i - position.getY() == branchEast1 || i - position.getY() == branchEast2) {
                     if (
                             !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX() + 1, i, position.getZ())) ||
                             !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX() + 2, i, position.getZ())) ||
-                            !checkBranchLeaves(position.getX() + 2, i, position.getZ(), worldIn, blockpos$mutableblockpos)
+                            !checkBranchLeaves(posOffset.getX() + 2, i, posOffset.getZ(), worldIn, blockpos$mutableblockpos)
                     ) {
                         flag = false;
                     }
                 }
+                posOffset = position.add(leafOffsets[1]);
                 if (i - position.getY() == branchWest1 || i - position.getY() == branchWest2) {
                     if (
                             !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX() - 1, i, position.getZ())) ||
                                     !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX() - 2, i, position.getZ())) ||
-                                    !checkBranchLeaves(position.getX() - 2, i, position.getZ(), worldIn, blockpos$mutableblockpos)
+                                    !checkBranchLeaves(posOffset.getX() - 2, i, posOffset.getZ(), worldIn, blockpos$mutableblockpos)
                     ) {
                         flag = false;
                     }
                 }
+                posOffset = position.add(leafOffsets[2]);
                 if (i - position.getY() == branchSouth1 || i - position.getY() == branchSouth2) {
                     if (
                             !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX(), i, position.getZ() + 1)) ||
                                     !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX(), i, position.getZ() + 2)) ||
-                                    !checkBranchLeaves(position.getX(), i, position.getZ() + 2, worldIn, blockpos$mutableblockpos)
+                                    !checkBranchLeaves(posOffset.getX(), i, posOffset.getZ() + 2, worldIn, blockpos$mutableblockpos)
                     ) {
                         flag = false;
                     }
                 }
+                posOffset = position.add(leafOffsets[3]);
                 if (i - position.getY() == branchNorth1 || i - position.getY() == branchNorth2) {
                     if (
                             !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX(), i, position.getZ() - 1)) ||
                                     !isAirOrLeaves(worldIn, blockpos$mutableblockpos.setPos(position.getX(), i, position.getZ() - 2)) ||
-                                    !checkBranchLeaves(position.getX(), i, position.getZ() - 2, worldIn, blockpos$mutableblockpos)
+                                    !checkBranchLeaves(posOffset.getX(), i, posOffset.getZ() - 2, worldIn, blockpos$mutableblockpos)
                     ) {
                         flag = false;
                     }
@@ -196,37 +206,61 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                         if (isAirOrLeaves(worldIn, blockpos.east())) {
                             this.placeLogXAt(worldIn, blockpos.east(), rand, config);
                         }
-                        if (isAirOrLeaves(worldIn, blockpos.east(2))) {
-                            this.placeLogXAt(worldIn, blockpos.east(2), rand, config);
+                        if (rand.nextInt(4) > 0 || i2 == branchEast2) {
+                            if (isAirOrLeaves(worldIn, blockpos.east(2))) {
+                                this.placeLogXAt(worldIn, blockpos.east(2), rand, config);
+                            }
+                                if (rand.nextInt(4) == 0) {
+                                    this.placeLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
+                                } else {
+                                    this.placeThinLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
+                                }
                         }
-                        this.placeLeavesAt(worldIn, blockpos.east(2), rand, config);
                     }
                     if (i2 == branchWest1 || i2 == branchWest2) {
                         if (isAirOrLeaves(worldIn, blockpos.west())) {
                             this.placeLogXAt(worldIn, blockpos.west(), rand, config);
                         }
-                        if (isAirOrLeaves(worldIn, blockpos.west(2))) {
-                            this.placeLogXAt(worldIn, blockpos.west(2), rand, config);
+                        if (rand.nextInt(4) > 0 || i2 == branchWest2) {
+                            if (isAirOrLeaves(worldIn, blockpos.west(2))) {
+                                this.placeLogXAt(worldIn, blockpos.west(2), rand, config);
+                            }
+                                if (rand.nextInt(4) == 0) {
+                                    this.placeLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
+                                } else {
+                                    this.placeThinLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
+                                }
                         }
-                        this.placeLeavesAt(worldIn, blockpos.west(2), rand, config);
                     }
                     if (i2 == branchSouth1 || i2 == branchSouth2) {
                         if (isAirOrLeaves(worldIn, blockpos.south())) {
                             this.placeLogZAt(worldIn, blockpos.south(), rand, config);
                         }
-                        if (isAirOrLeaves(worldIn, blockpos.south(2))) {
-                            this.placeLogZAt(worldIn, blockpos.south(2), rand, config);
+                        if (rand.nextInt(4) > 0 || i2 == branchSouth2) {
+                            if (isAirOrLeaves(worldIn, blockpos.south(2))) {
+                                this.placeLogZAt(worldIn, blockpos.south(2), rand, config);
+                            }
+                                if (rand.nextInt(4) == 0) {
+                                    this.placeLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
+                                } else {
+                                    this.placeThinLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
+                                }
                         }
-                        this.placeLeavesAt(worldIn, blockpos.south(2), rand, config);
                     }
                     if (i2 == branchNorth1 || i2 == branchNorth2) {
                         if (isAirOrLeaves(worldIn, blockpos.north())) {
                             this.placeLogZAt(worldIn, blockpos.north(), rand, config);
                         }
-                        if (isAirOrLeaves(worldIn, blockpos.north(2))) {
-                            this.placeLogZAt(worldIn, blockpos.north(2), rand, config);
+                        if (rand.nextInt(4) > 0 || i2 == branchNorth2) {
+                            if (isAirOrLeaves(worldIn, blockpos.north(2))) {
+                                this.placeLogZAt(worldIn, blockpos.north(2), rand, config);
+                            }
+                                if (rand.nextInt(4) == 0) {
+                                    this.placeLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
+                                } else {
+                                    this.placeThinLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
+                                }
                         }
-                        this.placeLeavesAt(worldIn, blockpos.north(2), rand, config);
                     }
                     if (i2 == logHeight) {
                         this.placeLeavesAt(worldIn, blockpos, rand, config);
@@ -282,10 +316,15 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
 
     private void placeLeavesAt(IWorldGenerationReader world, BlockPos source, Random rand, BaseTreeFeatureConfig config) {
         this.placeSafeLeafAt(world, source.add(0, -2, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, -1, 0), rand, config);
 
-        for (BlockPos blockpos : BlockPos.getAllInBoxMutable(source.add(-1,-1,-1), source.add(1,1,1))) {
+        for (BlockPos blockpos : BlockPos.getAllInBoxMutable(source.add(-1,0,-1), source.add(1,1,1))) {
             this.placeSafeLeafAt(world, blockpos, rand, config);
         }
+        this.placeSafeLeafAt(world, source.add(-1,-1,-1), rand, config);
+        this.placeSafeLeafAt(world, source.add(-1,-1,1), rand, config);
+        this.placeSafeLeafAt(world, source.add(1,-1,-1), rand, config);
+        this.placeSafeLeafAt(world, source.add(1,-1,1), rand, config);
 
         for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(source.add(-2,0,-1), source.add(-2,1,1))) {
             this.placeSafeLeafAt(world, blockpos1, rand, config);
@@ -324,6 +363,62 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
         this.placeRandomLeafAt(world, source.add(1, -1, -2), rand, config);
         this.placeRandomLeafAt(world, source.add(-1, -1, 2), rand, config);
         this.placeRandomLeafAt(world, source.add(1, -1, 2), rand, config);
+
+        this.placeRandomLeafAt(world, source.add(-1, 2, -1), rand, config);
+        this.placeRandomLeafAt(world, source.add(-1, 2, 1), rand, config);
+        this.placeRandomLeafAt(world, source.add(1, 2, -1), rand, config);
+        this.placeRandomLeafAt(world, source.add(1, 2, 1), rand, config);
+    }
+
+    private void placeThinLeavesAt(IWorldGenerationReader world, BlockPos source, Random rand, BaseTreeFeatureConfig config) {
+        this.placeSafeLeafAt(world, source.add(0, -1, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, 0, 0), rand, config);
+
+        for (BlockPos blockpos : BlockPos.getAllInBoxMutable(source.add(-1,1,-1), source.add(1,1,1))) {
+            this.placeSafeLeafAt(world, blockpos, rand, config);
+        }
+        this.placeSafeLeafAt(world, source.add(-1,0,0), rand, config);
+        this.placeSafeLeafAt(world, source.add(1,0,0), rand, config);
+        this.placeSafeLeafAt(world, source.add(0,0,-1), rand, config);
+        this.placeSafeLeafAt(world, source.add(0,0,1), rand, config);
+
+        for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(source.add(-2,1,-1), source.add(-2,1,1))) {
+            this.placeSafeLeafAt(world, blockpos1, rand, config);
+        }
+        for (BlockPos blockpos2 : BlockPos.getAllInBoxMutable(source.add(-1,1,-2), source.add(1,1,-2))) {
+            this.placeSafeLeafAt(world, blockpos2, rand, config);
+        }
+        for (BlockPos blockpos3 : BlockPos.getAllInBoxMutable(source.add(2,1,-1), source.add(2,1,1))) {
+            this.placeSafeLeafAt(world, blockpos3, rand, config);
+        }
+        for (BlockPos blockpos4 : BlockPos.getAllInBoxMutable(source.add(-1,1,2), source.add(1,1,2))) {
+            this.placeSafeLeafAt(world, blockpos4, rand, config);
+        }
+
+        this.placeSafeLeafAt(world, source.add(-2, 0, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(2, 0, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, 0, -2), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, 0, 2), rand, config);
+
+        this.placeSafeLeafAt(world, source.add(0, 2, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(-1, 2, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(1, 2, 0), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, 2, -1), rand, config);
+        this.placeSafeLeafAt(world, source.add(0, 2, 1), rand, config);
+
+        this.placeRandomLeafAt(world, source.add(-2, -1, 0), rand, config);
+        this.placeRandomLeafAt(world, source.add(2, -1, 0), rand, config);
+        this.placeRandomLeafAt(world, source.add(0, -1, -2), rand, config);
+        this.placeRandomLeafAt(world, source.add(0, -1, 2), rand, config);
+
+        this.placeRandomLeafAt(world, source.add(-2, 0, -1), rand, config);
+        this.placeRandomLeafAt(world, source.add(-2, 0, 1), rand, config);
+        this.placeRandomLeafAt(world, source.add(2, 0, -1), rand, config);
+        this.placeRandomLeafAt(world, source.add(2, 0, 1), rand, config);
+        this.placeRandomLeafAt(world, source.add(-1, 0, -2), rand, config);
+        this.placeRandomLeafAt(world, source.add(1, 0, -2), rand, config);
+        this.placeRandomLeafAt(world, source.add(-1, 0, 2), rand, config);
+        this.placeRandomLeafAt(world, source.add(1, 0, 2), rand, config);
 
         this.placeRandomLeafAt(world, source.add(-1, 2, -1), rand, config);
         this.placeRandomLeafAt(world, source.add(-1, 2, 1), rand, config);
