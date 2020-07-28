@@ -10,7 +10,6 @@ import net.minecraft.block.LeavesBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IWorld;
@@ -25,8 +24,8 @@ import net.minecraftforge.common.IPlantable;
 
 import java.util.Random;
 
-public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
-    public SakuraTreeFeature(Codec<BaseTreeFeatureConfig> config) {
+public class SakuraTreeWithFallenLeavesFeature extends Feature<BaseTreeFeatureConfig> {
+    public SakuraTreeWithFallenLeavesFeature(Codec<BaseTreeFeatureConfig> config) {
         super(config);
     }
 
@@ -42,6 +41,8 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
         int branchSouth1 = -1;
         int branchSouth2 = -1;
         int randChooser;
+
+        BlockState LEAF_CARPET = HanamiBlocks.SAKURA_LEAF_CARPET.get().getDefaultState();
 
         int branchChance = 2; // one in n
 
@@ -265,6 +266,22 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                     }
                     if (i2 == logHeight) {
                         this.placeLeavesAt(worldIn, blockpos, rand, config);
+                    }
+                }
+
+                if (rand.nextInt(4) == 0) {
+                    for (int x = -3; x <= 3; ++x) {
+                        for (int z = -3; z <= 3; ++z) {
+                            if ((((Math.abs(x) <= 1 && Math.abs(z) <= 1) || x == 0 || z == 0) && rand.nextInt(20) < 19) || ((Math.abs(x) <= 2 || Math.abs(z) <= 2) && rand.nextInt(20) < 7)) {
+                                for (int y = -3; y <= 3; ++y) {
+                                    BlockPos placePos = position.add(x, y, z);
+                                    if (worldIn.isAirBlock(placePos) && placePos.getY() < worldIn.getHeight() && worldIn.getBlockState(placePos.down()).getBlock() == Blocks.GRASS_BLOCK) {
+                                        worldIn.setBlockState(placePos, LEAF_CARPET, 2);
+                                        flag = true;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
 

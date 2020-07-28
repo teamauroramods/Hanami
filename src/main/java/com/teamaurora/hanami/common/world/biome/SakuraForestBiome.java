@@ -20,8 +20,8 @@ public class SakuraForestBiome extends Biome {
                 .temperature(0.6F)
                 .downfall(0.7F)
                 .func_235097_a_((new BiomeAmbience.Builder())
-                        .func_235246_b_(4159204)
-                        .func_235248_c_(329011)
+                        .func_235246_b_(6051302)
+                        .func_235248_c_(1184056)
                         .func_235239_a_(12638463)
                         .func_235243_a_(MoodSoundAmbience.field_235027_b_)
                         .func_235238_a_())
@@ -41,7 +41,8 @@ public class SakuraForestBiome extends Biome {
         //DefaultBiomeFeatures.addLakes(this);
         DefaultBiomeFeatures.addSprings(this);
 
-        DefaultBiomeFeatures.addDefaultFlowers(this);
+        //DefaultBiomeFeatures.addDefaultFlowers(this);
+        HanamiBiomeFeatures.addSakuraFlowers(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addGrass(this);
 
@@ -70,7 +71,6 @@ public class SakuraForestBiome extends Biome {
     @OnlyIn(Dist.CLIENT)
     public int getFoliageColor()
     {
-        return 0x5BBC54;
-
+        return 0x7ab85c;
     }
 }
