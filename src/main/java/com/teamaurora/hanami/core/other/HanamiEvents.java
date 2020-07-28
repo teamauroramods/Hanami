@@ -21,7 +21,7 @@ public class HanamiEvents {
         // INSTABILITY //
         if (entity.isPotionActive(HanamiEffects.INSTABILITY.get())) {
             int amplifier = entity.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier();
-            event.setStrength(event.getStrength() * (1 + 0.5F * (amplifier + 1)));
+            event.setStrength(event.getStrength() * (2 + amplifier));
         }
     }
 
