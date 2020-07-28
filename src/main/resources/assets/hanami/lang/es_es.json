@@ -37,5 +37,8 @@
     "item.hanami.cherry_kombucha": "Kombucha de cereza",
     "item.hanami.cherry_pie": "Tarta de cereza",
   
-    "block.hanami.black_forest_gateau": "Tarta selva negra"
+    "block.hanami.black_forest_gateau": "Tarta selva negra",
+
+    "_comment3": "Forest stuff",
+    "biome.hanami.sakura_forest": "Bosque de sakura"
   }
