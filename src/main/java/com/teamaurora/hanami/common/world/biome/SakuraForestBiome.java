@@ -36,17 +36,15 @@ public class SakuraForestBiome extends Biome {
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addSedimentDisks(this);
 
-
-        //DefaultBiomeFeatures.addLakes(this);
         HanamiBiomeFeatures.addKoiPonds(this);
         DefaultBiomeFeatures.addSprings(this);
 
         HanamiBiomeFeatures.addSakuraFeatures(this);
 
-        //DefaultBiomeFeatures.addDefaultFlowers(this);
         HanamiBiomeFeatures.addSakuraFlowers(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addGrass(this);
+        HanamiBiomeFeatures.addSakuraWaterFoliage(this);
 
         addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.SHEEP, 12, 4, 4));
         addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.PIG, 10, 4, 4));

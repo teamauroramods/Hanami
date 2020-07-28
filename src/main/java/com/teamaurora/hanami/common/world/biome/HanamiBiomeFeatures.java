@@ -13,10 +13,7 @@ import net.minecraft.world.gen.blockplacer.SimpleBlockPlacer;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
-import net.minecraft.world.gen.placement.ChanceConfig;
-import net.minecraft.world.gen.placement.FrequencyConfig;
-import net.minecraft.world.gen.placement.Placement;
+import net.minecraft.world.gen.placement.*;
 
 public class HanamiBiomeFeatures {
     private static final BlockState SAKURA_LOG = HanamiBlocks.SAKURA_LOG.get().getDefaultState();
@@ -40,6 +37,12 @@ public class HanamiBiomeFeatures {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.SHORT_BAMBOO.withConfiguration(new ProbabilityConfig(0.0F)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.SAKURA_TREE_WITH_FALLEN_LEAVES.withConfiguration(SAKURA_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(6, 0.1F, 1))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.FALLEN_SAKURA_LEAVES.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(32))));
+    }
+
+    public static void addSakuraWaterFoliage(Biome biomeIn) {
+        // copied from Atmospheric's addRainforestWaterFoliage, credit to bageldotjpg for the parameters here
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILY_PAD_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(1))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.SEAGRASS.withConfiguration(new SeaGrassConfig(64, 0.6D)).withPlacement(Placement.TOP_SOLID_HEIGHTMAP.configure(IPlacementConfig.NO_PLACEMENT_CONFIG)));
     }
 
     public static void addSakuraFlowers(Biome biomeIn) {

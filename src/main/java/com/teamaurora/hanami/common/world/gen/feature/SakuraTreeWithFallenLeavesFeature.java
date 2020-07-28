@@ -42,6 +42,10 @@ public class SakuraTreeWithFallenLeavesFeature extends Feature<BaseTreeFeatureCo
         int branchSouth2 = -1;
         int randChooser;
 
+        if (worldIn.getBlockState(position.down()).getBlock() != Blocks.GRASS_BLOCK) {
+            return false;
+        }
+
         BlockState LEAF_CARPET = HanamiBlocks.SAKURA_LEAF_CARPET.get().getDefaultState();
 
         int branchChance = 2; // one in n
