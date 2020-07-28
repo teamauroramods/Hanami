@@ -3,6 +3,7 @@ package com.teamaurora.hanami.core;
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.core.other.HanamiData;
 import com.teamaurora.hanami.core.other.HanamiRender;
+import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,6 +31,7 @@ public class Hanami
         REGISTRY_HELPER.getDeferredItemRegister().register(eventBus);
         REGISTRY_HELPER.getDeferredBlockRegister().register(eventBus);
 
+        HanamiBiomes.BIOMES.register(eventBus);
         HanamiEffects.EFFECTS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -42,6 +44,8 @@ public class Hanami
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(() -> {
+            HanamiBiomes.addBiomeTypes();
+            HanamiBiomes.registerBiomesToDictionary();
             HanamiData.registerCompostables();
             HanamiData.registerFlammables();
         });

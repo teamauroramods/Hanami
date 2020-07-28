@@ -12,6 +12,6 @@ import java.util.Random;
 public class SakuraTree extends Tree {
     @Nullable
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean p_225546_2_) {
-        return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.MAPLE_TREE_CONFIG);
+        return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.SAKURA_TREE_CONFIG);
     }
 }
