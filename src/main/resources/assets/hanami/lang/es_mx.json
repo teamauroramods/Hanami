@@ -1,0 +1,41 @@
+{
+    "_comment": "Sakura Wood Set",
+    "block.hanami.stripped_sakura_log": "Tronco de sakura sin corteza",
+    "block.hanami.sakura_log": "Tronco de sakura",
+    "block.hanami.stripped_sakura_wood": "Leño de sakura sin corteza",
+    "block.hanami.sakura_wood": "Leño de sakura",
+    "block.hanami.sakura_planks": "Madera de sakura",
+    "block.hanami.sakura_slab": "Losa de sakura",
+    "block.hanami.sakura_stairs": "Escaleras de sakura",
+    "block.hanami.sakura_pressure_plate": "Placa de presión de sakura",
+    "block.hanami.sakura_fence": "Valla de sakura",
+    "block.hanami.sakura_fence_gate": "Puerta de valla de sakura",
+    "block.hanami.sakura_button": "Botón de sakura",
+    "block.hanami.sakura_trapdoor": "Trampilla de sakura",
+    "block.hanami.sakura_door": "Puerta de sakura",
+    "block.hanami.sakura_sign": "Letrero de sakura",
+    "block.hanami.sakura_leaves": "Hojas de sakura",
+    "block.hanami.sakura_sapling": "Retoño de sakura",
+    "block.hanami.sakura_leaf_carpet": "Alfombra de hojas de sakura",
+    "block.hanami.sakura_bookshelf": "Estante de libros de sakura",
+    "block.hanami.sakura_chest": "Cofre de sakura",
+    "block.hanami.sakura_trapped_chest": "Cofre trampa de sakura",
+    "block.hanami.sakura_ladder": "Escalera de mano de sakura",
+    "block.hanami.sakura_vertical_slab": "Losa vertical de sakura",
+    "block.hanami.vertical_sakura_planks": "Madera vertical de sakura",
+    "block.hanami.sakura_beehive": "Apiario de abejas de sakura",
+  
+    "item.hanami.sakura_boat": "Bote de sakura",
+  
+    "_comment2": "Food stuff",
+    "effect.hanami.instability": "Inestabilidad",
+    "effect.hanami.nourishing": "Nutrición",
+    "effect.hanami.unsalutary": "Insalubridad",
+  
+    "item.hanami.cherries": "Cerezas",
+    "item.hanami.cherry_juice": "Jugo de cereza",
+    "item.hanami.cherry_kombucha": "Kombucha de cereza",
+    "item.hanami.cherry_pie": "Pastel de cereza",
+  
+    "block.hanami.black_forest_gateau": "Pastel selva negra"
+  }
