@@ -28,45 +28,6 @@ public class ShortBambooFeature extends Feature<ProbabilityConfig> {
     }
 
     public boolean func_230362_a_(ISeedReader world, StructureManager structureManager, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ProbabilityConfig config) {
-        /*int i = 0;
-        BlockPos.Mutable blockpos$mutable = p_230362_5_.func_239590_i_();
-        BlockPos.Mutable blockpos$mutable1 = p_230362_5_.func_239590_i_();
-        if (p_230362_1_.isAirBlock(blockpos$mutable)) {
-            if (Blocks.BAMBOO.getDefaultState().isValidPosition(p_230362_1_, blockpos$mutable)) {
-                int j = p_230362_4_.nextInt(3) + 3;
-                if (p_230362_4_.nextFloat() < p_230362_6_.probability) {
-                    int k = p_230362_4_.nextInt(2) + 1;
-
-                    for(int l = p_230362_5_.getX() - k; l <= p_230362_5_.getX() + k; ++l) {
-                        for(int i1 = p_230362_5_.getZ() - k; i1 <= p_230362_5_.getZ() + k; ++i1) {
-                            int j1 = l - p_230362_5_.getX();
-                            int k1 = i1 - p_230362_5_.getZ();
-                            if (j1 * j1 + k1 * k1 <= k * k) {
-                                blockpos$mutable1.setPos(l, p_230362_1_.getHeight(Heightmap.Type.WORLD_SURFACE, l, i1) - 1, i1);
-                                if (isDirt(p_230362_1_.getBlockState(blockpos$mutable1).getBlock())) {
-                                    p_230362_1_.setBlockState(blockpos$mutable1, Blocks.PODZOL.getDefaultState(), 2);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                for(int l1 = 0; l1 < j && p_230362_1_.isAirBlock(blockpos$mutable); ++l1) {
-                    p_230362_1_.setBlockState(blockpos$mutable, BAMBOO_BASE, 2);
-                    blockpos$mutable.move(Direction.UP, 1);
-                }
-
-                if (blockpos$mutable.getY() - p_230362_5_.getY() >= 3) {
-                    p_230362_1_.setBlockState(blockpos$mutable, BAMBOO_LARGE_LEAVES_GROWN, 2);
-                    p_230362_1_.setBlockState(blockpos$mutable.move(Direction.DOWN, 1), BAMBOO_LARGE_LEAVES, 2);
-                    p_230362_1_.setBlockState(blockpos$mutable.move(Direction.DOWN, 1), BAMBOO_SMALL_LEAVES, 2);
-                }
-            }
-
-            ++i;
-        }
-
-        return i > 0;*/
         if (pos.getY() > 1) {
             if (!isAir(world, pos.down())) {
                 int i = rand.nextInt(5) + 2;

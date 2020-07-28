@@ -7,6 +7,8 @@ import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MoodSoundAmbience;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class SakuraGroveBiome extends Biome {
     public SakuraGroveBiome() {
@@ -34,11 +36,12 @@ public class SakuraGroveBiome extends Biome {
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addSedimentDisks(this);
 
-        DefaultBiomeFeatures.addLakes(this);
+        //DefaultBiomeFeatures.addLakes(this);
         DefaultBiomeFeatures.addSprings(this);
 
         DefaultBiomeFeatures.addDefaultFlowers(this);
         DefaultBiomeFeatures.addMushrooms(this);
+        DefaultBiomeFeatures.addGrass(this);
 
         HanamiBiomeFeatures.addSakuraFeatures(this);
 
@@ -56,5 +59,10 @@ public class SakuraGroveBiome extends Biome {
         addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SLIME, 100, 4, 4));
         addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.ENDERMAN, 10, 1, 4));
         addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.WITCH, 5, 1, 1));
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getGrassColor(double posX, double posZ) {
+        return 0x5BCC57;
     }
 }
