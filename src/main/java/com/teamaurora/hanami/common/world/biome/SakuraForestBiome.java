@@ -10,15 +10,15 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class SakuraGroveBiome extends Biome {
-    public SakuraGroveBiome() {
+public class SakuraForestBiome extends Biome {
+    public SakuraForestBiome() {
         super(new Biome.Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.FOREST)
-                .depth(0F)
-                .scale(0.2F)
+                .depth(0.06F)
+                .scale(0.09F)
                 .temperature(0.6F)
-                .downfall(0.9F)
+                .downfall(0.7F)
                 .func_235097_a_((new BiomeAmbience.Builder())
                         .func_235246_b_(4159204)
                         .func_235248_c_(329011)
@@ -36,14 +36,14 @@ public class SakuraGroveBiome extends Biome {
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addSedimentDisks(this);
 
+        HanamiBiomeFeatures.addSakuraFeatures(this);
+
         //DefaultBiomeFeatures.addLakes(this);
         DefaultBiomeFeatures.addSprings(this);
 
         DefaultBiomeFeatures.addDefaultFlowers(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addGrass(this);
-
-        HanamiBiomeFeatures.addSakuraFeatures(this);
 
         addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.SHEEP, 12, 4, 4));
         addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.PIG, 10, 4, 4));
@@ -62,7 +62,15 @@ public class SakuraGroveBiome extends Biome {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public int getGrassColor(double posX, double posZ) {
-        return 0x5BCC57;
+    public int getGrassColor(double posX, double posZ)
+    {
+        return 0x74BA59;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public int getFoliageColor()
+    {
+        return 0x5BBC54;
+
     }
 }

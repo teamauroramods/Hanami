@@ -1,6 +1,6 @@
 package com.teamaurora.hanami.core.registry;
 
-import com.teamaurora.hanami.common.world.biome.SakuraGroveBiome;
+import com.teamaurora.hanami.common.world.biome.SakuraForestBiome;
 import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -14,13 +14,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class HanamiBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Hanami.MODID);
 
-    public static final RegistryObject<Biome> SAKURA_GROVE = BIOMES.register("sakura_grove", ()->new SakuraGroveBiome());
+    public static final RegistryObject<Biome> SAKURA_FOREST = BIOMES.register("sakura_forest", ()->new SakuraForestBiome());
 
     public static void registerBiomesToDictionary() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_GROVE.get(), 2));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 2));
     }
 
     public static void addBiomeTypes() {
-        BiomeDictionary.addTypes(SAKURA_GROVE.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
     }
 }

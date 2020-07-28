@@ -29,7 +29,7 @@ public class ShortBambooFeature extends Feature<ProbabilityConfig> {
 
     public boolean func_230362_a_(ISeedReader world, StructureManager structureManager, ChunkGenerator chunkGenerator, Random rand, BlockPos pos, ProbabilityConfig config) {
         if (pos.getY() > 1) {
-            if (!isAir(world, pos.down())) {
+            if (world.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK) {
                 int i = rand.nextInt(5) + 2;
                 // if i < 4 only do 1 leaf
                 BlockPos.Mutable blockpos$mutableblockpos = new BlockPos.Mutable();
