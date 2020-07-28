@@ -36,10 +36,12 @@ public class SakuraForestBiome extends Biome {
         DefaultBiomeFeatures.addOres(this);
         DefaultBiomeFeatures.addSedimentDisks(this);
 
-        HanamiBiomeFeatures.addSakuraFeatures(this);
 
         //DefaultBiomeFeatures.addLakes(this);
+        HanamiBiomeFeatures.addKoiPonds(this);
         DefaultBiomeFeatures.addSprings(this);
+
+        HanamiBiomeFeatures.addSakuraFeatures(this);
 
         //DefaultBiomeFeatures.addDefaultFlowers(this);
         HanamiBiomeFeatures.addSakuraFlowers(this);

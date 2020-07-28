@@ -14,6 +14,7 @@ import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.blockstateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.AtSurfaceWithExtraConfig;
+import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.FrequencyConfig;
 import net.minecraft.world.gen.placement.Placement;
 
@@ -30,6 +31,10 @@ public class HanamiBiomeFeatures {
 
     public static final BlockClusterFeatureConfig ALLIUM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ALLIUM), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
     public static final BlockClusterFeatureConfig TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(PINK_TULIP, 2).addWeightedBlockstate(WHITE_TULIP, 2).addWeightedBlockstate(ORANGE_TULIP, 1), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
+
+    public static void addKoiPonds(Biome biomeIn) {
+        biomeIn.addFeature(GenerationStage.Decoration.LAKES, HanamiFeatures.KOI_POND.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.CHANCE_TOP_SOLID_HEIGHTMAP.configure(new ChanceConfig(6))));
+    }
 
     public static void addSakuraFeatures(Biome biomeIn) {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.SHORT_BAMBOO.withConfiguration(new ProbabilityConfig(0.0F)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
