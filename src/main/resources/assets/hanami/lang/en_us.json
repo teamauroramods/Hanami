@@ -37,5 +37,8 @@
   "item.hanami.cherry_kombucha": "Cherry Kombucha",
   "item.hanami.cherry_pie": "Cherry Pie",
 
-  "block.hanami.black_forest_gateau": "Black Forest Gateau"
+  "block.hanami.black_forest_gateau": "Black Forest Gateau",
+
+  "_comment3": "Forest stuff",
+  "biome.hanami.sakura_forest": "Sakura Forest"
 }

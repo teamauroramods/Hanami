@@ -15,7 +15,7 @@ public class SakuraForestBiome extends Biome {
         super(new Biome.Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.FOREST)
-                .depth(0.06F)
+                .depth(0.125F)
                 .scale(0.09F)
                 .temperature(0.6F)
                 .downfall(0.7F)

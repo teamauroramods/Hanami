@@ -162,8 +162,8 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
     }
 
     private static final BlockState BAMBOO_BASE = Blocks.BAMBOO.getDefaultState().with(BambooBlock.PROPERTY_AGE, Integer.valueOf(1)).with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.NONE).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(0));
-    private static final BlockState BAMBOO_LARGE_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.LARGE);
-    private static final BlockState BAMBOO_SMALL_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.SMALL);
+    private static final BlockState BAMBOO_LARGE_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.LARGE).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(1));
+    private static final BlockState BAMBOO_SMALL_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.SMALL).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(1));
 
     private void placeBambooAt(ISeedReader worldIn, BlockPos pos, Random rand) {
         this.placeGrassAt(worldIn, pos.down());
@@ -183,8 +183,14 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         }
     }
 
+    private void placeDirtAt(ISeedReader worldIn, BlockPos pos) {
+        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.STONE) {
+            setLogState(worldIn, pos, Blocks.DIRT.getDefaultState());
+        }
+    }
+
     private void placeGrassAt(ISeedReader worldIn, BlockPos pos) {
-        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT) {
+        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT || worldIn.getBlockState(pos).getBlock() == Blocks.STONE) {
             setLogState(worldIn, pos, Blocks.GRASS_BLOCK.getDefaultState());
         }
     }
@@ -199,14 +205,15 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         this.setLogState(worldIn, pos, Blocks.AIR.getDefaultState());
     }
 
-    private void placeWaterRandomlyAt(IWorldWriter worldIn, BlockPos pos, Random rand) {
+    private void placeWaterRandomlyAt(ISeedReader worldIn, BlockPos pos, Random rand) {
         if (rand.nextBoolean()) {
             this.placeWaterAt(worldIn, pos);
         }
     }
 
-    private void placeWaterAt(IWorldWriter worldIn, BlockPos pos) {
+    private void placeWaterAt(ISeedReader worldIn, BlockPos pos) {
         this.setLogState(worldIn, pos, Blocks.WATER.getDefaultState());
+        this.placeDirtAt(worldIn, pos.down());
     }
 
     public static boolean isRightGround(IWorldGenerationBaseReader worldIn, BlockPos pos)
