@@ -24,7 +24,7 @@ public class FallenSakuraLeavesFeature extends Feature<NoFeatureConfig> {
         boolean flag = false;
         for (int x = -3; x <= 3; ++x) {
             for (int z = -3; z <= 3; ++z) {
-                if ((((Math.abs(x) <= 1 && Math.abs(z) <= 1) || x == 0 || z == 0)  && rand.nextInt(20) < 17) || ((Math.abs(x) <= 2 || Math.abs(z) <= 2) && rand.nextInt(20) < 7)) {
+                if ((((Math.abs(x) <= 1 && Math.abs(z) <= 1) || x == 0 || z == 0)  && rand.nextInt(20) < 19) || ((Math.abs(x) <= 2 || Math.abs(z) <= 2) && rand.nextInt(20) < 7)) {
                     for (int y = -3; y <= 3; ++y) {
                         BlockPos placePos = pos.add(x,y,z);
                         if (world.isAirBlock(placePos) && placePos.getY() < world.getHeight() && world.getBlockState(placePos.down()).getBlock() == Blocks.GRASS_BLOCK) {

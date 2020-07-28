@@ -23,6 +23,6 @@ public class HanamiBiomeFeatures {
     public static void addSakuraFeatures(Biome biomeIn) {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.SHORT_BAMBOO.withConfiguration(new ProbabilityConfig(0.0F)).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(20))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.SAKURA_TREE.withConfiguration(SAKURA_TREE_CONFIG).withPlacement(Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(6, 0.1F, 1))));
-        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.FALLEN_SAKURA_LEAVES.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(128))));
+        biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HanamiFeatures.FALLEN_SAKURA_LEAVES.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.COUNT_HEIGHTMAP_DOUBLE.configure(new FrequencyConfig(64))));
     }
 }
