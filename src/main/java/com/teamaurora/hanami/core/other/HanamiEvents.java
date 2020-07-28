@@ -36,10 +36,9 @@ public class HanamiEvents {
             int amplifier = entity.getActivePotionEffect(HanamiEffects.NOURISHING.get()).getAmplifier();
             if (item.isFood()) {
                 int foodToAdd = 2 * (amplifier + 1);
-                float satToAdd = 0.2F * (amplifier + 1);
                 if (entity instanceof PlayerEntity) {
                     PlayerEntity player = (PlayerEntity) entity;
-                    player.getFoodStats().addStats(foodToAdd, satToAdd);
+                    player.getFoodStats().addStats(foodToAdd, 0);
                 }
             }
         }
@@ -50,10 +49,9 @@ public class HanamiEvents {
             if (item.isFood()) {
                 Food food = item.getItem().getFood();
                 int foodToRemove = Math.min(2 * (amplifier + 1), food.getHealing());
-                float satToRemove = Math.min(0.2F * (amplifier + 1), food.getSaturation());
                 if (entity instanceof PlayerEntity) {
                     PlayerEntity player = (PlayerEntity) entity;
-                    player.getFoodStats().addStats(foodToRemove * -1, satToRemove * -1);
+                    player.getFoodStats().addStats(foodToRemove * -1, 0);
                 }
             }
         }
