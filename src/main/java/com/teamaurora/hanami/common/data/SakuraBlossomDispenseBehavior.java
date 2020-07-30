@@ -24,7 +24,7 @@ public class SakuraBlossomDispenseBehavior extends OptionalDispenseBehavior {
 
             if (direction != Direction.UP) {
                 if (!worldIn.isRemote) {
-                    SakuraBlossomEntity blossom = new SakuraBlossomEntity(worldIn, pos, pos.getX(), pos.getY(), pos.getZ());
+                    SakuraBlossomEntity blossom = new SakuraBlossomEntity(worldIn, pos, pos.getX(), pos.getY(), pos.getZ(), false);
 
                     worldIn.addEntity(blossom);
                 }
