@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core.registry;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.common.item.DrinkItem;
+import com.teamaurora.hanami.common.item.SakuraBlossomItem;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.other.HanamiFoods;
 import net.minecraft.item.BlockItem;
@@ -22,5 +23,5 @@ public class HanamiItems {
     public static final RegistryObject<Item> CHERRY_PIE = HELPER.createItem("cherry_pie", ()->new Item(new Item.Properties().food(HanamiFoods.CHERRY_PIE).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> BLACK_FOREST_GATEAU = HELPER.createItem("black_forest_gateau", ()->new BlockItem(HanamiBlocks.BLACK_FOREST_GATEAU.get(), new Item.Properties().maxStackSize(1).group(ItemGroup.FOOD)));
 
-    public static final RegistryObject<Item> SAKURA_BLOSSOM = HELPER.createItem("sakura_blossom", ()->new Item(new Item.Properties().group(ItemGroup.MISC)));
+    public static final RegistryObject<Item> SAKURA_BLOSSOM = HELPER.createItem("sakura_blossom", ()->new SakuraBlossomItem(new Item.Properties().group(ItemGroup.MISC)));
 }
