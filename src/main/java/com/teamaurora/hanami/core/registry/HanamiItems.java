@@ -21,4 +21,6 @@ public class HanamiItems {
     public static final RegistryObject<Item> CHERRY_KOMBUCHA = HELPER.createItem("cherry_kombucha", ()->new DrinkItem(new Item.Properties().food(HanamiFoods.CHERRY_KOMBUCHA).maxStackSize(16).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> CHERRY_PIE = HELPER.createItem("cherry_pie", ()->new Item(new Item.Properties().food(HanamiFoods.CHERRY_PIE).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> BLACK_FOREST_GATEAU = HELPER.createItem("black_forest_gateau", ()->new BlockItem(HanamiBlocks.BLACK_FOREST_GATEAU.get(), new Item.Properties().maxStackSize(1).group(ItemGroup.FOOD)));
+
+    public static final RegistryObject<Item> SAKURA_BLOSSOM = HELPER.createItem("sakura_blossom", ()->new Item(new Item.Properties().group(ItemGroup.MISC)));
 }

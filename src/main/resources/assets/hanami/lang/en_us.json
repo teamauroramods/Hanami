@@ -40,5 +40,8 @@
   "block.hanami.black_forest_gateau": "Black Forest Gateau",
 
   "_comment3": "Forest stuff",
-  "biome.hanami.sakura_forest": "Sakura Forest"
+  "biome.hanami.sakura_forest": "Sakura Forest",
+
+  "_comment4": "Blossoms & other tools",
+  "item.hanami.sakura_blossom": "Sakura Blossom"
 }
