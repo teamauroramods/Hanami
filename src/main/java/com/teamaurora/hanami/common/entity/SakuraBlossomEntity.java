@@ -130,8 +130,7 @@ public class SakuraBlossomEntity extends LivingEntity {
     @Override
     public void handleStatusUpdate(byte id) {
         if (id == 1) {
-            //Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(SoundEvents.BLOCK_WOOL_BREAK, 1.0F));
-            this.getEntity().playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
+            this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
         } else {
             super.handleStatusUpdate(id);
         }
