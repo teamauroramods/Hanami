@@ -1,12 +1,18 @@
 package com.teamaurora.hanami.core.other;
 
 import com.teamabnormals.abnormals_core.core.utils.DataUtils;
+import com.teamaurora.hanami.common.data.SakuraBlossomDispenseBehavior;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import com.teamaurora.hanami.core.registry.HanamiItems;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 
 public class HanamiData {
+    public static void registerDispenserBehaviors() {
+        DispenserBlock.registerDispenseBehavior(HanamiItems.SAKURA_BLOSSOM.get(), new SakuraBlossomDispenseBehavior());
+    }
+
     public static void registerCompostables() {
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAVES.get());
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_SAPLING.get());

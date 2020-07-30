@@ -54,6 +54,7 @@ public class Hanami
             HanamiBiomes.registerBiomesToDictionary();
             HanamiData.registerCompostables();
             HanamiData.registerFlammables();
+            HanamiData.registerDispenserBehaviors();
             GlobalEntityTypeAttributes.put(HanamiEntities.SAKURA_BLOSSOM.get(), SakuraBlossomEntity.setCustomAttributes().func_233813_a_());
         });
     }
