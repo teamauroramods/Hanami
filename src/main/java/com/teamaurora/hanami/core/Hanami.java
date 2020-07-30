@@ -1,15 +1,20 @@
 package com.teamaurora.hanami.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
+import com.teamaurora.hanami.client.render.entity.SakuraBlossomRender;
+import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.other.HanamiData;
 import com.teamaurora.hanami.core.other.HanamiRender;
 import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
+import com.teamaurora.hanami.core.registry.HanamiEntities;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -30,6 +35,7 @@ public class Hanami
 
         REGISTRY_HELPER.getDeferredItemRegister().register(eventBus);
         REGISTRY_HELPER.getDeferredBlockRegister().register(eventBus);
+        REGISTRY_HELPER.getDeferredEntityRegister().register(eventBus);
 
         HanamiBiomes.BIOMES.register(eventBus);
         HanamiEffects.EFFECTS.register(eventBus);
@@ -48,10 +54,15 @@ public class Hanami
             HanamiBiomes.registerBiomesToDictionary();
             HanamiData.registerCompostables();
             HanamiData.registerFlammables();
+            GlobalEntityTypeAttributes.put(HanamiEntities.SAKURA_BLOSSOM.get(), SakuraBlossomEntity.setCustomAttributes().func_233813_a_());
         });
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        DeferredWorkQueue.runLater(HanamiRender::setupRenderLayer);
+        DeferredWorkQueue.runLater(() -> {
+            HanamiRender.setupRenderLayer();
+
+            RenderingRegistry.registerEntityRenderingHandler(HanamiEntities.SAKURA_BLOSSOM.get(), SakuraBlossomRender::new);
+        });
     }
 }

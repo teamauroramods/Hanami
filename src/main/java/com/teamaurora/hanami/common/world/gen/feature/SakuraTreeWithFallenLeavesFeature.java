@@ -491,7 +491,7 @@ public class SakuraTreeWithFallenLeavesFeature extends Feature<BaseTreeFeatureCo
             return worldIn.hasBlockState(pos, state -> state.canBeReplacedByLeaves((net.minecraft.world.IWorldReader) worldIn, pos));
         }
         return worldIn.hasBlockState(pos, (state) -> {
-            return state.isAir() || state.func_235714_a_(BlockTags.LEAVES);
+            return state.isAir() || state.isIn(BlockTags.LEAVES);
         });
     }
 
