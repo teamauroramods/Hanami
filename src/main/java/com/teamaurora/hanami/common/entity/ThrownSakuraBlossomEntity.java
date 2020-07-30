@@ -61,6 +61,12 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
             entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 0);
         } else if (result.getType() == RayTraceResult.Type.BLOCK) {
             //TODO
+            if (!this.world.isRemote) {
+                BlockPos pos = this.getOnPosition();
+                SakuraBlossomEntity blossom = new SakuraBlossomEntity(this.world, pos, pos.getX(), pos.getY(), pos.getZ());
+
+                world.addEntity(blossom);
+            }
         }
 
         if (!this.world.isRemote) {
