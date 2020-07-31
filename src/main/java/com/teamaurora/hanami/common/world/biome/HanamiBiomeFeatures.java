@@ -27,9 +27,7 @@ public class HanamiBiomeFeatures {
     public static final BaseTreeFeatureConfig SAKURA_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(SAKURA_LOG), new SimpleBlockStateProvider(SAKURA_LEAVES), null, null, null)).func_236700_a_().build();
 
     public static final BlockClusterFeatureConfig ALLIUM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ALLIUM), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
-    public static final BlockClusterFeatureConfig PINK_TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(PINK_TULIP), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
-    public static final BlockClusterFeatureConfig WHITE_TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(WHITE_TULIP), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
-    public static final BlockClusterFeatureConfig ORANGE_TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ORANGE_TULIP), SimpleBlockPlacer.field_236447_c_)).tries(32).build();
+    public static final BlockClusterFeatureConfig TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(PINK_TULIP, 2).addWeightedBlockstate(WHITE_TULIP, 2).addWeightedBlockstate(ORANGE_TULIP, 1), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
 
     public static void addKoiPonds(Biome biomeIn) {
         biomeIn.addFeature(GenerationStage.Decoration.LAKES, HanamiFeatures.KOI_POND.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.CHANCE_TOP_SOLID_HEIGHTMAP.configure(new ChanceConfig(6))));
@@ -55,9 +53,7 @@ public class HanamiBiomeFeatures {
                 .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_RANDOM_SELECTOR.withConfiguration(
                 new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(
-                        Feature.RANDOM_PATCH.withConfiguration(PINK_TULIP_CONFIG),
-                        Feature.RANDOM_PATCH.withConfiguration(WHITE_TULIP_CONFIG),
-                        Feature.RANDOM_PATCH.withConfiguration(ORANGE_TULIP_CONFIG),
+                        Feature.RANDOM_PATCH.withConfiguration(TULIP_CONFIG),
                         Feature.RANDOM_PATCH.withConfiguration(ALLIUM_CONFIG),
                         Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.LILY_OF_THE_VALLEY_CONFIG)), 0))
                 .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
