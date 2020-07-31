@@ -43,5 +43,6 @@
   "biome.hanami.sakura_forest": "Sakura Forest",
 
   "_comment4": "Blossoms & other tools",
-  "item.hanami.sakura_blossom": "Sakura Blossom"
+  "item.hanami.sakura_blossom": "Sakura Blossom",
+  "entity.hanami.sakura_blossom": "Sakura Blossom"
 }

@@ -105,7 +105,7 @@ public class SakuraBlossomEntity extends LivingEntity {
             this.setMotion(0, -0.0375, 0);
         }
 
-        if(this.isBlockBlockingPath()) {
+        if(this.isBlockBlockingPath() || this.isEntityBlockingPath()) {
             this.playHurtSound(DamageSource.GENERIC);
             this.world.setEntityState(this, (byte)3);
             this.remove();
@@ -116,7 +116,6 @@ public class SakuraBlossomEntity extends LivingEntity {
 
         if(!this.world.isRemote) {
             if (!this.playedSound) {
-                //if (this.getWild()) this.world.setEntityState(this, (byte)1);
                 this.playedSound = true;
             }
         }
@@ -125,7 +124,14 @@ public class SakuraBlossomEntity extends LivingEntity {
     @Override
     public boolean hitByEntity(Entity entityIn) {
         if(!this.world.isRemote) {
-            Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+            if (entityIn instanceof PlayerEntity) {
+                PlayerEntity player = (PlayerEntity) entityIn;
+                if (!player.abilities.isCreativeMode) {
+                    Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+                }
+            } else {
+                Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+            }
         }
         this.playHurtSound(DamageSource.GENERIC);
         this.remove();
@@ -187,6 +193,16 @@ public class SakuraBlossomEntity extends LivingEntity {
         return size.height;
     }
 
+    @Override
+    public void move(MoverType typeIn, Vector3d pos) {
+        super.move(typeIn, pos);
+        if (typeIn == MoverType.PISTON) {
+            this.playHurtSound(DamageSource.GENERIC);
+            this.world.setEntityState(this, (byte)3);
+            this.remove();
+        }
+    }
+
     private double getBreeze(double x, double z) {
         //return 0.0625F * Math.cos((x + z) * 0.05) - 0.0125F;
         return -0.25F;
@@ -201,6 +217,19 @@ public class SakuraBlossomEntity extends LivingEntity {
                 RayTraceContext.FluidMode.ANY,
                 this
         )).getType() != RayTraceResult.Type.MISS;
+    }
+
+    private boolean isEntityBlockingPath() {
+        AxisAlignedBB clusterBB = this.getBoundingBox().offset(0.0F, -0.01F, 0.0F);
+        List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, clusterBB);
+        if(!entitiesAbove.isEmpty()) {
+            for (Entity entity : entitiesAbove) {
+                if (!entity.isPassenger() && !(entity instanceof SakuraBlossomEntity) && entity.getPushReaction() != PushReaction.IGNORE) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void setOrigin(BlockPos pos) {
