@@ -17,6 +17,9 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.particles.IParticleData;
+import net.minecraft.particles.ItemParticleData;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -34,9 +37,11 @@ public class SakuraBlossomEntity extends LivingEntity {
     private static final DataParameter<BlockPos> ORIGIN = EntityDataManager.createKey(SakuraBlossomEntity.class, DataSerializers.BLOCK_POS);
     private static final DataParameter<Boolean> WILD = EntityDataManager.createKey(SakuraBlossomEntity.class, DataSerializers.BOOLEAN);
     private boolean playedSound;
+    private int age;
 
     public SakuraBlossomEntity(EntityType<? extends SakuraBlossomEntity> blossom, World worldIn) {
         super(HanamiEntities.SAKURA_BLOSSOM.get(), worldIn);
+        age = 0;
     }
 
     public SakuraBlossomEntity(World worldIn, BlockPos origin, double x, double y, double z, boolean wild) {
@@ -49,6 +54,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.prevRenderYawOffset = 180.0F;
         this.renderYawOffset = 180.0F;
         this.rotationYaw = 180.0F;
+        age = 0;
     }
 
     @Override
@@ -89,11 +95,19 @@ public class SakuraBlossomEntity extends LivingEntity {
             } else {
                 this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.045F);
             }
+            age = age + 1;
+            if (age >= 400) {
+                this.world.setEntityState(this, (byte)3);
+                this.playHurtSound(DamageSource.GENERIC);
+                this.remove();
+            }
         } else {
             this.setMotion(0, -0.075F, 0);
         }
 
         if(this.isBlockBlockingPath()) {
+            this.playHurtSound(DamageSource.GENERIC);
+            this.world.setEntityState(this, (byte)3);
             this.remove();
         }
 
@@ -102,7 +116,7 @@ public class SakuraBlossomEntity extends LivingEntity {
 
         if(!this.world.isRemote) {
             if (!this.playedSound) {
-                if (!this.getWild()) this.world.setEntityState(this, (byte)1);
+                //if (this.getWild()) this.world.setEntityState(this, (byte)1);
                 this.playedSound = true;
             }
         }
@@ -113,6 +127,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         if(!this.world.isRemote) {
             Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
         }
+        this.playHurtSound(DamageSource.GENERIC);
         this.remove();
         return true;
     }
@@ -131,10 +146,22 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
+    private IParticleData makeParticle() {
+        ItemStack itemstack = new ItemStack(HanamiItems.SAKURA_BLOSSOM.get());
+        return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
+    }
+
+    @OnlyIn(Dist.CLIENT)
     @Override
     public void handleStatusUpdate(byte id) {
         if (id == 1) {
             this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
+        } else if (id == 3) {
+            IParticleData iparticledata = this.makeParticle();
+
+            for (int i = 0; i < 8; ++i) {
+                this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+            }
         } else {
             super.handleStatusUpdate(id);
         }
@@ -165,7 +192,7 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     private boolean isBlockBlockingPath() {
-        Vector3d eyePos = this.getPositionVec();
+        Vector3d eyePos = this.getPositionVec().add(0, 0, -0.5F);
         return this.world.rayTraceBlocks(new RayTraceContext(
                 eyePos,
                 eyePos.add(this.getMotion()),

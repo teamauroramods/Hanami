@@ -11,6 +11,7 @@ import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ItemParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
@@ -69,6 +70,8 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
     public void handleStatusUpdate(byte id) {
         if (id == 3) {
             IParticleData iparticledata = this.makeParticle();
+
+            this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
 
             for (int i = 0; i < 8; ++i) {
                 this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
