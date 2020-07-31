@@ -1,6 +1,7 @@
 package com.teamaurora.hanami.common.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -266,8 +267,10 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         }
     }
 
-    private void placeAirAt(IWorldWriter worldIn, BlockPos pos) {
-        this.setLogState(worldIn, pos, Blocks.AIR.getDefaultState());
+    private void placeAirAt(ISeedReader worldIn, BlockPos pos) {
+        if (worldIn.getBlockState(pos).getBlock() != HanamiBlocks.SAKURA_LEAVES.get() && worldIn.getBlockState(pos).getBlock() != HanamiBlocks.SAKURA_LOG.get()) {
+            this.setLogState(worldIn, pos, Blocks.AIR.getDefaultState());
+        }
     }
 
     private void placeWaterRandomlyAt(ISeedReader worldIn, BlockPos pos, Random rand) {
