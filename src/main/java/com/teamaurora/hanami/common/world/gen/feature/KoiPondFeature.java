@@ -46,15 +46,35 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         if (pond7 && !checkPondLoc(worldIn, pos.add(1,0,-3))) pond7 = false;
         if (pond8 && !checkPondLoc(worldIn, pos.add(-1,0,-3))) pond8 = false;
 
-        placePondAt(worldIn, pos, rand);
-        if (pond1) placePondAt(worldIn, pos.add(3,0,1), rand);
-        if (pond2) placePondAt(worldIn, pos.add(3,0,-1), rand);
-        if (pond3) placePondAt(worldIn, pos.add(-3,0,1), rand);
-        if (pond4) placePondAt(worldIn, pos.add(-3,0,-1), rand);
-        if (pond5) placePondAt(worldIn, pos.add(1,0,3), rand);
-        if (pond6) placePondAt(worldIn, pos.add(-1,0,3), rand);
-        if (pond7) placePondAt(worldIn, pos.add(1,0,-3), rand);
-        if (pond8) placePondAt(worldIn, pos.add(-1,0,-3), rand);
+        boolean flowers = (rand.nextInt(4) == 0);
+
+        int flowerType = rand.nextInt(4);
+
+        BlockState flower;
+        if (flowerType == 0) {
+            flower = Blocks.ALLIUM.getDefaultState();
+        } else if (flowerType == 1) {
+            flower = Blocks.PINK_TULIP.getDefaultState();
+        } else if (flowerType == 2) {
+            flower = Blocks.WHITE_TULIP.getDefaultState();
+        } else {
+            if (rand.nextBoolean()) {
+                flower = Blocks.ORANGE_TULIP.getDefaultState();
+            } else {
+                flower = Blocks.LILY_OF_THE_VALLEY.getDefaultState();
+            }
+        }
+
+        placePondAt(worldIn, pos, rand, flowers, flower);
+        if (pond1) placePondAt(worldIn, pos.add(3,0,1), rand, flowers, flower);
+        if (pond2) placePondAt(worldIn, pos.add(3,0,-1), rand, flowers, flower);
+        if (pond3) placePondAt(worldIn, pos.add(-3,0,1), rand, flowers, flower);
+        if (pond4) placePondAt(worldIn, pos.add(-3,0,-1), rand, flowers, flower);
+        if (pond5) placePondAt(worldIn, pos.add(1,0,3), rand, flowers, flower);
+        if (pond6) placePondAt(worldIn, pos.add(-1,0,3), rand, flowers, flower);
+        if (pond7) placePondAt(worldIn, pos.add(1,0,-3), rand, flowers, flower);
+        if (pond8) placePondAt(worldIn, pos.add(-1,0,-3), rand, flowers, flower);
+
 
         return true;
     }
@@ -81,7 +101,7 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         return true;
     }
 
-    private void placePondAt(ISeedReader worldIn, BlockPos pos, Random rand) {
+    private void placePondAt(ISeedReader worldIn, BlockPos pos, Random rand, boolean flowers, BlockState flower) {
         placeWaterAt(worldIn, pos.add(0,-2,0));
         placeWaterAt(worldIn, pos.add(1,-2,0));
         placeWaterAt(worldIn, pos.add(-1,-2,0));
@@ -137,33 +157,78 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         placeLilyPadAt(worldIn, pos.add(1,0,-2), rand);
         placeLilyPadAt(worldIn, pos.add(-1,0,-2), rand);
 
-        placeBambooAt(worldIn, pos.add(4,0,1), rand);
-        placeBambooAt(worldIn, pos.add(4,0,-1), rand);
-        placeBambooAt(worldIn, pos.add(-4,0,1), rand);
-        placeBambooAt(worldIn, pos.add(-4,0,-1), rand);
-        placeBambooAt(worldIn, pos.add(1,0,4), rand);
-        placeBambooAt(worldIn, pos.add(-1,0,4), rand);
-        placeBambooAt(worldIn, pos.add(1,0,-4), rand);
-        placeBambooAt(worldIn, pos.add(-1,0,-4), rand);
+        if (flowers) {
+            placeBambooOrFlowerAt(worldIn, pos.add(4, 0, 1), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(4, 0, -1), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-4, 0, 1), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-4, 0, -1), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(1, 0, 4), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-1, 0, 4), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(1, 0, -4), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-1, 0, -4), rand, flower);
 
-        placeBambooAt(worldIn, pos.add(3,0,2), rand);
-        placeBambooAt(worldIn, pos.add(3,0,-2), rand);
-        placeBambooAt(worldIn, pos.add(-3,0,2), rand);
-        placeBambooAt(worldIn, pos.add(-3,0,-2), rand);
-        placeBambooAt(worldIn, pos.add(2,0,3), rand);
-        placeBambooAt(worldIn, pos.add(-2,0,3), rand);
-        placeBambooAt(worldIn, pos.add(2,0,-3), rand);
-        placeBambooAt(worldIn, pos.add(-2,0,-3), rand);
+            placeBambooOrFlowerAt(worldIn, pos.add(3, 0, 2), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(3, 0, -2), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-3, 0, 2), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-3, 0, -2), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(2, 0, 3), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-2, 0, 3), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(2, 0, -3), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-2, 0, -3), rand, flower);
 
-        placeBambooAt(worldIn, pos.add(4,0,0), rand);
-        placeBambooAt(worldIn, pos.add(-4,0,0), rand);
-        placeBambooAt(worldIn, pos.add(0,0,4), rand);
-        placeBambooAt(worldIn, pos.add(0,0,-4), rand);
+            placeBambooOrFlowerAt(worldIn, pos.add(4, 0, 0), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(-4, 0, 0), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(0, 0, 4), rand, flower);
+            placeBambooOrFlowerAt(worldIn, pos.add(0, 0, -4), rand, flower);
+        } else {
+            placeBambooAt(worldIn, pos.add(4, 0, 1), rand);
+            placeBambooAt(worldIn, pos.add(4, 0, -1), rand);
+            placeBambooAt(worldIn, pos.add(-4, 0, 1), rand);
+            placeBambooAt(worldIn, pos.add(-4, 0, -1), rand);
+            placeBambooAt(worldIn, pos.add(1, 0, 4), rand);
+            placeBambooAt(worldIn, pos.add(-1, 0, 4), rand);
+            placeBambooAt(worldIn, pos.add(1, 0, -4), rand);
+            placeBambooAt(worldIn, pos.add(-1, 0, -4), rand);
+
+            placeBambooAt(worldIn, pos.add(3, 0, 2), rand);
+            placeBambooAt(worldIn, pos.add(3, 0, -2), rand);
+            placeBambooAt(worldIn, pos.add(-3, 0, 2), rand);
+            placeBambooAt(worldIn, pos.add(-3, 0, -2), rand);
+            placeBambooAt(worldIn, pos.add(2, 0, 3), rand);
+            placeBambooAt(worldIn, pos.add(-2, 0, 3), rand);
+            placeBambooAt(worldIn, pos.add(2, 0, -3), rand);
+            placeBambooAt(worldIn, pos.add(-2, 0, -3), rand);
+
+            placeBambooAt(worldIn, pos.add(4, 0, 0), rand);
+            placeBambooAt(worldIn, pos.add(-4, 0, 0), rand);
+            placeBambooAt(worldIn, pos.add(0, 0, 4), rand);
+            placeBambooAt(worldIn, pos.add(0, 0, -4), rand);
+        }
     }
 
     private static final BlockState BAMBOO_BASE = Blocks.BAMBOO.getDefaultState().with(BambooBlock.PROPERTY_AGE, Integer.valueOf(1)).with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.NONE).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(0));
     private static final BlockState BAMBOO_LARGE_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.LARGE).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(1));
     private static final BlockState BAMBOO_SMALL_LEAVES = BAMBOO_BASE.with(BambooBlock.PROPERTY_BAMBOO_LEAVES, BambooLeaves.SMALL).with(BambooBlock.PROPERTY_STAGE, Integer.valueOf(1));
+
+    private void placeBambooOrFlowerAt(ISeedReader worldIn, BlockPos pos, Random rand, BlockState flower) {
+        this.placeGrassAt(worldIn, pos.down());
+        if (rand.nextInt(4) == 0 && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK) {
+            int i = rand.nextInt(3) + 1;
+            for (int j = 0; j <= i; ++j) {
+                if (worldIn.isAirBlock(pos.up(j))) {
+                    if ((i < 3 && j == i) || (i == 3 && j == i-1)) {
+                        setLogState(worldIn, pos.up(j), BAMBOO_SMALL_LEAVES);
+                    } else if (i == 3 && j == i) {
+                        setLogState(worldIn, pos.up(j), BAMBOO_LARGE_LEAVES);
+                    } else {
+                        setLogState(worldIn, pos.up(j), BAMBOO_BASE);
+                    }
+                }
+            }
+        } else if (rand.nextBoolean() && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK) {
+            setLogState(worldIn, pos, flower);
+        }
+    }
 
     private void placeBambooAt(ISeedReader worldIn, BlockPos pos, Random rand) {
         this.placeGrassAt(worldIn, pos.down());
