@@ -40,5 +40,9 @@
     "block.hanami.black_forest_gateau": "Pastel selva negra",
 
     "_comment3": "Forest stuff",
-    "biome.hanami.sakura_forest": "Bosque de sakura"
+    "biome.hanami.sakura_forest": "Bosque de sakura",
+
+    "_comment4": "Blossoms & other tools",
+    "item.hanami.sakura_blossom": "Flor de sakura",
+    "entity.hanami.sakura_blossom": "Flor de sakura"
   }
