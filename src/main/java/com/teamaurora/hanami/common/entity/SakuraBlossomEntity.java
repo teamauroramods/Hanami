@@ -84,7 +84,11 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.rotationYaw = this.prevRotationYaw = 180.0F;
 
         if (this.getWild()) {
-            this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.125F);
+            if (this.world.getMoonPhase() == 0) {
+                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.15F);
+            } else {
+                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.045F);
+            }
         } else {
             this.setMotion(0, -0.075F, 0);
         }
@@ -138,6 +142,11 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundEvents.BLOCK_WOOL_BREAK;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
         return SoundEvents.BLOCK_WOOL_BREAK;
     }
 
