@@ -211,11 +211,14 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                             if (isAirOrLeaves(worldIn, blockpos.east(2))) {
                                 this.placeLogXAt(worldIn, blockpos.east(2), rand, config);
                             }
-                                if (rand.nextInt(4) == 0) {
-                                    this.placeLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
-                                } else {
-                                    this.placeThinLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
-                                }
+                            if (rand.nextInt(4) == 0) {
+                                this.placeLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
+                            } else {
+                                this.placeThinLeavesAt(worldIn, blockpos.east(2).add(leafOffsets[0]), rand, config);
+                            }
+                            this.placeSafeLeafAt(worldIn, blockpos.east(3), rand, config);
+                        } else {
+                            this.placeSafeLeafAt(worldIn, blockpos.east(2), rand, config);
                         }
                     }
                     if (i2 == branchWest1 || i2 == branchWest2) {
@@ -226,11 +229,14 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                             if (isAirOrLeaves(worldIn, blockpos.west(2))) {
                                 this.placeLogXAt(worldIn, blockpos.west(2), rand, config);
                             }
-                                if (rand.nextInt(4) == 0) {
-                                    this.placeLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
-                                } else {
-                                    this.placeThinLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
-                                }
+                            if (rand.nextInt(4) == 0) {
+                                this.placeLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
+                            } else {
+                                this.placeThinLeavesAt(worldIn, blockpos.west(2).add(leafOffsets[1]), rand, config);
+                            }
+                            this.placeSafeLeafAt(worldIn, blockpos.west(3), rand, config);
+                        } else {
+                            this.placeSafeLeafAt(worldIn, blockpos.west(2), rand, config);
                         }
                     }
                     if (i2 == branchSouth1 || i2 == branchSouth2) {
@@ -241,11 +247,14 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                             if (isAirOrLeaves(worldIn, blockpos.south(2))) {
                                 this.placeLogZAt(worldIn, blockpos.south(2), rand, config);
                             }
-                                if (rand.nextInt(4) == 0) {
-                                    this.placeLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
-                                } else {
-                                    this.placeThinLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
-                                }
+                            if (rand.nextInt(4) == 0) {
+                                this.placeLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
+                            } else {
+                                this.placeThinLeavesAt(worldIn, blockpos.south(2).add(leafOffsets[2]), rand, config);
+                            }
+                            this.placeSafeLeafAt(worldIn, blockpos.south(3), rand, config);
+                        } else {
+                            this.placeSafeLeafAt(worldIn, blockpos.south(2), rand, config);
                         }
                     }
                     if (i2 == branchNorth1 || i2 == branchNorth2) {
@@ -256,11 +265,14 @@ public class SakuraTreeFeature extends Feature<BaseTreeFeatureConfig> {
                             if (isAirOrLeaves(worldIn, blockpos.north(2))) {
                                 this.placeLogZAt(worldIn, blockpos.north(2), rand, config);
                             }
-                                if (rand.nextInt(4) == 0) {
-                                    this.placeLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
-                                } else {
-                                    this.placeThinLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
-                                }
+                            if (rand.nextInt(4) == 0) {
+                                this.placeLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
+                            } else {
+                                this.placeThinLeavesAt(worldIn, blockpos.north(2).add(leafOffsets[3]), rand, config);
+                            }
+                            this.placeSafeLeafAt(worldIn, blockpos.north(3), rand, config);
+                        } else {
+                            this.placeSafeLeafAt(worldIn, blockpos.north(2), rand, config);
                         }
                     }
                     if (i2 == logHeight) {
