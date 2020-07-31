@@ -102,7 +102,7 @@ public class SakuraBlossomEntity extends LivingEntity {
                 this.remove();
             }
         } else {
-            this.setMotion(0, -0.075F, 0);
+            this.setMotion(0, -0.0375, 0);
         }
 
         if(this.isBlockBlockingPath()) {

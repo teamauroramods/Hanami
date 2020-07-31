@@ -50,7 +50,7 @@ public class HanamiBiomeFeatures {
                 new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(
                         Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILAC_CONFIG),
                         Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.PEONY_CONFIG)), 0))
-                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(2))));
+                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_RANDOM_SELECTOR.withConfiguration(
                 new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(
                         Feature.RANDOM_PATCH.withConfiguration(TULIP_CONFIG),

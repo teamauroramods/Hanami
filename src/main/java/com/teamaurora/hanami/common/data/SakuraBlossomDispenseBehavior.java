@@ -21,21 +21,12 @@ public class SakuraBlossomDispenseBehavior extends OptionalDispenseBehavior {
             Direction direction = source.getBlockState().get(DispenserBlock.FACING);
             World worldIn = source.getWorld().getWorld();
             BlockPos pos = source.getBlockPos().offset(direction);
+            if (!worldIn.isRemote) {
+                ThrownSakuraBlossomEntity blossom = new ThrownSakuraBlossomEntity(worldIn, pos.getX(), pos.getY(), pos.getZ());
+                blossom.setItem(stack);
+                blossom.shoot((double)direction.getXOffset(), (double)((float)direction.getYOffset() + 0.1F), (double)direction.getZOffset(), 1.1F, 6.0F);
 
-            if (direction != Direction.UP) {
-                if (!worldIn.isRemote) {
-                    SakuraBlossomEntity blossom = new SakuraBlossomEntity(worldIn, pos, pos.getX(), pos.getY(), pos.getZ(), false);
-
-                    worldIn.addEntity(blossom);
-                }
-            } else {
-                if (!worldIn.isRemote) {
-                    ThrownSakuraBlossomEntity blossom = new ThrownSakuraBlossomEntity(worldIn, pos.getX(), pos.getY(), pos.getZ());
-                    blossom.setItem(stack);
-                    blossom.shoot((double)direction.getXOffset(), (double)((float)direction.getYOffset() + 0.1F), (double)direction.getZOffset(), 1.1F, 6.0F);
-
-                    worldIn.addEntity(blossom);
-                }
+                worldIn.addEntity(blossom);
             }
             stack.shrink(1);
             this.func_239796_a_(true);

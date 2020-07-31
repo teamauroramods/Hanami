@@ -17,7 +17,7 @@ public class HanamiBiomes {
     public static final RegistryObject<Biome> SAKURA_FOREST = BIOMES.register("sakura_forest", ()->new SakuraForestBiome());
 
     public static void registerBiomesToDictionary() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 2));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 4));
     }
 
     public static void addBiomeTypes() {

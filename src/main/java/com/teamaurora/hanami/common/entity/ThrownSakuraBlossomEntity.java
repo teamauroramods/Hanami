@@ -47,7 +47,7 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
         Vector3d prevPos = this.getPositionVec();
         super.tick();
         distance = distance + this.getPositionVec().distanceTo(prevPos);
-        if (distance >= 8) {
+        if (distance >= 6) {
             if (!this.world.isRemote) {
                 BlockPos pos = this.getOnPosition();
                 SakuraBlossomEntity blossom = new SakuraBlossomEntity(this.world, pos, pos.getX(), pos.getY(), pos.getZ(), false);
@@ -82,18 +82,6 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
 
     @SuppressWarnings("deprecation")
     protected void onImpact(RayTraceResult result) {
-        if (result.getType() == RayTraceResult.Type.ENTITY) {
-            Entity entity = ((EntityRayTraceResult) result).getEntity();
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), 0);
-        } else if (result.getType() == RayTraceResult.Type.BLOCK) {
-            if (!this.world.isRemote) {
-                BlockPos pos = this.getOnPosition();
-                SakuraBlossomEntity blossom = new SakuraBlossomEntity(this.world, pos, pos.getX(), pos.getY(), pos.getZ(), false);
-
-                world.addEntity(blossom);
-            }
-        }
-
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte) 3);
             this.remove();
