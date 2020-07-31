@@ -249,13 +249,13 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
     }
 
     private void placeDirtAt(ISeedReader worldIn, BlockPos pos) {
-        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.STONE) {
+        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.STONE || worldIn.getBlockState(pos).getBlock() == Blocks.CAVE_AIR) {
             setLogState(worldIn, pos, Blocks.DIRT.getDefaultState());
         }
     }
 
     private void placeGrassAt(ISeedReader worldIn, BlockPos pos) {
-        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT || worldIn.getBlockState(pos).getBlock() == Blocks.STONE) {
+        if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR || worldIn.getBlockState(pos).getBlock() == Blocks.DIRT || worldIn.getBlockState(pos).getBlock() == Blocks.STONE || worldIn.getBlockState(pos).getBlock() == Blocks.CAVE_AIR) {
             setLogState(worldIn, pos, Blocks.GRASS_BLOCK.getDefaultState());
         }
     }
