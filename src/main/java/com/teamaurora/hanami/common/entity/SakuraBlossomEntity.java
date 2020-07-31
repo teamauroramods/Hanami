@@ -188,7 +188,8 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     private double getBreeze(double x, double z) {
-        return 0.0625F * Math.cos((x + z) * 0.05) - 0.0125F;
+        //return 0.0625F * Math.cos((x + z) * 0.05) - 0.0125F;
+        return -0.25F;
     }
 
     private boolean isBlockBlockingPath() {

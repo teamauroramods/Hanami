@@ -70,13 +70,16 @@ public class HanamiEvents {
         Vector3d playerPos = player.getPositionVec();
         BlockPos playerBlockPos = new BlockPos(Math.floor(playerPos.getX()), Math.floor(playerPos.getY()), Math.floor(playerPos.getZ()));
         World world = event.player.world;
-        if ((world.getMoonPhase() != 0 && world.rand.nextInt(10000) == 0) || (world.getMoonPhase() == 0 && world.rand.nextInt(500) == 0)) {
+        float spawnChance = 0.001F;
+        if (world.isRaining() || world.isThundering()) spawnChance = spawnChance * 1.5F;
+        if (world.getMoonPhase() == 0) spawnChance = spawnChance * 2;
+        if (world.rand.nextFloat() < spawnChance) {
             for (BlockPos blockPos : BlockPos.getAllInBoxMutable(playerBlockPos.add(-10, -10, -10), playerBlockPos.add(10, 10, 10))) {
                 if (blockPos.getY() > 1 && blockPos.getY() < world.getHeight()) {
-                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {
+                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && world.getBlockState(blockPos) != HanamiBlocks.SAKURA_LEAVES.get().getDefaultState() && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {
                         // blockPos.down() can spawn a blossom!
                         // bound should be 80000 for wind event
-                        if (world.rand.nextInt(8) == 0) {
+                        if (world.rand.nextInt(40) == 0) {
                             if (!world.isRemote) {
                                 SakuraBlossomEntity blossom = new SakuraBlossomEntity(world, blockPos, blockPos.getX(), blockPos.getY() - 1, blockPos.getZ(), true);
 
