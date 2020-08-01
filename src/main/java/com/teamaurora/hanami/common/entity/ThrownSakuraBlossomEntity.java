@@ -22,20 +22,24 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
     private double distance;
+    private int age;
 
     public ThrownSakuraBlossomEntity(EntityType<? extends ThrownSakuraBlossomEntity> entityType, World worldIn) {
         super(entityType, worldIn);
         distance = 0;
+        age = 0;
     }
 
     public ThrownSakuraBlossomEntity(World worldIn, LivingEntity throwerIn) {
         super(EntityType.SNOWBALL, throwerIn, worldIn);
         distance = 0;
+        age = 0;
     }
 
     public ThrownSakuraBlossomEntity(World worldIn, double x, double y, double z) {
         super(EntityType.SNOWBALL, x, y, z, worldIn);
         distance = 0;
+        age = 0;
     }
 
     protected Item getDefaultItem() {
@@ -47,6 +51,7 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
         Vector3d prevPos = this.getPositionVec();
         super.tick();
         distance = distance + this.getPositionVec().distanceTo(prevPos);
+        age = age + 1;
         if (distance >= 6) {
             if (!this.world.isRemote) {
                 BlockPos pos = this.getOnPosition();

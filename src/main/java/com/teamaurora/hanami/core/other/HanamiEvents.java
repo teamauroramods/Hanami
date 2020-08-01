@@ -72,10 +72,11 @@ public class HanamiEvents {
         Vector3d playerPos = player.getPositionVec();
         BlockPos playerBlockPos = new BlockPos(Math.floor(playerPos.getX()), Math.floor(playerPos.getY()), Math.floor(playerPos.getZ()));
         World world = event.player.world;
-        float spawnChance = 0.001F;
-        if (world.isRaining() || world.isThundering()) spawnChance = spawnChance * 1.5F;
-        if (world.getMoonPhase() == 0) spawnChance = spawnChance * 2;
-        if (world.rand.nextFloat() < spawnChance) {
+        float spawnChance = 0.0015F;
+        float modifiedSpawnChance = spawnChance;
+        if (world.isRaining() || world.isThundering()) modifiedSpawnChance += spawnChance;
+        if (world.getMoonPhase() == 0) modifiedSpawnChance += 2 * spawnChance;
+        if (world.rand.nextFloat() < modifiedSpawnChance) {
             for (BlockPos blockPos : BlockPos.getAllInBoxMutable(playerBlockPos.add(-10, -10, -10), playerBlockPos.add(10, 10, 10))) {
                 if (blockPos.getY() > 1 && blockPos.getY() < world.getHeight()) {
                     if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && !world.getBlockState(blockPos).get(LeavesBlock.PERSISTENT) && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {

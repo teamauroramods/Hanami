@@ -13,6 +13,7 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.PotionEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
@@ -101,13 +102,13 @@ public class SakuraBlossomEntity extends LivingEntity {
 
         if (this.getWild()) {
             if (this.world.getMoonPhase() == 0) {
-                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.15F);
+                this.setMotion(0, Math.max(this.getBreeze(this.getPosX(), this.getPosZ()), this.getMotion().getY() - 0.1F), -0.15F);
             } else {
-                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.085F);
+                this.setMotion(0, Math.max(this.getBreeze(this.getPosX(), this.getPosZ()), this.getMotion().getY() - 0.1F), -0.085F);
             }
 
         } else {
-            this.setMotion(0, -0.0375, 0);
+            this.setMotion(0, Math.max(-0.0375, this.getMotion().getY() - 0.1F), 0);
         }
 
         if(this.isBlockBlockingPath() || this.isSpecialBlockBlockingPath() || this.isEntityBlockingPath()) {
@@ -145,6 +146,7 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     @Override
     protected void damageEntity(DamageSource damageSrc, float damageAmount) {
+        if (damageSrc.getImmediateSource() instanceof ThrownSakuraBlossomEntity || damageSrc.getTrueSource() instanceof ThrownSakuraBlossomEntity) return;
         if (damageSrc.isProjectile()) {
             if(!this.getEntityWorld().isRemote) {
                 Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
@@ -154,6 +156,14 @@ public class SakuraBlossomEntity extends LivingEntity {
             this.remove();
         }
         super.damageEntity(damageSrc, damageAmount);
+    }
+
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float amount) {
+        if (source.getTrueSource() instanceof ArrowEntity || source.getImmediateSource() instanceof ArrowEntity) {
+            damageEntity(source, amount);
+        }
+        return super.attackEntityFrom(source, amount);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -234,7 +244,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, clusterBB);
         if(!entitiesAbove.isEmpty()) {
             for (Entity entity : entitiesAbove) {
-                if (!entity.isPassenger() && !(entity instanceof SakuraBlossomEntity || entity instanceof ItemEntity || entity instanceof PotionEntity) && entity.getPushReaction() != PushReaction.IGNORE) {
+                if (!entity.isPassenger() && !(entity instanceof SakuraBlossomEntity || entity instanceof ItemEntity || entity instanceof PotionEntity || entity instanceof ThrownSakuraBlossomEntity) && entity.getPushReaction() != PushReaction.IGNORE) {
                     return true;
                 }
             }
