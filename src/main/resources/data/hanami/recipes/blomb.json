@@ -5,11 +5,23 @@
       "item": "hanami:sakura_blossom"
     },
     {
+      "item": "hanami:sakura_blossom"
+    },
+    {
+      "item": "hanami:sakura_blossom"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
       "item": "minecraft:gunpowder"
     }
   ],
   "result": {
     "item": "hanami:blomb",
-    "count": 1
+    "count": 2
   }
 }
