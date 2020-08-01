@@ -9,6 +9,7 @@ import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsWallSignBloc
 import com.teamabnormals.abnormals_core.common.blocks.wood.*;
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
 import com.teamaurora.hanami.common.block.BlackForestGateauBlock;
+import com.teamaurora.hanami.common.block.BlombBlock;
 import com.teamaurora.hanami.common.block.trees.SakuraTree;
 import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.block.*;
@@ -54,4 +55,7 @@ public class HanamiBlocks {
 
     // foods and stuff
     public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));
+
+    // blomb
+    public static final RegistryObject<Block> BLOMB = HELPER.createBlock("blomb", ()->new BlombBlock(Block.Properties.from(Blocks.TNT)), ItemGroup.REDSTONE);
 }

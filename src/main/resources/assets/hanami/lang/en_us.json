@@ -44,5 +44,6 @@
 
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_blossom": "Sakura Blossom",
-  "entity.hanami.sakura_blossom": "Sakura Blossom"
+  "entity.hanami.sakura_blossom": "Sakura Blossom",
+  "block.hanami.blomb": "Blomb"
 }
