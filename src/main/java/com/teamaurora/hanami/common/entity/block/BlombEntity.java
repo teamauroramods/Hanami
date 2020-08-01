@@ -3,6 +3,7 @@ package com.teamaurora.hanami.common.entity.block;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
 import net.minecraft.block.material.PushReaction;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -99,31 +100,25 @@ public class BlombEntity extends TNTEntity {
     }
 
     public void yeet() {
-        //AxisAlignedBB explosionBB = new AxisAlignedBB(this.getPositionVec().add(-3, -3, -3), this.getPositionVec().add(3, 3, 3));
         if (this.world.isRemote) {
-            if (this.world.isRemote) {
-                this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
-            }
-            this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), 1.0D, 0.0D, 0.0D);
+            this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
         } else {
             AxisAlignedBB explosionBB = this.getBoundingBox().grow(5);
             List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
             if (!entitiesAbove.isEmpty()) {
                 for (Entity entity : entitiesAbove) {
                     Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
-                    float yeetPower = 0.5F;
+                    float yeetPower = 1.0F;
                     entity.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
                     if (entity instanceof ServerPlayerEntity) {
                         ServerPlayerEntity player = (ServerPlayerEntity) entity;
-                        //player.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
                         player.connection.sendPacket(new SEntityVelocityPacket(entity));
                     }
-                    //entity.setMotion(vecScale(yeetPower, offsetVector.normalize()));
                 }
-                // this is *very* hacky but hopefully it'll work
+                // this is *very* hacky but it works
             }
-            //TODO: get this working, because it doesn't work for whatever reason
         }
+        Minecraft.getInstance().world.addParticle(ParticleTypes.EXPLOSION_EMITTER,false, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
     }
 
     protected void writeAdditional(CompoundNBT compound) {
