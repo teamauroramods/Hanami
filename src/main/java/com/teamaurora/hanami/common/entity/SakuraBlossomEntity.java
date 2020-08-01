@@ -3,6 +3,7 @@ package com.teamaurora.hanami.common.entity;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
 import com.teamaurora.hanami.core.registry.HanamiItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
@@ -10,7 +11,9 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.PotionEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -89,23 +92,25 @@ public class SakuraBlossomEntity extends LivingEntity {
         }
         this.rotationYaw = this.prevRotationYaw = 180.0F;
 
+        age = age + 1;
+        if (age >= 3600) {
+            this.world.setEntityState(this, (byte)3);
+            this.playHurtSound(DamageSource.GENERIC);
+            this.remove();
+        }
+
         if (this.getWild()) {
             if (this.world.getMoonPhase() == 0) {
                 this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.15F);
             } else {
                 this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.085F);
             }
-            age = age + 1;
-            if (age >= 400) {
-                this.world.setEntityState(this, (byte)3);
-                this.playHurtSound(DamageSource.GENERIC);
-                this.remove();
-            }
+
         } else {
             this.setMotion(0, -0.0375, 0);
         }
 
-        if(this.isBlockBlockingPath() || this.isEntityBlockingPath()) {
+        if(this.isBlockBlockingPath() || this.isSpecialBlockBlockingPath() || this.isEntityBlockingPath()) {
             this.playHurtSound(DamageSource.GENERIC);
             this.world.setEntityState(this, (byte)3);
             this.remove();
@@ -219,12 +224,17 @@ public class SakuraBlossomEntity extends LivingEntity {
         )).getType() != RayTraceResult.Type.MISS;
     }
 
+    private boolean isSpecialBlockBlockingPath() {
+        BlockPos pos = this.getPositionUnderneath();
+        return this.world.getBlockState(pos).getBlock() == Blocks.END_PORTAL_FRAME || this.world.getBlockState(pos.up()).getBlock() == Blocks.LILY_PAD;
+    }
+
     private boolean isEntityBlockingPath() {
         AxisAlignedBB clusterBB = this.getBoundingBox().offset(0.0F, -0.01F, 0.0F);
         List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, clusterBB);
         if(!entitiesAbove.isEmpty()) {
             for (Entity entity : entitiesAbove) {
-                if (!entity.isPassenger() && !(entity instanceof SakuraBlossomEntity) && entity.getPushReaction() != PushReaction.IGNORE) {
+                if (!entity.isPassenger() && !(entity instanceof SakuraBlossomEntity || entity instanceof ItemEntity || entity instanceof PotionEntity) && entity.getPushReaction() != PushReaction.IGNORE) {
                     return true;
                 }
             }

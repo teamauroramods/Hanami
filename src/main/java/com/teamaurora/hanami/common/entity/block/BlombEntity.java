@@ -36,7 +36,7 @@ public class BlombEntity extends TNTEntity {
     private static final DataParameter<Float> POWER = EntityDataManager.createKey(BlombEntity.class, DataSerializers.FLOAT);
     @Nullable
     private LivingEntity tntPlacedBy;
-    private int fuse = 80;
+    private int fuse = 20;
     private boolean toYeet = false;
 
     public BlombEntity(EntityType<? extends BlombEntity> type, World worldIn) {
@@ -49,7 +49,7 @@ public class BlombEntity extends TNTEntity {
         this.setPosition(x, y, z);
         double d0 = worldIn.rand.nextDouble() * (double)((float)Math.PI * 2F);
         this.setMotion(-Math.sin(d0) * 0.02D, 0.2F, -Math.cos(d0) * 0.02D);
-        this.setFuse(80);
+        this.setFuse(20);
         this.setPower(1.0F);
         this.prevPosX = x;
         this.prevPosY = y;
@@ -59,7 +59,7 @@ public class BlombEntity extends TNTEntity {
 
     protected void registerData() {
         super.registerData();
-        this.dataManager.register(FUSE, 80);
+        this.dataManager.register(FUSE, 20);
         this.dataManager.register(POWER, 1.0F);
     }
 
@@ -112,11 +112,11 @@ public class BlombEntity extends TNTEntity {
             if (!entitiesAbove.isEmpty()) {
                 for (Entity entity : entitiesAbove) {
                     Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
-                    float yeetPower = this.getPower();
+                    float yeetPower = this.getPower() * (float)(Math.sqrt(18)/Math.sqrt(11));
                     if (entity instanceof LivingEntity) {
                         LivingEntity living = (LivingEntity) entity;
                         if (living.isPotionActive(HanamiEffects.INSTABILITY.get())) {
-                            yeetPower = yeetPower * (living.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier() + 2);
+                            yeetPower = yeetPower * (float)Math.sqrt(living.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier() + 2);
                         }
                     }
                     entity.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());

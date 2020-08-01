@@ -4,7 +4,9 @@ import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
@@ -76,7 +78,7 @@ public class HanamiEvents {
         if (world.rand.nextFloat() < spawnChance) {
             for (BlockPos blockPos : BlockPos.getAllInBoxMutable(playerBlockPos.add(-10, -10, -10), playerBlockPos.add(10, 10, 10))) {
                 if (blockPos.getY() > 1 && blockPos.getY() < world.getHeight()) {
-                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && world.getBlockState(blockPos) != HanamiBlocks.SAKURA_LEAVES.get().getDefaultState() && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {
+                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && !world.getBlockState(blockPos).get(LeavesBlock.PERSISTENT) && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {
                         // blockPos.down() can spawn a blossom!
                         // bound should be 80000 for wind event
                         if (world.rand.nextInt(40) == 0) {
