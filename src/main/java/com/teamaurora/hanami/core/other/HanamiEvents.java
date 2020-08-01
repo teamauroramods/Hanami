@@ -79,7 +79,7 @@ public class HanamiEvents {
         if (world.rand.nextFloat() < modifiedSpawnChance) {
             for (BlockPos blockPos : BlockPos.getAllInBoxMutable(playerBlockPos.add(-10, -10, -10), playerBlockPos.add(10, 10, 10))) {
                 if (blockPos.getY() > 1 && blockPos.getY() < world.getHeight()) {
-                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && !world.getBlockState(blockPos).get(LeavesBlock.PERSISTENT) && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR) {
+                    if (world.getBlockState(blockPos).getBlock() == HanamiBlocks.SAKURA_LEAVES.get() && !world.getBlockState(blockPos).get(LeavesBlock.PERSISTENT) && world.getBlockState(blockPos.down()).getBlock() == Blocks.AIR && world.getBlockState(blockPos.down().north()).getBlock() == Blocks.AIR) {
                         // blockPos.down() can spawn a blossom!
                         // bound should be 80000 for wind event
                         if (world.rand.nextInt(40) == 0) {
