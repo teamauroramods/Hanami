@@ -9,7 +9,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.TNTEntity;
+import com.teamaurora.hanami.common.entity.block.BlombEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
@@ -74,9 +74,9 @@ public class BlombBlock extends Block {
      */
     public void onExplosionDestroy(World worldIn, BlockPos pos, Explosion explosionIn) {
         if (!worldIn.isRemote) {
-            TNTEntity tntentity = new TNTEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, explosionIn.getExplosivePlacedBy());
-            tntentity.setFuse((short)(worldIn.rand.nextInt(tntentity.getFuse() / 4) + tntentity.getFuse() / 8));
-            worldIn.addEntity(tntentity);
+            BlombEntity blombentity = new BlombEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, explosionIn.getExplosivePlacedBy());
+            blombentity.setFuse((short)(worldIn.rand.nextInt(blombentity.getFuse() / 4) + blombentity.getFuse() / 8));
+            worldIn.addEntity(blombentity);
         }
     }
 
@@ -88,9 +88,9 @@ public class BlombBlock extends Block {
     @Deprecated //Forge: Prefer using IForgeBlock#catchFire
     private static void explode(World worldIn, BlockPos pos, @Nullable LivingEntity entityIn) {
         if (!worldIn.isRemote) {
-            TNTEntity tntentity = new TNTEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, entityIn);
-            worldIn.addEntity(tntentity);
-            worldIn.playSound((PlayerEntity)null, tntentity.getPosX(), tntentity.getPosY(), tntentity.getPosZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            BlombEntity blombentity = new BlombEntity(worldIn, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, entityIn);
+            worldIn.addEntity(blombentity);
+            worldIn.playSound((PlayerEntity)null, blombentity.getPosX(), blombentity.getPosY(), blombentity.getPosZ(), SoundEvents.ENTITY_TNT_PRIMED, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
     }
 

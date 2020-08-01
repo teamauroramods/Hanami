@@ -1,6 +1,7 @@
 package com.teamaurora.hanami.core;
 
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
+import com.teamaurora.hanami.client.render.entity.BlombRenderer;
 import com.teamaurora.hanami.client.render.entity.SakuraBlossomRender;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.other.HanamiData;
@@ -37,6 +38,7 @@ public class Hanami
         REGISTRY_HELPER.getDeferredBlockRegister().register(eventBus);
         REGISTRY_HELPER.getDeferredEntityRegister().register(eventBus);
 
+        HanamiEntities.ENTITIES.register(eventBus);
         HanamiBiomes.BIOMES.register(eventBus);
         HanamiEffects.EFFECTS.register(eventBus);
 
@@ -64,6 +66,7 @@ public class Hanami
             HanamiRender.setupRenderLayer();
 
             RenderingRegistry.registerEntityRenderingHandler(HanamiEntities.SAKURA_BLOSSOM.get(), SakuraBlossomRender::new);
+            RenderingRegistry.registerEntityRenderingHandler(HanamiEntities.BLOMB.get(), BlombRenderer::new);
         });
     }
 }
