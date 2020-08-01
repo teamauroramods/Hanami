@@ -9,6 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 public class DrinkItem extends Item {
@@ -41,5 +43,9 @@ public class DrinkItem extends Item {
 
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.DRINK;
+    }
+
+    public SoundEvent getEatSound() {
+        return SoundEvents.ENTITY_GENERIC_DRINK;
     }
 }

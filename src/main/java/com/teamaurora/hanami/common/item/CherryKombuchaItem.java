@@ -11,6 +11,8 @@ import net.minecraft.item.Items;
 import net.minecraft.item.UseAction;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
 public class CherryKombuchaItem extends Item {
@@ -30,7 +32,7 @@ public class CherryKombuchaItem extends Item {
             PlayerEntity player = (PlayerEntity) entityLiving;
             if (player.isPotionActive(HanamiEffects.INSTABILITY.get())) {
                 int j = player.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier();
-                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, j + 1 < 9 ? j + 1 : 9, false, false, true));
+                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, j + 1 < 2 ? j + 1 : 2, false, false, true));
             } else {
                 player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, 0, false, false, true));
             }
@@ -53,5 +55,9 @@ public class CherryKombuchaItem extends Item {
 
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.DRINK;
+    }
+
+    public SoundEvent getEatSound() {
+        return SoundEvents.ENTITY_GENERIC_DRINK;
     }
 }

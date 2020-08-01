@@ -1,6 +1,7 @@
 package com.teamaurora.hanami.common.entity.block;
 
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
+import com.teamaurora.hanami.core.registry.HanamiEffects;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.client.Minecraft;
@@ -112,6 +113,12 @@ public class BlombEntity extends TNTEntity {
                 for (Entity entity : entitiesAbove) {
                     Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
                     float yeetPower = this.getPower();
+                    if (entity instanceof LivingEntity) {
+                        LivingEntity living = (LivingEntity) entity;
+                        if (living.isPotionActive(HanamiEffects.INSTABILITY.get())) {
+                            yeetPower = yeetPower * (living.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier() + 2);
+                        }
+                    }
                     entity.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
                     if (entity instanceof ServerPlayerEntity) {
                         ServerPlayerEntity player = (ServerPlayerEntity) entity;
