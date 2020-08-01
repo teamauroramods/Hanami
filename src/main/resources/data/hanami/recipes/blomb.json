@@ -1,24 +1,15 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "X#X",
-    "#X#",
-    "X#X"
-  ],
-  "key": {
-    "#": [
-      {
-        "item": "minecraft:sand"
-      },
-      {
-        "item": "minecraft:red_sand"
-      }
-    ],
-    "X": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "hanami:sakura_blossom"
+    },
+    {
+      "item": "minecraft:gunpowder"
     }
-  },
+  ],
   "result": {
-    "item": "hanami:blomb"
+    "item": "hanami:blomb",
+    "count": 1
   }
 }
