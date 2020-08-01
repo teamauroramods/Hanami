@@ -93,7 +93,7 @@ public class SakuraBlossomEntity extends LivingEntity {
             if (this.world.getMoonPhase() == 0) {
                 this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.15F);
             } else {
-                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.045F);
+                this.setMotion(0, this.getBreeze(this.getPosX(), this.getPosZ()), -0.085F);
             }
             age = age + 1;
             if (age >= 400) {
@@ -205,7 +205,7 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     private double getBreeze(double x, double z) {
         //return 0.0625F * Math.cos((x + z) * 0.05) - 0.0125F;
-        return -0.25F;
+        return -0.025F;
     }
 
     private boolean isBlockBlockingPath() {
