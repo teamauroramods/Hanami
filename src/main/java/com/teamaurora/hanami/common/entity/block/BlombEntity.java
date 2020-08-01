@@ -32,6 +32,7 @@ import java.util.List;
 
 public class BlombEntity extends TNTEntity {
     private static final DataParameter<Integer> FUSE = EntityDataManager.createKey(BlombEntity.class, DataSerializers.VARINT);
+    private static final DataParameter<Float> POWER = EntityDataManager.createKey(BlombEntity.class, DataSerializers.FLOAT);
     @Nullable
     private LivingEntity tntPlacedBy;
     private int fuse = 80;
@@ -48,6 +49,7 @@ public class BlombEntity extends TNTEntity {
         double d0 = worldIn.rand.nextDouble() * (double)((float)Math.PI * 2F);
         this.setMotion(-Math.sin(d0) * 0.02D, 0.2F, -Math.cos(d0) * 0.02D);
         this.setFuse(80);
+        this.setPower(1.0F);
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
@@ -57,6 +59,7 @@ public class BlombEntity extends TNTEntity {
     protected void registerData() {
         super.registerData();
         this.dataManager.register(FUSE, 80);
+        this.dataManager.register(POWER, 1.0F);
     }
 
     @Override
@@ -108,7 +111,7 @@ public class BlombEntity extends TNTEntity {
             if (!entitiesAbove.isEmpty()) {
                 for (Entity entity : entitiesAbove) {
                     Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
-                    float yeetPower = 1.0F;
+                    float yeetPower = this.getPower();
                     entity.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
                     if (entity instanceof ServerPlayerEntity) {
                         ServerPlayerEntity player = (ServerPlayerEntity) entity;
@@ -123,10 +126,12 @@ public class BlombEntity extends TNTEntity {
 
     protected void writeAdditional(CompoundNBT compound) {
         compound.putShort("Fuse", (short)this.getFuse());
+        compound.putFloat("Power", this.getPower());
     }
 
     protected void readAdditional(CompoundNBT compound) {
         this.setFuse(compound.getShort("Fuse"));
+        this.setPower(compound.getFloat("Power"));
     }
 
     @Nullable
@@ -150,6 +155,14 @@ public class BlombEntity extends TNTEntity {
 
     public int getFuse() {
         return this.fuse;
+    }
+
+    public void setPower(float power) {
+        this.dataManager.set(POWER, power);
+    }
+
+    public float getPower() {
+        return this.dataManager.get(POWER);
     }
 
     @Override
