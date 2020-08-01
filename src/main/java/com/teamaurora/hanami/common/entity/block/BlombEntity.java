@@ -5,11 +5,14 @@ import com.teamaurora.hanami.core.registry.HanamiEntities;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.TNTEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.network.play.server.SEntityVelocityPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effect;
@@ -18,6 +21,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
@@ -30,6 +34,7 @@ public class BlombEntity extends TNTEntity {
     @Nullable
     private LivingEntity tntPlacedBy;
     private int fuse = 80;
+    private boolean toYeet = false;
 
     public BlombEntity(EntityType<? extends BlombEntity> type, World worldIn) {
         super(type, worldIn);
@@ -55,6 +60,7 @@ public class BlombEntity extends TNTEntity {
 
     @Override
     public void tick() {
+        toYeet = false;
         if (!this.hasNoGravity()) {
             this.setMotion(this.getMotion().add(0.0D, -0.04D, 0.0D));
         }
@@ -69,7 +75,8 @@ public class BlombEntity extends TNTEntity {
         if (this.fuse <= 0) {
             this.remove();
             if (!this.world.isRemote) {
-                this.yeet();
+                //this.yeet();
+                this.toYeet = true;
                 this.world.playSound(null, this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
         } else {
@@ -78,60 +85,45 @@ public class BlombEntity extends TNTEntity {
                 this.world.addParticle(ParticleTypes.SMOKE, this.getPosX(), this.getPosY() + 0.5D, this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
         }
+        if (toYeet) {
+            this.yeet();
+        }
+    }
+
+    private Vector3d vecSub (Vector3d a, Vector3d b) {
+        return new Vector3d(a.getX() - b.getX(), a.getY() - b.getY(), a.getZ() - b.getZ());
+    }
+
+    private Vector3d vecScale (float a, Vector3d b) {
+        return new Vector3d(a * b.getX(), a * b.getY(), a * b.getZ());
     }
 
     public void yeet() {
-        //TODO
-        AxisAlignedBB explosionBB = new AxisAlignedBB(this.getPositionVec().add(-3, -3, -3), this.getPositionVec().add(3, 3, 3));
-        List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
-        if(!entitiesAbove.isEmpty()) {
-            /*int j = entitiesAbove.size();
-            float[] healths = new float[j];
-            EffectInstance[] resistances = new EffectInstance[j];
-            boolean[] resActive = new boolean[j];
-            boolean[] invulnerables = new boolean[j];
-            for (int i = 0; i < j; i++) {
-                resActive[i] = false;
-                Entity entity = entitiesAbove.get(i);
-                if (!(entity instanceof BlombEntity)) {
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity living = (LivingEntity) entity;
-                        /*healths[i] = living.getHealth();
-                        if (living.isPotionActive(Effects.RESISTANCE)) {
-                            resActive[i] = true;
-                            resistances[i] = living.getActivePotionEffect(Effects.RESISTANCE);
-                        }
-                        living.removePotionEffect(Effects.RESISTANCE);
-                        living.addPotionEffect(new EffectInstance(Effects.RESISTANCE, 1, 100));*/
-                        /*invulnerables[i] = living.isInvulnerable();
-                        living.setInvulnerable(true);
-                    }
-                }
-            }
-            this.world.createExplosion(this, this.getPosX(), this.getPosYHeight(0.0625D), this.getPosZ(), 4.0F, Explosion.Mode.NONE);
-            for (int i = 0; i < j; i++) {
-                Entity entity = entitiesAbove.get(i);
-                if (!(entity instanceof BlombEntity)) {
-                    if (entity instanceof LivingEntity) {
-                        LivingEntity living = (LivingEntity) entity;
-                        //living.setHealth(healths[i]);
-                        /*living.removePotionEffect(Effects.RESISTANCE);
-                        if (resActive[i]) {
-                            living.addPotionEffect(resistances[i]);
-                        }*/
-                        /*living.setInvulnerable(invulnerables[i]);
-                    }
-                }
-            }*/
-
-            // this is *very* hacky but hopefully it'll work
-        }/* else {
-            this.world.createExplosion(this, this.getPosX(), this.getPosYHeight(0.0625D), this.getPosZ(), 0.0F, Explosion.Mode.NONE);
-        }*/
+        //AxisAlignedBB explosionBB = new AxisAlignedBB(this.getPositionVec().add(-3, -3, -3), this.getPositionVec().add(3, 3, 3));
         if (this.world.isRemote) {
-            this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+            if (this.world.isRemote) {
+                this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+            }
+            this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), 1.0D, 0.0D, 0.0D);
+        } else {
+            AxisAlignedBB explosionBB = this.getBoundingBox().grow(5);
+            List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
+            if (!entitiesAbove.isEmpty()) {
+                for (Entity entity : entitiesAbove) {
+                    Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
+                    float yeetPower = 0.5F;
+                    entity.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
+                    if (entity instanceof ServerPlayerEntity) {
+                        ServerPlayerEntity player = (ServerPlayerEntity) entity;
+                        //player.addVelocity(yeetPower * offsetVector.getX(), yeetPower * offsetVector.getY(), yeetPower * offsetVector.getZ());
+                        player.connection.sendPacket(new SEntityVelocityPacket(entity));
+                    }
+                    //entity.setMotion(vecScale(yeetPower, offsetVector.normalize()));
+                }
+                // this is *very* hacky but hopefully it'll work
+            }
+            //TODO: get this working, because it doesn't work for whatever reason
         }
-        this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), 1.0D, 0.0D, 0.0D);
     }
 
     protected void writeAdditional(CompoundNBT compound) {
