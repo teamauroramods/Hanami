@@ -96,7 +96,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         age = age + 1;
         if (age >= 3600) {
             this.world.setEntityState(this, (byte)3);
-            this.playHurtSound(DamageSource.GENERIC);
+            if(!this.getWild()) this.playHurtSound(DamageSource.GENERIC);
             this.remove();
         }
 
@@ -112,7 +112,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         }
 
         if(this.isBlockBlockingPath() || this.isSpecialBlockBlockingPath() || this.isEntityBlockingPath()) {
-            this.playHurtSound(DamageSource.GENERIC);
+            if(!this.getWild()) this.playHurtSound(DamageSource.GENERIC);
             this.world.setEntityState(this, (byte)3);
             this.remove();
         }
