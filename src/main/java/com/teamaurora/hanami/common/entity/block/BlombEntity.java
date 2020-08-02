@@ -1,5 +1,6 @@
 package com.teamaurora.hanami.common.entity.block;
 
+import com.teamaurora.hanami.client.particle.HanamiParticles;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
@@ -128,7 +129,18 @@ public class BlombEntity extends TNTEntity {
                 // this is *very* hacky but it works
             }
         }
-        Minecraft.getInstance().world.addParticle(ParticleTypes.EXPLOSION_EMITTER,false, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
+        //Minecraft.getInstance().world.addParticle(ParticleTypes.EXPLOSION_EMITTER,false, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
+        for (int i = 0; i < 128; ++i) {
+            Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
+        }
+    }
+
+    private double getParticleOffset(double value) {
+        return value + (this.world.rand.nextDouble()) - 0.5F;
+    }
+
+    private double getRandWithMagnitude(double mag) {
+        return (this.world.rand.nextDouble() * 2 * mag) - mag;
     }
 
     protected void writeAdditional(CompoundNBT compound) {

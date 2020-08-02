@@ -139,6 +139,10 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     @Override
     public boolean hitByEntity(Entity entityIn) {
+        IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+        for (int i = 0; i < 16; ++i) {
+            this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
+        }
         if(!this.world.isRemote) {
             if (entityIn instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entityIn;
@@ -157,6 +161,10 @@ public class SakuraBlossomEntity extends LivingEntity {
     @Override
     protected void damageEntity(DamageSource damageSrc, float damageAmount) {
         if (damageSrc.getImmediateSource() instanceof ThrownSakuraBlossomEntity || damageSrc.getTrueSource() instanceof ThrownSakuraBlossomEntity) return;
+        IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+        for (int i = 0; i < 16; ++i) {
+            this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
+        }
         if (damageSrc.isProjectile()) {
             if(!this.getEntityWorld().isRemote) {
                 Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
@@ -194,10 +202,9 @@ public class SakuraBlossomEntity extends LivingEntity {
         if (id == 1) {
             this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
         } else if (id == 3) {
-            IParticleData iparticledata = this.makeParticle();
-
-            for (int i = 0; i < 8; ++i) {
-                this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+            for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
             }
         } else {
             super.handleStatusUpdate(id);
