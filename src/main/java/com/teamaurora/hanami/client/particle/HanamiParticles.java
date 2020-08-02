@@ -18,6 +18,7 @@ public class HanamiParticles {
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Hanami.MODID);
 
     public static final RegistryObject<BasicParticleType> BLOSSOM_PETAL = createBasicParticleType(true, "blossom_petal");
+    public static final RegistryObject<BasicParticleType> BLOSSOM = createBasicParticleType(true, "blossom");
 
     private static RegistryObject<BasicParticleType> createBasicParticleType(boolean alwaysShow, String name) {
         RegistryObject<BasicParticleType> particleType = PARTICLES.register(name, ()->new BasicParticleType(alwaysShow));
@@ -30,6 +31,9 @@ public class HanamiParticles {
         public static void registerParticleTypes(ParticleFactoryRegisterEvent event) {
             if (checkForNonNullWithReflectionCauseForgeIsBaby(BLOSSOM_PETAL)) {
                 Minecraft.getInstance().particles.registerFactory(BLOSSOM_PETAL.get(), BlossomPetalParticle.Factory::new);
+            }
+            if (checkForNonNullWithReflectionCauseForgeIsBaby(BLOSSOM)) {
+                Minecraft.getInstance().particles.registerFactory(BLOSSOM.get(), BlossomParticle.Factory::new);
             }
         }
     }
