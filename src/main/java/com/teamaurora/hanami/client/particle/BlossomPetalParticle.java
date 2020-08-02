@@ -43,20 +43,6 @@ public class BlossomPetalParticle extends SpriteTexturedParticle {
     }
 
     @Override
-    public int getBrightnessForRender(float partialTick) {
-        float f = this.maxAge / (((this.age + (this.maxAge * 0.5F)) + partialTick));
-        f = MathHelper.clamp(f, 0F, 0.5F);
-        int i = super.getBrightnessForRender(partialTick);
-        int j = i & 255;
-        int k = i >> 16 & 255;
-        j += (int) (f * 15f * 16f);
-        if(j > 240) {
-            j = 240;
-        }
-        return j | k << 16;
-    }
-
-    @Override
     public IParticleRenderType getRenderType() {
         return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
