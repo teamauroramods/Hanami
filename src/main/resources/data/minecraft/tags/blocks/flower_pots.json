@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hanami:potted_sakura_sapling"
+    "hanami:potted_sakura_sapling",
+    "hanami:potted_azalea_bush"
   ]
 }

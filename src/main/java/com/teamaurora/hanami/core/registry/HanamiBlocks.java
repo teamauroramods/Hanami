@@ -8,6 +8,7 @@ import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsStandingSign
 import com.teamabnormals.abnormals_core.common.blocks.sign.AbnormalsWallSignBlock;
 import com.teamabnormals.abnormals_core.common.blocks.wood.*;
 import com.teamabnormals.abnormals_core.core.utils.RegistryHelper;
+import com.teamaurora.hanami.common.block.AzaleaBushBlock;
 import com.teamaurora.hanami.common.block.BlackForestGateauBlock;
 import com.teamaurora.hanami.common.block.BlombBlock;
 import com.teamaurora.hanami.common.block.trees.SakuraTree;
@@ -55,7 +56,7 @@ public class HanamiBlocks {
     public static final RegistryObject<Block> SAKURA_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "sakura_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
 
     // plants
-    public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AbnormalsFlowerBlock(/*HanamiEffects.INSTABILITY.get()*/Effects.ABSORPTION, 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AzaleaBushBlock(()->HanamiEffects.INSTABILITY.get(), 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
     //TODO: make effect there functional
     public static final RegistryObject<Block> POTTED_AZALEA_BUSH = HELPER.createBlockNoItem("potted_azalea_bush", ()->new FlowerPotBlock(AZALEA_BUSH.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
 
