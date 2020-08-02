@@ -15,5 +15,7 @@ public class HanamiRender {
 
         RenderTypeLookup.setRenderLayer(HanamiBlocks.AZALEA_BUSH.get(), RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(HanamiBlocks.POTTED_AZALEA_BUSH.get(), RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(HanamiBlocks.HEUCHERA.get(), RenderType.getCutoutMipped());
+        RenderTypeLookup.setRenderLayer(HanamiBlocks.TALL_HEUCHERA.get(), RenderType.getCutoutMipped());
     }
 }

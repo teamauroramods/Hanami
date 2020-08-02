@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hanami:azalea_bush"
+    "hanami:azalea_bush",
+    "hanami:heuchera"
   ]
 }

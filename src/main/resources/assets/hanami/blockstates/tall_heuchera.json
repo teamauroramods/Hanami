@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "hanami:block/tall_heuchera_bottom"
+    },
+    "half=upper": {
+      "model": "hanami:block/tall_heuchera_top"
+    }
+  }
+}

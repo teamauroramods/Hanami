@@ -44,6 +44,8 @@
   "biome.hanami.sakura_forest": "Sakura Forest",
   "block.hanami.azalea_bush": "Azalea Bush",
   "block.hanami.potted_azalea_bush": "Potted Azalea Bush",
+  "block.hanami.heuchera": "Heuchera",
+  "block.hanami.tall_heuchera": "Tall Heuchera",
 
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_blossom": "Sakura Blossom",
