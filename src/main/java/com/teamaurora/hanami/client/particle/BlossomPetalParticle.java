@@ -58,7 +58,7 @@ public class BlossomPetalParticle extends SpriteTexturedParticle {
 
     @Override
     public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_LIT;
+        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
     public static class Factory implements IParticleFactory<BasicParticleType> {

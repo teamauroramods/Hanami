@@ -1,5 +1,6 @@
 package com.teamaurora.hanami.common.entity;
 
+import com.teamaurora.hanami.client.particle.HanamiParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -54,13 +55,19 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
         age = age + 1;
         if (distance >= 6) {
             if (!this.world.isRemote) {
+                this.world.setEntityState(this, (byte) 4);
                 BlockPos pos = this.getOnPosition();
                 SakuraBlossomEntity blossom = new SakuraBlossomEntity(this.world, pos, pos.getX(), pos.getY(), pos.getZ(), false);
 
                 world.addEntity(blossom);
 
-                this.world.setEntityState(this, (byte) 3);
                 this.remove();
+            } else {
+                IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+                for (int i = 0; i < 16; ++i) {
+                    //this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D));
+                    this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), 1.0D, 1.0D, 1.0D);
+                }
             }
         }
     }
@@ -72,17 +79,35 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
     }
 
     @OnlyIn(Dist.CLIENT)
+    @Override
     public void handleStatusUpdate(byte id) {
         if (id == 3) {
             IParticleData iparticledata = this.makeParticle();
+            //IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
 
             this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
 
             for (int i = 0; i < 8; ++i) {
                 this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
             }
-        }
+            /*for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D));
+            }*/
+        } else if (id == 4) {
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
 
+            this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
+
+            for (int i = 0; i < 16; ++i) {
+                //this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D), this.getParticleOffset(0.0D));
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), 0.0D, 0.0D, 0.0D);
+            }
+        }
+        super.handleStatusUpdate(id);
+    }
+
+    private double getParticleOffset(double value) {
+        return value + (this.world.rand.nextDouble() * 0.2F) - 0.1F;
     }
 
     @SuppressWarnings("deprecation")
