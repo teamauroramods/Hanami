@@ -9,7 +9,7 @@ public class BlossomParticle extends SpriteTexturedParticle {
     protected final IAnimatedSprite animatedSprite;
     private final float rotSpeed;
 
-    public BlossomParticle(IAnimatedSprite animatedSprite, ClientWorld world, double posX, double posY, double posZ) {
+    public BlossomParticle(IAnimatedSprite animatedSprite, ClientWorld world, double posX, double posY, double posZ, double wind) {
         super(world, posX, posY, posZ);
         //this.angle = (float) Math.random() * ((float)Math.PI * 2F);
         this.particleAngle = (float) Math.random() * ((float)Math.PI * 2F);
@@ -17,6 +17,7 @@ public class BlossomParticle extends SpriteTexturedParticle {
         this.maxAge = rand.nextInt(30) + 60;
         this.rotSpeed = ((float)Math.random() - 0.5F) * 0.05F;
         this.particleScale *= 2.0F;
+        this.motionZ = -wind;
         this.selectSpriteRandomly(animatedSprite);
     }
 
@@ -55,7 +56,7 @@ public class BlossomParticle extends SpriteTexturedParticle {
 
         @Override
         public Particle makeParticle(BasicParticleType type, ClientWorld world, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new BlossomParticle(this.spriteSet, world, x, y, z);
+            return new BlossomParticle(this.spriteSet, world, x, y, z, xSpeed);
         }
     }
 }
