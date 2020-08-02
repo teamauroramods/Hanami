@@ -24,6 +24,7 @@
     "block.hanami.sakura_vertical_slab": "Losa vertical de sakura",
     "block.hanami.vertical_sakura_planks": "Madera vertical de sakura",
     "block.hanami.sakura_beehive": "Apiario de sakura",
+    "block.hanami.potted_sakura_sapling": "Maceta con brote de sakura",
   
     "item.hanami.sakura_boat": "Barca de sakura",
   
@@ -41,8 +42,11 @@
 
     "_comment3": "Forest stuff",
     "biome.hanami.sakura_forest": "Bosque de sakura",
+    "block.hanami.azalea_bush": "Arbusto de azalea",
+    "block.hanami.potted_azalea_bush": "Maceta con arbusto de azalea",
 
     "_comment4": "Blossoms & other tools",
     "item.hanami.sakura_blossom": "Flor de sakura",
-    "entity.hanami.sakura_blossom": "Flor de sakura"
+    "entity.hanami.sakura_blossom": "Flor de sakura",
+    "block.hanami.blomb": "Bomba floral"
   }
