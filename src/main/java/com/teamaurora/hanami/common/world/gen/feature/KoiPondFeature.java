@@ -49,7 +49,7 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
 
         boolean flowers = (rand.nextInt(4) == 0);
 
-        int flowerType = rand.nextInt(4);
+        int flowerType = rand.nextInt(5);
 
         BlockState flower;
         if (flowerType == 0) {
@@ -58,6 +58,8 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
             flower = Blocks.PINK_TULIP.getDefaultState();
         } else if (flowerType == 2) {
             flower = Blocks.WHITE_TULIP.getDefaultState();
+        } else if (flowerType == 3) {
+            flower = HanamiBlocks.AZALEA_BUSH.get().getDefaultState();
         } else {
             if (rand.nextBoolean()) {
                 flower = Blocks.ORANGE_TULIP.getDefaultState();
