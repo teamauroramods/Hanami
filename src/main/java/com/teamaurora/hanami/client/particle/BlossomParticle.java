@@ -14,7 +14,7 @@ public class BlossomParticle extends SpriteTexturedParticle {
         //this.angle = (float) Math.random() * ((float)Math.PI * 2F);
         this.particleAngle = (float) Math.random() * ((float)Math.PI * 2F);
         this.animatedSprite = animatedSprite;
-        this.maxAge = rand.nextInt(25) + 40;
+        this.maxAge = rand.nextInt(30) + 60;
         this.rotSpeed = ((float)Math.random() - 0.5F) * 0.05F;
         this.particleScale *= 2.0F;
         this.selectSpriteRandomly(animatedSprite);
@@ -38,11 +38,12 @@ public class BlossomParticle extends SpriteTexturedParticle {
                 this.motionY = 0.0D;
             }
         }
+        this.particleAlpha = this.age >= this.maxAge - 30 ? ((float)this.maxAge - (float)this.age) / 30 : 1.0F;
     }
 
     @Override
     public IParticleRenderType getRenderType() {
-        return IParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        return IParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     public static class Factory implements IParticleFactory<BasicParticleType> {
