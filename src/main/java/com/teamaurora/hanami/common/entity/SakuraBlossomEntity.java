@@ -1,5 +1,6 @@
 package com.teamaurora.hanami.common.entity;
 
+import com.teamaurora.hanami.client.particle.HanamiParticles;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
 import com.teamaurora.hanami.core.registry.HanamiItems;
 import net.minecraft.block.Block;
@@ -59,6 +60,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.prevRenderYawOffset = 180.0F;
         this.renderYawOffset = 180.0F;
         this.rotationYaw = 180.0F;
+        this.playedSound = wild;
         age = 0;
     }
 
@@ -114,6 +116,10 @@ public class SakuraBlossomEntity extends LivingEntity {
 
         if(this.isBlockBlockingPath() || this.isSpecialBlockBlockingPath() || this.isEntityBlockingPath()) {
             if(!this.getWild()) this.playHurtSound(DamageSource.GENERIC);
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+            for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
+            }
             this.world.setEntityState(this, (byte)3);
             this.remove();
         }
@@ -121,10 +127,13 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.clearActivePotions();
         this.extinguish();
 
-        if(!this.world.isRemote) {
-            if (!this.playedSound) {
-                this.playedSound = true;
+        if (!this.playedSound) {
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+            for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
             }
+            this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
+            this.playedSound = true;
         }
     }
 
@@ -223,6 +232,14 @@ public class SakuraBlossomEntity extends LivingEntity {
             this.world.setEntityState(this, (byte)3);
             this.remove();
         }
+    }
+
+    private double getParticleOffset(double value) {
+        return value + (this.world.rand.nextDouble() * 0.2F) - 0.1F;
+    }
+
+    private double getRandWithMagnitude(double mag) {
+        return (this.world.rand.nextDouble() * 2 * mag) - mag;
     }
 
     private double getBreeze(double x, double z) {
