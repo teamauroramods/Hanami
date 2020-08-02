@@ -11,5 +11,7 @@ public class HanamiRender {
         RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_LEAF_CARPET.get(), RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_LADDER.get(), RenderType.getCutoutMipped());
         RenderTypeLookup.setRenderLayer(HanamiBlocks.SAKURA_SAPLING.get(), RenderType.getCutoutMipped());
+
+        RenderTypeLookup.setRenderLayer(HanamiBlocks.AZALEA_BUSH.get(), RenderType.getCutoutMipped());
     }
 }

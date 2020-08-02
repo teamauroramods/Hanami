@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core.registry;
 
 import com.teamaurora.hanami.common.world.biome.SakuraForestBiome;
 import com.teamaurora.hanami.core.Hanami;
+import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
@@ -18,6 +19,7 @@ public class HanamiBiomes {
 
     public static void registerBiomesToDictionary() {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 4));
+        int i = GrassColors.get(0.6F, 0.7F);
     }
 
     public static void addBiomeTypes() {

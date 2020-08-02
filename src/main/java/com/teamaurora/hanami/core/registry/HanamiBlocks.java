@@ -15,8 +15,8 @@ import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
-import net.minecraft.block.trees.OakTree;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
@@ -53,9 +53,11 @@ public class HanamiBlocks {
 
     public static final RegistryObject<Block> SAKURA_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "sakura_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
 
-    // foods and stuff
-    public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));
+    // plants
+    public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AbnormalsFlowerBlock(/*HanamiEffects.INSTABILITY.get()*/Effects.ABSORPTION, 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
+    //TODO: make effect there functional
 
-    // blomb
+    // misc
+    public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));
     public static final RegistryObject<Block> BLOMB = HELPER.createBlock("blomb", ()->new BlombBlock(Block.Properties.from(Blocks.TNT)), ItemGroup.REDSTONE);
 }

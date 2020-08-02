@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class HanamiEffects {
     public static final DeferredRegister<Effect> EFFECTS = DeferredRegister.create(ForgeRegistries.POTIONS, Hanami.MODID);
 
-    public static RegistryObject<Effect> INSTABILITY = EFFECTS.register("instability", () -> new InstabilityEffect());
-    public static RegistryObject<Effect> NOURISHING = EFFECTS.register("nourishing", () -> new NourishingEffect());
-    public static RegistryObject<Effect> UNSALUTARY = EFFECTS.register("unsalutary", () -> new UnsalutaryEffect());
+    public static RegistryObject<Effect> INSTABILITY = EFFECTS.register("instability", InstabilityEffect::new);
+    public static RegistryObject<Effect> NOURISHING = EFFECTS.register("nourishing", NourishingEffect::new);
+    public static RegistryObject<Effect> UNSALUTARY = EFFECTS.register("unsalutary", UnsalutaryEffect::new);
 }
