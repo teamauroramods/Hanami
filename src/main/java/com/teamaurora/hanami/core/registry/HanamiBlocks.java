@@ -15,6 +15,7 @@ import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.common.ToolType;
@@ -56,6 +57,7 @@ public class HanamiBlocks {
     // plants
     public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AbnormalsFlowerBlock(/*HanamiEffects.INSTABILITY.get()*/Effects.ABSORPTION, 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
     //TODO: make effect there functional
+    public static final RegistryObject<Block> POTTED_AZALEA_BUSH = HELPER.createBlockNoItem("potted_azalea_bush", ()->new FlowerPotBlock(AZALEA_BUSH.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
 
     // misc
     public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));

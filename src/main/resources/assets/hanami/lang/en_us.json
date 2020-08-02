@@ -24,6 +24,7 @@
   "block.hanami.sakura_vertical_slab": "Sakura Vertical Slab",
   "block.hanami.vertical_sakura_planks": "Vertical Sakura Planks",
   "block.hanami.sakura_beehive": "Sakura Beehive",
+  "block.hanami.potted_sakura_sapling": "Potted Sakura Sapling",
 
   "item.hanami.sakura_boat": "Sakura Boat",
 
@@ -42,6 +43,7 @@
   "_comment3": "Forest stuff",
   "biome.hanami.sakura_forest": "Sakura Forest",
   "block.hanami.azalea_bush": "Azalea Bush",
+  "block.hanami.potted_azalea_bush": "Potted Azalea Bush",
 
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_blossom": "Sakura Blossom",
