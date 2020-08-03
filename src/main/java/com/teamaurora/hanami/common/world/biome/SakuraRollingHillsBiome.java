@@ -1,6 +1,5 @@
 package com.teamaurora.hanami.common.world.biome;
 
-import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -11,13 +10,13 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class SakuraForestBiome extends Biome {
-    public SakuraForestBiome() {
-        super(new Biome.Builder()
+public class SakuraRollingHillsBiome extends Biome {
+    public SakuraRollingHillsBiome() {
+        super(new Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.FOREST)
-                .depth(0.125F)
-                .scale(0.09F)
+                .depth(0.175F)
+                .scale(0.04F)
                 .temperature(0.6F)
                 .downfall(0.7F)
                 .func_235097_a_((new BiomeAmbience.Builder())
@@ -40,17 +39,17 @@ public class SakuraForestBiome extends Biome {
         HanamiBiomeFeatures.addKoiPonds(this);
         DefaultBiomeFeatures.addSprings(this);
 
-        HanamiBiomeFeatures.addSakuraFeatures(this);
+        HanamiBiomeFeatures.addSakuraHillFeatures(this);
 
         HanamiBiomeFeatures.addSakuraFlowers(this);
         DefaultBiomeFeatures.addMushrooms(this);
         DefaultBiomeFeatures.addGrass(this);
         HanamiBiomeFeatures.addSakuraWaterFoliage(this);
 
-        addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.SHEEP, 12, 4, 4));
-        addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.PIG, 10, 4, 4));
-        addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.CHICKEN, 10, 4, 4));
-        addSpawn(EntityClassification.CREATURE, new Biome.SpawnListEntry(EntityType.COW, 8, 4, 4));
+        addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.SHEEP, 12, 4, 4));
+        addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.PIG, 10, 4, 4));
+        addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.CHICKEN, 10, 4, 4));
+        addSpawn(EntityClassification.CREATURE, new SpawnListEntry(EntityType.COW, 8, 4, 4));
         addSpawn(EntityClassification.AMBIENT, new SpawnListEntry(EntityType.BAT, 10, 8, 8));
 
         addSpawn(EntityClassification.MONSTER, new SpawnListEntry(EntityType.SPIDER, 100, 4, 4));
@@ -73,10 +72,5 @@ public class SakuraForestBiome extends Biome {
     public int getFoliageColor()
     {
         return 0x7ab85c;
-    }
-
-    @Override
-    public Biome getHill(net.minecraft.world.gen.INoiseRandom rand) {
-        return HanamiBiomes.SAKURA_ROLLING_HILLS.get();
     }
 }
