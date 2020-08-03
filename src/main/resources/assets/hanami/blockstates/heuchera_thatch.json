@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "hanami:block/heuchera_thatch" }
+  }
+}

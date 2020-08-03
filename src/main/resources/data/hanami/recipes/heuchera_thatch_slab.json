@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "hanami:heuchera_thatch"
+    }
+  },
+  "result": {
+    "item": "hanami:heuchera_thatch_slab",
+    "count": 6
+  }
+}

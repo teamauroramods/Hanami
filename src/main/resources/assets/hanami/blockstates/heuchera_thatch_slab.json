@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "type=bottom": { "model": "hanami:block/heuchera_thatch_slab" },
+    "type=top": { "model": "hanami:block/heuchera_thatch_slab_top" },
+    "type=double": { "model": "hanami:block/heuchera_thatch" }
+  }
+}
