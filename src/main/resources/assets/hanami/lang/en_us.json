@@ -42,10 +42,14 @@
 
   "_comment3": "Forest stuff",
   "biome.hanami.sakura_forest": "Sakura Forest",
+
   "block.hanami.azalea_bush": "Azalea Bush",
   "block.hanami.potted_azalea_bush": "Potted Azalea Bush",
+  "block.hanami.compact_azalea": "Compact Azalea",
+
   "block.hanami.heuchera": "Heuchera",
   "block.hanami.tall_heuchera": "Tall Heuchera",
+  "block.hanami.potted_heuchera": "Potted Heuchera",
 
   "block.hanami.heuchera_thatch": "Heuchera Thatch",
   "block.hanami.heuchera_thatch_slab": "Heuchera Thatch Slab",

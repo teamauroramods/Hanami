@@ -59,10 +59,12 @@ public class HanamiBlocks {
 
     // plants
     public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AzaleaBushBlock(()->HanamiEffects.INSTABILITY.get(), 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
-    //TODO: make effect there functional
     public static final RegistryObject<Block> POTTED_AZALEA_BUSH = HELPER.createBlockNoItem("potted_azalea_bush", ()->new FlowerPotBlock(AZALEA_BUSH.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
+    public static final RegistryObject<Block> COMPACT_AZALEA = HELPER.createBlock("compact_azalea", ()->new Block(Block.Properties.from(Blocks.OAK_LEAVES).harvestTool(ToolType.HOE)), ItemGroup.DECORATIONS);
+
     public static final RegistryObject<Block> HEUCHERA = HELPER.createBlock("heuchera", ()->new HeucheraBlock(Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> TALL_HEUCHERA = HELPER.createBlockNoItem("tall_heuchera", ()->new AbnormalsTallFlowerBlock(Block.Properties.from(Blocks.POPPY)));
+    public static final RegistryObject<Block> POTTED_HEUCHERA = HELPER.createBlockNoItem("potted_heuchera", ()->new FlowerPotBlock(HEUCHERA.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
 
     public static final RegistryObject<Block> HEUCHERA_THATCH = HELPER.createBlock("heuchera_thatch", ()->new ThatchBlock(Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
     public static final RegistryObject<Block> HEUCHERA_THATCH_SLAB = HELPER.createBlock("heuchera_thatch_slab", ()->new ThatchSlabBlock(Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);

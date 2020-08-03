@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "hanami:compact_azalea"
+    }
+  ],
+  "result": {
+    "item": "hanami:azalea_bush",
+    "count": 4
+  }
+}
