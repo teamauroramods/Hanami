@@ -1,6 +1,8 @@
 package com.teamaurora.hanami.common.world.biome;
 
 import com.google.common.collect.ImmutableList;
+import com.teamaurora.hanami.common.world.gen.blockplacer.HeucheraBlockPlacer;
+import com.teamaurora.hanami.common.world.gen.blockstateprovider.HeucheraBlockStateProvider;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import com.teamaurora.hanami.core.registry.HanamiFeatures;
 import net.minecraft.block.BlockState;
@@ -27,9 +29,11 @@ public class HanamiBiomeFeatures {
 
     public static final BaseTreeFeatureConfig SAKURA_TREE_CONFIG = (new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(SAKURA_LOG), new SimpleBlockStateProvider(SAKURA_LEAVES), null, null, null)).func_236700_a_().build();
 
-    public static final BlockClusterFeatureConfig ALLIUM_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(ALLIUM), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
     public static final BlockClusterFeatureConfig TULIP_CONFIG = (new BlockClusterFeatureConfig.Builder((new WeightedBlockStateProvider()).addWeightedBlockstate(PINK_TULIP, 2).addWeightedBlockstate(WHITE_TULIP, 2).addWeightedBlockstate(ORANGE_TULIP, 1), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
     public static final BlockClusterFeatureConfig AZALEA_CONFIG = (new BlockClusterFeatureConfig.Builder(new SimpleBlockStateProvider(AZALEA_BUSH), SimpleBlockPlacer.field_236447_c_)).tries(64).build();
+
+    // a word of warning: do not look at the blockstateprovider/blockplacer code if you wish to keep your sanity. i abused vanilla registries to get this to work, there's probably a better way to do this, but it works so i don't really care
+    public static final BlockClusterFeatureConfig HEUCHERA_CONFIG = (new BlockClusterFeatureConfig.Builder(new HeucheraBlockStateProvider(), new HeucheraBlockPlacer())).tries(64).build();
 
     public static void addKoiPonds(Biome biomeIn) {
         biomeIn.addFeature(GenerationStage.Decoration.LAKES, HanamiFeatures.KOI_POND.withConfiguration(NoFeatureConfig.field_236559_b_).withPlacement(Placement.CHANCE_TOP_SOLID_HEIGHTMAP.configure(new ChanceConfig(6))));
@@ -57,7 +61,7 @@ public class HanamiBiomeFeatures {
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_RANDOM_SELECTOR.withConfiguration(
                 new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(
                         Feature.RANDOM_PATCH.withConfiguration(TULIP_CONFIG),
-                        Feature.RANDOM_PATCH.withConfiguration(ALLIUM_CONFIG),
+                        Feature.RANDOM_PATCH.withConfiguration(HEUCHERA_CONFIG),
                         Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.LILY_OF_THE_VALLEY_CONFIG)), 0))
                 .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
         //biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_PATCH.withConfiguration(AZALEA_CONFIG).withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(1))));
