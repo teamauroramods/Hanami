@@ -44,6 +44,10 @@ public class SakuraBlossomEntity extends LivingEntity {
     private static final DataParameter<Boolean> WILD = EntityDataManager.createKey(SakuraBlossomEntity.class, DataSerializers.BOOLEAN);
     private boolean playedSound;
     private int age;
+    private double movCheck;
+    private double movCheck1;
+    private double movCheck2;
+    private double movCheck3;
 
     public SakuraBlossomEntity(EntityType<? extends SakuraBlossomEntity> blossom, World worldIn) {
         super(HanamiEntities.SAKURA_BLOSSOM.get(), worldIn);
@@ -60,6 +64,10 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.prevRenderYawOffset = 180.0F;
         this.renderYawOffset = 180.0F;
         this.rotationYaw = 180.0F;
+        this.movCheck = 0.0F;
+        this.movCheck1 = 0.0F;
+        this.movCheck2 = 0.0F;
+        this.movCheck3 = 0.0F;
         this.playedSound = wild;
         age = 0;
     }
@@ -89,6 +97,21 @@ public class SakuraBlossomEntity extends LivingEntity {
     public void tick() {
         super.tick();
 
+        if (age >= 5 && this.movCheck3 == this.getPosY()) {
+            if(!this.getWild()) this.playHurtSound(DamageSource.GENERIC);
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+            for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
+            }
+            this.world.setEntityState(this, (byte)3);
+            this.remove();
+        }
+
+        this.movCheck3 = this.movCheck2;
+        this.movCheck2 = this.movCheck1;
+        this.movCheck1 = this.movCheck;
+        this.movCheck = this.getPosY();
+
         if (this.getWild()) {
             this.renderYawOffset = this.prevRenderYawOffset = this.prevRenderYawOffset + 3.0F;
         } else {
@@ -114,7 +137,7 @@ public class SakuraBlossomEntity extends LivingEntity {
             this.setMotion(0, Math.max(-0.0375, this.getMotion().getY() - 0.1F), 0);
         }
 
-        if(this.isBlockBlockingPath() || this.isSpecialBlockBlockingPath() || this.isEntityBlockingPath()) {
+        if(this.isBlockBlockingPath() || this.isEntityBlockingPath()) {
             if(!this.getWild()) this.playHurtSound(DamageSource.GENERIC);
             IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
             for (int i = 0; i < 16; ++i) {
@@ -174,6 +197,15 @@ public class SakuraBlossomEntity extends LivingEntity {
             this.remove();
         }
         super.damageEntity(damageSrc, damageAmount);
+    }
+
+    @Override
+    public void onDeath(DamageSource cause) {
+        IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+        for (int i = 0; i < 16; ++i) {
+            this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
+        }
+        this.remove();
     }
 
     @Override
