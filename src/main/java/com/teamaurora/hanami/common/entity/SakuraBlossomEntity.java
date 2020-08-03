@@ -241,6 +241,11 @@ public class SakuraBlossomEntity extends LivingEntity {
         }
     }
 
+    @Override
+    public boolean isAlive() {
+        return false;
+    }
+
     private double getParticleOffset(double value) {
         return value + (this.world.rand.nextDouble() * 0.2F) - 0.1F;
     }

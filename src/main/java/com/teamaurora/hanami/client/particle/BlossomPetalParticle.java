@@ -18,7 +18,7 @@ public class BlossomPetalParticle extends SpriteTexturedParticle {
         this.particleAngle = (float) Math.random() * ((float)Math.PI * 2F);
         this.animatedSprite = animatedSprite;
         this.maxAge = rand.nextInt(20) + 20;
-        this.particleScale *= 1.0F;
+        this.particleScale *= 1.1F;
         this.selectSpriteWithAge(animatedSprite);
     }
 

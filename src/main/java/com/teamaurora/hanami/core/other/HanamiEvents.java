@@ -1,24 +1,32 @@
 package com.teamaurora.hanami.core.other;
 
+import com.teamaurora.hanami.client.particle.HanamiParticles;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
+import com.teamaurora.hanami.common.entity.ThrownSakuraBlossomEntity;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particles.IParticleData;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Hanami.MODID)
 public class HanamiEvents {
@@ -93,6 +101,31 @@ public class HanamiEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public void projectileImpact(ProjectileImpactEvent event) {
+        Entity entity = event.getEntity();
+        World world = entity.getEntityWorld();
+        if (entity instanceof ThrownSakuraBlossomEntity && event.getRayTraceResult().getType() != RayTraceResult.Type.MISS) {
+            if (!world.isRemote) {
+                //event.getEntity().getEntityWorld().setEntityState(event.getEntity(), (byte) 3);
+                //event.getEntity().remove();
+                IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+                Random rand = world.getRandom();
+                for (int i = 0; i < 16; ++i) {
+                    world.addParticle(blossoms, this.getParticleOffset(entity.getPosX(), rand), this.getParticleOffset(entity.getPosY(), rand), this.getParticleOffset(entity.getPosZ(), rand), this.getRandWithMagnitude(0.05, rand), this.getRandWithMagnitude(0.03, rand), this.getRandWithMagnitude(0.05, rand));
+                }
+            }
+        }
+    }
+
+    private double getParticleOffset(double value, Random rand) {
+        return value + (rand.nextDouble() * 0.2F) - 0.1F;
+    }
+
+    private double getRandWithMagnitude(double mag, Random rand) {
+        return (rand.nextDouble() * 2 * mag) - mag;
     }
 
 }

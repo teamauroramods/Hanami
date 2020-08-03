@@ -76,18 +76,26 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
     @Override
     public void handleStatusUpdate(byte id) {
         if (id == 3) {
-            IParticleData iparticledata = this.makeParticle();
-
             this.playSound(SoundEvents.BLOCK_WOOL_BREAK, 1.0F, 1.0F);
 
-            for (int i = 0; i < 8; ++i) {
-                this.world.addParticle(iparticledata, this.getPosX(), this.getPosY(), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+            IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
+            for (int i = 0; i < 16; ++i) {
+                this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
             }
         }
         super.handleStatusUpdate(id);
     }
 
+    private double getParticleOffset(double value) {
+        return value + (this.world.rand.nextDouble() * 0.2F) - 0.1F;
+    }
+
+    private double getRandWithMagnitude(double mag) {
+        return (this.world.rand.nextDouble() * 2 * mag) - mag;
+    }
+
     @SuppressWarnings("deprecation")
+    @Override
     protected void onImpact(RayTraceResult result) {
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte) 3);
