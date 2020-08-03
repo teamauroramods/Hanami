@@ -18,16 +18,18 @@ public class SakuraLeavesBlock extends AbnormalsLeavesBlock {
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
         super.animateTick(stateIn, worldIn, pos, rand);
-        int particleChance = 50;
-        if (worldIn.isRaining() || worldIn.isThundering()) particleChance -= 10;
-        if (worldIn.getMoonPhase() == 0) particleChance -= 15;
+        int particleChance = 60;
+        if (worldIn.isRaining() || worldIn.isThundering()) particleChance -= 15;
+        if (worldIn.getMoonPhase() == 0) particleChance -= 30;
         if (rand.nextInt(particleChance) == 0) {
             BlockPos blockpos = pos.down();
             if (worldIn.isAirBlock(blockpos)) {
                 double px = (double)((float)pos.getX() + rand.nextFloat());
                 double py = (double)pos.getY() - 0.05D;
                 double pz = (double)((float)pos.getZ() + rand.nextFloat());
-                double wind = (double)(50-particleChance) / 250;
+                double wind = 0;
+                if (worldIn.isRaining() || worldIn.isThundering()) wind += 0.05F;
+                if (worldIn.getMoonPhase() == 0) wind += 0.1F;
                 worldIn.addParticle(HanamiParticles.BLOSSOM.get(), px, py, pz, wind, 0.0F, 0.0F);
             }
         }
