@@ -45,6 +45,6 @@ public class HeucheraBlock extends BushBlock implements IGrowable, net.minecraft
      * Get the OffsetType for this Block. Determines if the model is rendered slightly offset.
      */
     public AbstractBlock.OffsetType getOffsetType() {
-        return AbstractBlock.OffsetType.XYZ;
+        return AbstractBlock.OffsetType.XZ;
     }
 }
