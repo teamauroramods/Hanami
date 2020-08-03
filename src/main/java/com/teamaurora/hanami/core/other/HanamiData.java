@@ -13,6 +13,7 @@ public class HanamiData {
         DispenserBlock.registerDispenseBehavior(HanamiItems.SAKURA_BLOSSOM.get(), new SakuraBlossomDispenseBehavior());
     }
 
+    @SuppressWarnings("deprecation")
     public static void registerCompostables() {
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAVES.get());
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_SAPLING.get());
@@ -21,6 +22,12 @@ public class HanamiData {
         DataUtils.registerCompostable(0.65F, HanamiItems.CHERRIES.get());
         DataUtils.registerCompostable(1F, HanamiItems.CHERRY_PIE.get());
         DataUtils.registerCompostable(1F, HanamiBlocks.BLACK_FOREST_GATEAU.get());
+
+        DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_BLOSSOM.get());
+
+        DataUtils.registerCompostable(0.65F, HanamiBlocks.AZALEA_BUSH.get());
+        DataUtils.registerCompostable(0.85F, HanamiBlocks.COMPACT_AZALEA.get());
+        DataUtils.registerCompostable(0.65F, HanamiBlocks.HEUCHERA.get());
     }
 
     public static void registerFlammables() {
