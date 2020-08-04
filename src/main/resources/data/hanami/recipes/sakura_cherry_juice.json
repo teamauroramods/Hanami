@@ -2,17 +2,17 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "hanami:cherries"
+      "item": "hanami:sakura_cherries"
     },
     {
       "item": "minecraft:sugar"
     },
     {
-      "item": "minecraft:wheat"
+      "item": "minecraft:glass_bottle"
     }
   ],
   "result": {
-    "item": "hanami:cherry_pie",
+    "item": "hanami:sakura_cherry_juice",
     "count": 1
   }
 }

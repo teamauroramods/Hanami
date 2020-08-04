@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "hanami:cherry_juice"
+      "item": "hanami:sakura_cherry_juice"
     },
     {
       "item": "minecraft:sugar"
@@ -12,7 +12,7 @@
     }
   ],
   "result": {
-    "item": "hanami:cherry_kombucha",
+    "item": "hanami:sakura_cherry_kombucha",
     "count": 1
   }
 }

@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "hanami:cherries"
+      "item": "hanami:sakura_cherries"
     }
   },
   "result": {
-    "item": "hanami:cherry_sack",
+    "item": "hanami:sakura_cherry_sack",
     "count": 1
   },
   "conditions": [

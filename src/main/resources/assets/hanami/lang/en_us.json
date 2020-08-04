@@ -33,16 +33,17 @@
   "effect.hanami.nourishing": "Nourishing",
   "effect.hanami.unsalutary": "Unsalutary",
 
-  "item.hanami.cherries": "Cherries",
-  "item.hanami.cherry_juice": "Cherry Juice",
-  "item.hanami.cherry_kombucha": "Cherry Kombucha",
-  "item.hanami.cherry_pie": "Cherry Pie",
+  "item.hanami.sakura_cherries": "Sakura Cherries",
+  "item.hanami.sakura_cherry_juice": "Sakura Cherry Juice",
+  "item.hanami.sakura_cherry_kombucha": "Sakura Cherry Kombucha",
+  "item.hanami.sakura_cherry_pie": "Sakura Cherry Pie",
 
   "block.hanami.black_forest_gateau": "Black Forest Gateau",
-  "block.hanami.cherry_sack": "Cherry Sack",
+  "block.hanami.sakura_cherry_sack": "Sakura Cherry Sack",
 
   "_comment3": "Forest stuff",
   "biome.hanami.sakura_forest": "Sakura Forest",
+  "biome.hanami.sakura_rolling_hills": "Sakura Rolling Hills",
 
   "block.hanami.azalea_bush": "Azalea Bush",
   "block.hanami.potted_azalea_bush": "Potted Azalea Bush",

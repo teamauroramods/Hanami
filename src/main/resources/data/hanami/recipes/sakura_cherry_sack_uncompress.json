@@ -2,11 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "hanami:cherry_sack"
+      "item": "hanami:sakura_cherry_sack"
     }
   ],
   "result": {
-    "item": "hanami:cherries",
+    "item": "hanami:sakura_cherries",
     "count": 9
   },
   "conditions": [

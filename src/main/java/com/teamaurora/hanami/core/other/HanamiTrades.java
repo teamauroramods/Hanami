@@ -21,7 +21,7 @@ public class HanamiTrades {
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
         if(event.getType() == VillagerProfession.FARMER) {
-            event.getTrades().get(2).add(new TradeUtils.ItemsForEmeraldsTrade(HanamiItems.CHERRY_PIE.get(), 1, 4, 12, 5));
+            event.getTrades().get(2).add(new TradeUtils.ItemsForEmeraldsTrade(HanamiItems.SAKURA_CHERRY_PIE.get(), 1, 4, 12, 5));
             event.getTrades().get(4).add(new TradeUtils.ItemsForEmeraldsTrade(HanamiItems.BLACK_FOREST_GATEAU.get(), 2, 1, 12, 15));
         }
     }

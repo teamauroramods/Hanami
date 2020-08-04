@@ -19,8 +19,8 @@ public class HanamiData {
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_SAPLING.get());
         DataUtils.registerCompostable(0.3F, HanamiBlocks.SAKURA_LEAF_CARPET.get());
 
-        DataUtils.registerCompostable(0.65F, HanamiItems.CHERRIES.get());
-        DataUtils.registerCompostable(1F, HanamiItems.CHERRY_PIE.get());
+        DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_CHERRIES.get());
+        DataUtils.registerCompostable(1F, HanamiItems.SAKURA_CHERRY_PIE.get());
         DataUtils.registerCompostable(1F, HanamiBlocks.BLACK_FOREST_GATEAU.get());
 
         DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_BLOSSOM.get());

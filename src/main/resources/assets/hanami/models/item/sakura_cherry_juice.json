@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "hanami:item/cherry_pie"
+    "layer0": "hanami:item/sakura_cherry_juice"
   }
 }
