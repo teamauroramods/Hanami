@@ -62,16 +62,6 @@ public class HanamiBlocks {
     public static final RegistryObject<Block> POTTED_AZALEA_BUSH = HELPER.createBlockNoItem("potted_azalea_bush", ()->new FlowerPotBlock(AZALEA_BUSH.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
     public static final RegistryObject<Block> COMPACT_AZALEA = HELPER.createBlock("compact_azalea", ()->new Block(Block.Properties.from(Blocks.OAK_LEAVES).harvestTool(ToolType.HOE)), ItemGroup.DECORATIONS);
 
-    public static final RegistryObject<Block> HEUCHERA = HELPER.createBlock("heuchera", ()->new HeucheraBlock(Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> TALL_HEUCHERA = HELPER.createBlockNoItem("tall_heuchera", ()->new AbnormalsTallFlowerBlock(Block.Properties.from(Blocks.POPPY)));
-    public static final RegistryObject<Block> POTTED_HEUCHERA = HELPER.createBlockNoItem("potted_heuchera", ()->new FlowerPotBlock(HEUCHERA.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
-
-    public static final RegistryObject<Block> HEUCHERA_THATCH = HELPER.createBlock("heuchera_thatch", ()->new ThatchBlock(Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> HEUCHERA_THATCH_SLAB = HELPER.createBlock("heuchera_thatch_slab", ()->new ThatchSlabBlock(Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> HEUCHERA_THATCH_STAIRS = HELPER.createBlock("heuchera_thatch_stairs", ()->new ThatchStairsBlock(HEUCHERA_THATCH.get().getDefaultState(), Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
-    public static final RegistryObject<Block> HEUCHERA_THATCH_VERTICAL_SLAB = HELPER.createCompatBlock("quark", "heuchera_thatch_vertical_slab", ()->new ThatchVerticalSlabBlock(Block.Properties.from(Blocks.HAY_BLOCK).notSolid().harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
-
-
     // misc
     public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));
     public static final RegistryObject<Block> BLOMB = HELPER.createBlock("blomb", ()->new BlombBlock(Block.Properties.from(Blocks.TNT)), ItemGroup.REDSTONE);

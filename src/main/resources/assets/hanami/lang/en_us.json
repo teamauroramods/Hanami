@@ -49,15 +49,6 @@
   "block.hanami.potted_azalea_bush": "Potted Azalea Bush",
   "block.hanami.compact_azalea": "Compact Azalea",
 
-  "block.hanami.heuchera": "Heuchera",
-  "block.hanami.tall_heuchera": "Tall Heuchera",
-  "block.hanami.potted_heuchera": "Potted Heuchera",
-
-  "block.hanami.heuchera_thatch": "Heuchera Thatch",
-  "block.hanami.heuchera_thatch_slab": "Heuchera Thatch Slab",
-  "block.hanami.heuchera_thatch_stairs": "Heuchera Thatch Stairs",
-  "block.hanami.heuchera_thatch_vertical_slab": "Heuchera Thatch Vertical Slab",
-
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_blossom": "Sakura Blossom",
   "entity.hanami.sakura_blossom": "Sakura Blossom",
