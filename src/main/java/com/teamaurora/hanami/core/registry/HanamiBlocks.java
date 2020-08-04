@@ -75,4 +75,5 @@ public class HanamiBlocks {
     // misc
     public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));
     public static final RegistryObject<Block> BLOMB = HELPER.createBlock("blomb", ()->new BlombBlock(Block.Properties.from(Blocks.TNT)), ItemGroup.REDSTONE);
+    public static final RegistryObject<Block> CHERRY_SACK = HELPER.createCompatBlock("quark", "cherry_sack", ()->new Block(Block.Properties.create(Material.WOOL, MaterialColor.RED).hardnessAndResistance(0.5F).sound(SoundType.CLOTH)), ItemGroup.DECORATIONS);
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "hanami:block/cherry_sack_top",
+    "bottom": "hanami:block/cherry_sack_bottom",
+    "side": "hanami:block/cherry_sack"
+  }
+}
