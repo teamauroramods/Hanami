@@ -32,7 +32,7 @@ public class CherryKombuchaItem extends Item {
             PlayerEntity player = (PlayerEntity) entityLiving;
             if (player.isPotionActive(HanamiEffects.INSTABILITY.get())) {
                 int j = player.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier();
-                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, j + 1 < 3 ? j + 1 : 3, false, false, true));
+                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, j + 1 < 2 ? j + 1 : 2, false, false, true));
             } else {
                 player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 800, 0, false, false, true));
             }
