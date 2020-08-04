@@ -1,27 +1,22 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
-      "item": "hanami:sakura_blossom"
-    },
-    {
-      "item": "hanami:sakura_blossom"
-    },
-    {
-      "item": "hanami:sakura_blossom"
-    },
-    {
-      "item": "minecraft:gunpowder"
-    },
-    {
-      "item": "minecraft:gunpowder"
-    },
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X#X",
+    "#X#",
+    "X#X"
+  ],
+  "key": {
+    "X": [
+      {
+        "item": "hanami:sakura_blossom"
+      }
+    ],
+    "#": {
       "item": "minecraft:gunpowder"
     }
-  ],
+  },
   "result": {
     "item": "hanami:blomb",
-    "count": 2
+    "count": 3
   }
 }
