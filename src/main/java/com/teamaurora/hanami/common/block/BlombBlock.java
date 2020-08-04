@@ -3,6 +3,7 @@ package com.teamaurora.hanami.common.block;
 
 import javax.annotation.Nullable;
 
+import com.teamabnormals.abnormals_core.core.utils.ItemStackUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,15 +14,13 @@ import com.teamaurora.hanami.common.entity.block.BlombEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.Explosion;
@@ -137,5 +136,17 @@ public class BlombBlock extends Block {
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(UNSTABLE);
+    }
+
+    @Override
+    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+        if(ItemStackUtils.isInGroup(this.asItem(), group)) {
+            int targetIndex = ItemStackUtils.findIndexOfItem(Items.TNT, items);
+            if(targetIndex != -1) {
+                items.add(targetIndex + 1, new ItemStack(this));
+            } else {
+                super.fillItemGroup(group, items);
+            }
+        }
     }
 }
