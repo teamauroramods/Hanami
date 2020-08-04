@@ -23,6 +23,8 @@ public class HanamiTrades {
         if(event.getType() == VillagerProfession.FARMER) {
             event.getTrades().get(2).add(new TradeUtils.ItemsForEmeraldsTrade(HanamiItems.SAKURA_CHERRY_PIE.get(), 1, 4, 12, 5));
             event.getTrades().get(4).add(new TradeUtils.ItemsForEmeraldsTrade(HanamiItems.BLACK_FOREST_GATEAU.get(), 2, 1, 12, 15));
+        } else if (event.getType() == VillagerProfession.BUTCHER) {
+            event.getTrades().get(5).add(new TradeUtils.EmeraldsForItemsTrade(HanamiItems.SAKURA_CHERRIES.get(), 4, 1, 12, 30));
         }
     }
 }
