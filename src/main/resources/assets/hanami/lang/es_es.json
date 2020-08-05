@@ -33,27 +33,21 @@
     "effect.hanami.nourishing": "Nutrición",
     "effect.hanami.unsalutary": "Insalubridad",
   
-    "item.hanami.cherries": "Cerezas",
-    "item.hanami.cherry_juice": "Jugo de cereza",
-    "item.hanami.cherry_kombucha": "Kombucha de cereza",
-    "item.hanami.cherry_pie": "Tarta de cereza",
+    "item.hanami.sakura_cherries": "Cerezas de sakura",
+    "item.hanami.sakura_cherry_juice": "Jugo de cerezas de sakura",
+    "item.hanami.sakura_cherry_kombucha": "Kombucha de cerezas de sakura",
+    "item.hanami.sakura_cherry_pie": "Tarta de cerezas de sakura",
   
-    "block.hanami.black_forest_gateau": "Tarta selva negra",
+    "block.hanami.black_forest_gateau": "Tarta de selva negra",
+    "block.hanami.sakura_cherry_sack": "Saco de cerezas de sakura",
 
     "_comment3": "Forest stuff",
-    "biome.hanami.sakura_forest": "Bosque de sakura",
+    "biome.hanami.sakura_forest": "Bosque de sakuras",
+    "biome.hanami.sakura_rolling_hills": "Colinas onduladas de sakuras",
   
     "block.hanami.azalea_bush": "Arbusto de azalea",
     "block.hanami.potted_azalea_bush": "Maceta con arbusto de azalea",
     "block.hanami.compact_azalea": "Azalea compacta",
-    "block.hanami.heuchera": "Heuchera",
-    "block.hanami.tall_heuchera": "Heuchera alta",
-    "block.hanami.potted_heuchera": "Maceta con heuchera",
-
-    "block.hanami.heuchera_thatch": "Cubierta de heucheras",
-    "block.hanami.heuchera_thatch_slab": "Losa de cubierta de heucheras",
-    "block.hanami.heuchera_thatch_stairs": "Escaleras de cubierta de heucheras",
-    "block.hanami.heuchera_thatch_vertical_slab": "Losa vertical de cubierta de heucheras",
 
     "_comment4": "Blossoms & other tools",
     "item.hanami.sakura_blossom": "Flor de sakura",
