@@ -45,7 +45,7 @@ public class HanamiBlocks {
     public static final RegistryObject<Block> SAKURA_DOOR = HELPER.createBlock("sakura_door", ()->new WoodDoorBlock(Block.Properties.from(Blocks.OAK_DOOR)), ItemGroup.REDSTONE);
     public static final Pair<RegistryObject<AbnormalsStandingSignBlock>, RegistryObject<AbnormalsWallSignBlock>> SAKURA_SIGNS = HELPER.createSignBlock("sakura", MaterialColor.PINK);
     public static final RegistryObject<Block> SAKURA_LEAVES = HELPER.createBlock("sakura_leaves", ()->new SakuraLeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES).harvestTool(ToolType.HOE)), ItemGroup.DECORATIONS);
-    public static final RegistryObject<Block> SAKURA_LEAF_CARPET = HELPER.createBlock("sakura_leaf_carpet", ()->new LeafCarpetBlock(Block.Properties.from(SAKURA_LEAVES.get())), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> SAKURA_LEAF_CARPET = HELPER.createBlock("sakura_leaf_carpet", ()->new LeafCarpetBlock(Block.Properties.create(Material.CARPET).hardnessAndResistance(0.2F).sound(SoundType.PLANT).notSolid()), ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> SAKURA_SAPLING = HELPER.createBlock("sakura_sapling", () -> new AbnormalsSaplingBlock(new SakuraTree(), Block.Properties.create(Material.PLANTS, MaterialColor.RED).doesNotBlockMovement().tickRandomly().hardnessAndResistance(0.0F).sound(SoundType.PLANT)), ItemGroup.DECORATIONS); // temporarily grows oak tree
     public static final RegistryObject<Block> POTTED_SAKURA_SAPLING = HELPER.createBlockNoItem("potted_sakura_sapling", () -> new FlowerPotBlock(SAKURA_SAPLING.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
 
