@@ -278,6 +278,11 @@ public class SakuraBlossomEntity extends LivingEntity {
         return false;
     }
 
+    @Override
+    public ItemStack getPickedResult(RayTraceResult target) {
+        return new ItemStack(HanamiItems.SAKURA_BLOSSOM.get());
+    }
+
     private double getParticleOffset(double value) {
         return value + (this.world.rand.nextDouble() * 0.2F) - 0.1F;
     }
