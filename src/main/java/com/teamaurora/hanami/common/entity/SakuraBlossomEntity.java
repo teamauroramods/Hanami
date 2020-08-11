@@ -61,8 +61,13 @@ public class SakuraBlossomEntity extends LivingEntity {
         this.setWild(wild);
         this.setPosition(x + 0.5D, y, z + 0.5D);
         this.setNoGravity(true);
-        this.prevRenderYawOffset = 180.0F;
-        this.renderYawOffset = 180.0F;
+        if (wild) {
+            this.prevRenderYawOffset = rand.nextFloat() * 360.0F;
+            this.renderYawOffset = rand.nextFloat() * 360.0F;
+        } else {
+            this.prevRenderYawOffset = 180.0F;
+            this.renderYawOffset = 180.0F;
+        }
         this.rotationYaw = 180.0F;
         this.movCheck = 0.0F;
         this.movCheck1 = 0.0F;
