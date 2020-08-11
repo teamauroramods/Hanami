@@ -105,17 +105,6 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
     }
 
     private void placePondAt(ISeedReader worldIn, BlockPos pos, Random rand, boolean flowers, BlockState flower) {
-        placeWaterAt(worldIn, pos.add(0,-2,0));
-        placeWaterAt(worldIn, pos.add(1,-2,0));
-        placeWaterAt(worldIn, pos.add(-1,-2,0));
-        placeWaterAt(worldIn, pos.add(0,-2,1));
-        placeWaterAt(worldIn, pos.add(0,-2,-1));
-
-        placeWaterRandomlyAt(worldIn, pos.add(-1,-2,-1), rand);
-        placeWaterRandomlyAt(worldIn, pos.add(-1,-2,1), rand);
-        placeWaterRandomlyAt(worldIn, pos.add(1,-2,-1), rand);
-        placeWaterRandomlyAt(worldIn, pos.add(1,-2,1), rand);
-
         for (BlockPos blockPos : BlockPos.getAllInBoxMutable(pos.add(-2,-1,-2), pos.add(2,-1,2))) {
             placeWaterAt(worldIn, blockPos);
         }
@@ -131,6 +120,17 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         for (BlockPos blockPos4 : BlockPos.getAllInBoxMutable(pos.add(-1,-1,-3), pos.add(1,-1,-3))) {
             placeWaterAt(worldIn, blockPos4);
         }
+
+        placeWaterAt(worldIn, pos.add(0,-2,0));
+        placeWaterAt(worldIn, pos.add(1,-2,0));
+        placeWaterAt(worldIn, pos.add(-1,-2,0));
+        placeWaterAt(worldIn, pos.add(0,-2,1));
+        placeWaterAt(worldIn, pos.add(0,-2,-1));
+
+        placeWaterRandomlyAt(worldIn, pos.add(-1,-2,-1), rand);
+        placeWaterRandomlyAt(worldIn, pos.add(-1,-2,1), rand);
+        placeWaterRandomlyAt(worldIn, pos.add(1,-2,-1), rand);
+        placeWaterRandomlyAt(worldIn, pos.add(1,-2,1), rand);
 
         for (BlockPos blockPos5 : BlockPos.getAllInBoxMutable(pos.add(3,0,2), pos.add(-3,3,-2))) {
             placeAirAt(worldIn, blockPos5);
@@ -228,7 +228,7 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
                     }
                 }
             }
-        } else if (rand.nextBoolean() && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK) {
+        } else if (rand.nextBoolean() && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK && worldIn.isAirBlock(pos)) {
             setLogState(worldIn, pos, flower);
         }
     }
@@ -282,7 +282,11 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
     }
 
     private void placeWaterAt(ISeedReader worldIn, BlockPos pos) {
-        this.setLogState(worldIn, pos, Blocks.WATER.getDefaultState());
+        if (worldIn.getBlockState(pos.up()).getBlock() == HanamiBlocks.SAKURA_LOG.get()) {
+            this.setLogState(worldIn, pos, HanamiBlocks.SAKURA_LOG.get().getDefaultState());
+        } else {
+            this.setLogState(worldIn, pos, Blocks.WATER.getDefaultState());
+        }
         this.placeDirtAt(worldIn, pos.down());
     }
 
