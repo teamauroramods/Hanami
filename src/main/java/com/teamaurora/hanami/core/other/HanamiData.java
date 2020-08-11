@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 
 public class HanamiData {
     public static void registerDispenserBehaviors() {
-        DispenserBlock.registerDispenseBehavior(HanamiItems.SAKURA_BLOSSOM.get(), new SakuraBlossomDispenseBehavior());
+        DispenserBlock.registerDispenseBehavior(HanamiItems.SAKURA_FLOWER.get(), new SakuraBlossomDispenseBehavior());
     }
 
     @SuppressWarnings("deprecation")
@@ -23,7 +23,7 @@ public class HanamiData {
         DataUtils.registerCompostable(1F, HanamiItems.SAKURA_CHERRY_PIE.get());
         DataUtils.registerCompostable(1F, HanamiBlocks.BLACK_FOREST_GATEAU.get());
 
-        DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_BLOSSOM.get());
+        DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_FLOWER.get());
 
         DataUtils.registerCompostable(0.65F, HanamiBlocks.AZALEA_BUSH.get());
         DataUtils.registerCompostable(0.85F, HanamiBlocks.COMPACT_AZALEA.get());

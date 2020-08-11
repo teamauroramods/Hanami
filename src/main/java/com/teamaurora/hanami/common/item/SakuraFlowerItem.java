@@ -11,8 +11,8 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 
-public class SakuraBlossomItem extends Item {
-    public SakuraBlossomItem(Item.Properties builder) {
+public class SakuraFlowerItem extends Item {
+    public SakuraFlowerItem(Item.Properties builder) {
         super(builder);
     }
 

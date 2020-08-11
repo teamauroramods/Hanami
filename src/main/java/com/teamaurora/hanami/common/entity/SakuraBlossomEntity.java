@@ -175,10 +175,10 @@ public class SakuraBlossomEntity extends LivingEntity {
             if (entityIn instanceof PlayerEntity) {
                 PlayerEntity player = (PlayerEntity) entityIn;
                 if (!player.abilities.isCreativeMode) {
-                    Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+                    Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_FLOWER.get()));
                 }
             } else {
-                Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+                Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_FLOWER.get()));
             }
         }
         this.playHurtSound(DamageSource.GENERIC);
@@ -195,7 +195,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         }
         if (damageSrc.isProjectile()) {
             if(!this.getEntityWorld().isRemote) {
-                Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_BLOSSOM.get()));
+                Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_FLOWER.get()));
             }
             this.remove();
         } else if (damageSrc == DamageSource.IN_WALL) {
@@ -229,7 +229,7 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
-        ItemStack itemstack = new ItemStack(HanamiItems.SAKURA_BLOSSOM.get());
+        ItemStack itemstack = new ItemStack(HanamiItems.SAKURA_FLOWER.get());
         return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
     }
 
@@ -285,7 +285,7 @@ public class SakuraBlossomEntity extends LivingEntity {
 
     @Override
     public ItemStack getPickedResult(RayTraceResult target) {
-        return new ItemStack(HanamiItems.SAKURA_BLOSSOM.get());
+        return new ItemStack(HanamiItems.SAKURA_FLOWER.get());
     }
 
     private double getParticleOffset(double value) {

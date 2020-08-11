@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "hanami:item/sakura_blossom"
+    "layer0": "hanami:item/sakura_flower"
   }
 }

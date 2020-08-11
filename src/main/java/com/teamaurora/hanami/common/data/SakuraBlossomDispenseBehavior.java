@@ -1,8 +1,7 @@
 package com.teamaurora.hanami.common.data;
 
-import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.common.entity.ThrownSakuraBlossomEntity;
-import com.teamaurora.hanami.common.item.SakuraBlossomItem;
+import com.teamaurora.hanami.common.item.SakuraFlowerItem;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.OptionalDispenseBehavior;
@@ -17,7 +16,7 @@ public class SakuraBlossomDispenseBehavior extends OptionalDispenseBehavior {
     protected ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
         this.func_239796_a_(false);
         Item item = stack.getItem();
-        if (item instanceof SakuraBlossomItem) {
+        if (item instanceof SakuraFlowerItem) {
             Direction direction = source.getBlockState().get(DispenserBlock.FACING);
             World worldIn = source.getWorld().getWorld();
             BlockPos pos = source.getBlockPos().offset(direction);
