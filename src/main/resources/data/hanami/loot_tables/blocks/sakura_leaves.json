@@ -143,6 +143,13 @@
                 0.008333334,
                 0.025
               ]
+            },
+            {
+              "condition": "minecraft:inverted",
+              "term": {
+                "condition": "forge:mod_loaded",
+                "modid": "fruitful"
+              }
             }
           ],
           "name": "hanami:sakura_cherries"

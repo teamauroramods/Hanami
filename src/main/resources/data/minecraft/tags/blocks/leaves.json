@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hanami:sakura_leaves"
+    "hanami:sakura_leaves",
+    "hanami:cherry_sakura_leaves"
   ]
 }
