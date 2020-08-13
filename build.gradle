@@ -121,5 +121,6 @@ dependencies {
     implementation fg.deobf("curse.maven:jei:2995910")
     implementation fg.deobf("curse.maven:quark:3024740")
     implementation fg.deobf("curse.maven:autoreglib:3017289")
+    implementation fg.deobf("curse.maven:fruitful:3020408a")
 
 }
