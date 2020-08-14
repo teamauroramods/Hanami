@@ -71,4 +71,6 @@ public class Hanami
             RenderingRegistry.registerEntityRenderingHandler(HanamiEntities.BLOMB.get(), BlombRenderer::new);
         });
     }
+
+
 }
