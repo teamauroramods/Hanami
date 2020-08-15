@@ -43,6 +43,7 @@ public class Hanami
         HanamiEntities.ENTITIES.register(eventBus);
         HanamiBiomes.BIOMES.register(eventBus);
         HanamiEffects.EFFECTS.register(eventBus);
+        HanamiEffects.POTIONS.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -59,6 +60,7 @@ public class Hanami
             HanamiData.registerCompostables();
             HanamiData.registerFlammables();
             HanamiData.registerDispenserBehaviors();
+            HanamiEffects.registerBrewingRecipes();
             GlobalEntityTypeAttributes.put(HanamiEntities.SAKURA_BLOSSOM.get(), SakuraBlossomEntity.setCustomAttributes().func_233813_a_());
         });
     }

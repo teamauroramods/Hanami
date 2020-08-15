@@ -53,5 +53,21 @@
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_flower": "Sakura Flower",
   "entity.hanami.sakura_blossom": "Sakura Blossom",
-  "block.hanami.blomb": "Blomb"
+  "block.hanami.blomb": "Blomb",
+
+  "item.minecraft.potion.effect.instability": "Potion of Instability",
+  "item.minecraft.potion.effect.instability_strong": "Potion of Instability",
+  "item.minecraft.potion.effect.instability_long": "Potion of Instability",
+
+  "item.minecraft.splash_potion.effect.instability": "Splash Potion of Instability",
+  "item.minecraft.potion.splash_potion.instability_strong": "Splash Potion of Instability",
+  "item.minecraft.potion.splash_potion.instability_long": "Splash Potion of Instability",
+
+  "item.minecraft.lingering_potion.effect.instability": "Lingering Potion of Instability",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Lingering Potion of Instability",
+  "item.minecraft.lingering_potion.effect.instability_long": "Lingering Potion of Instability",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Arrow of Instability",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Arrow of Instability",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Arrow of Instability"
 }
