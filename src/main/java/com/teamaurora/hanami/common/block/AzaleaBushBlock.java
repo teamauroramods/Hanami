@@ -28,11 +28,6 @@ public class AzaleaBushBlock extends AbnormalsFlowerBlock {
         return SHAPE.withOffset(vector3d.x, vector3d.y, vector3d.z);
     }
 
-    @Override
-    protected boolean isValidGround(BlockState state, IBlockReader worldIn, BlockPos pos) {
-        return state.getBlock() == HanamiBlocks.COMPACT_AZALEA.get() || super.isValidGround(state, worldIn, pos);
-    }
-
     public Effect getStewEffect() {
         return this.stewEffect.get();
     }

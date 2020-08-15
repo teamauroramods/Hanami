@@ -62,7 +62,6 @@ public class HanamiBlocks {
     // plants
     public static final RegistryObject<Block> AZALEA_BUSH = HELPER.createBlock("azalea_bush", ()->new AzaleaBushBlock(()->HanamiEffects.INSTABILITY.get(), 8, Block.Properties.from(Blocks.POPPY)), ItemGroup.DECORATIONS);
     public static final RegistryObject<Block> POTTED_AZALEA_BUSH = HELPER.createBlockNoItem("potted_azalea_bush", ()->new FlowerPotBlock(AZALEA_BUSH.get(), Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0F)));
-    public static final RegistryObject<Block> COMPACT_AZALEA = HELPER.createBlock("compact_azalea", ()->new Block(Block.Properties.from(Blocks.OAK_LEAVES).harvestTool(ToolType.HOE)), ItemGroup.DECORATIONS);
 
     // misc
     public static final RegistryObject<Block> BLACK_FOREST_GATEAU = HELPER.createBlockNoItem("black_forest_gateau", ()->new BlackForestGateauBlock(Block.Properties.from(Blocks.CAKE)));

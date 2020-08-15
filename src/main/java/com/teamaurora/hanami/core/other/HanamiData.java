@@ -26,7 +26,6 @@ public class HanamiData {
         DataUtils.registerCompostable(0.65F, HanamiItems.SAKURA_FLOWER.get());
 
         DataUtils.registerCompostable(0.65F, HanamiBlocks.AZALEA_BUSH.get());
-        DataUtils.registerCompostable(0.85F, HanamiBlocks.COMPACT_AZALEA.get());
     }
 
     public static void registerFlammables() {

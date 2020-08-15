@@ -9,5 +9,4 @@ public class HanamiFeatures {
     public static final Feature<ProbabilityConfig> SHORT_BAMBOO = new ShortBambooFeature(ProbabilityConfig.field_236576_b_);
     public static final Feature<NoFeatureConfig> FALLEN_SAKURA_LEAVES = new FallenSakuraLeavesFeature(NoFeatureConfig.field_236558_a_);
     public static final Feature<NoFeatureConfig> KOI_POND = new KoiPondFeature(NoFeatureConfig.field_236558_a_);
-    public static final Feature<NoFeatureConfig> GIANT_AZALEA_BUSH = new GiantAzaleaBushFeature(NoFeatureConfig.field_236558_a_);
 }
