@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.TickEvent;
@@ -86,7 +87,7 @@ public class HanamiEvents {
         float spawnChance = 0.0015F;
         float modifiedSpawnChance = spawnChance;
         if (world.isRaining() || world.isThundering()) modifiedSpawnChance += spawnChance;
-        if (world.getMoonPhase() == 0) modifiedSpawnChance += 2 * spawnChance;
+        if (world.getCurrentMoonPhaseFactor() == 1.0F) modifiedSpawnChance += 2 * spawnChance;
         if (world.rand.nextFloat() < modifiedSpawnChance) {
             for (BlockPos blockPos : BlockPos.getAllInBoxMutable(playerBlockPos.add(-10, -10, -10), playerBlockPos.add(10, 10, 10))) {
                 if (blockPos.getY() > 1 && blockPos.getY() < world.getHeight()) {
@@ -94,7 +95,7 @@ public class HanamiEvents {
                         // blockPos.down() can spawn a blossom!
                         // bound should be 80000 for wind event
                         if (world.rand.nextInt(40) == 0) {
-                            if (!world.isRemote) {
+                            if (world instanceof ServerWorld) {
                                 SakuraBlossomEntity blossom = new SakuraBlossomEntity(world, blockPos, blockPos.getX(), blockPos.getY() - 1, blockPos.getZ(), true);
 
                                 world.addEntity(blossom);

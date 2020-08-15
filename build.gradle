@@ -16,9 +16,6 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-import groovy.json.JsonSlurper
-import groovy.json.JsonOutput
-
 version = '1.0'
 group = 'com.teamaurora.hanami' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'hanami'
@@ -121,5 +118,6 @@ dependencies {
     implementation fg.deobf("curse.maven:jei:2995910")
     implementation fg.deobf("curse.maven:quark:3024740")
     implementation fg.deobf("curse.maven:autoreglib:3017289")
+    implementation fg.deobf("curse.maven:fruitful:3020408")
 
 }
