@@ -228,7 +228,7 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
                     }
                 }
             }
-        } else if (rand.nextBoolean() && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK && worldIn.isAirBlock(pos)) {
+        } else if (rand.nextInt(3) == 0 && worldIn.getBlockState(pos.down()).getBlock() == Blocks.GRASS_BLOCK && worldIn.isAirBlock(pos)) {
             setLogState(worldIn, pos, flower);
         }
     }
@@ -263,8 +263,8 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         }
     }
 
-    private void placeLilyPadAt(IWorldWriter worldIn, BlockPos pos, Random rand) {
-        if (rand.nextInt(3) == 0) {
+    private void placeLilyPadAt(ISeedReader worldIn, BlockPos pos, Random rand) {
+        if (rand.nextInt(3) == 0 && worldIn.getBlockState(pos).getBlock() != HanamiBlocks.SAKURA_LOG.get()) {
             this.setLogState(worldIn, pos, Blocks.LILY_PAD.getDefaultState());
         }
     }
