@@ -9,10 +9,13 @@
     },
     {
       "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:glass_bottle"
     }
   ],
   "result": {
     "item": "hanami:sakura_cherry_juice",
-    "count": 1
+    "count": 2
   }
 }

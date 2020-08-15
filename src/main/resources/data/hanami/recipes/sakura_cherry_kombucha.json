@@ -5,14 +5,20 @@
       "item": "hanami:sakura_cherry_juice"
     },
     {
+      "item": "hanami:sakura_cherry_juice"
+    },
+    {
       "item": "minecraft:sugar"
     },
     {
       "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "hanami:sakura_flower"
     }
   ],
   "result": {
     "item": "hanami:sakura_cherry_kombucha",
-    "count": 1
+    "count": 2
   }
 }

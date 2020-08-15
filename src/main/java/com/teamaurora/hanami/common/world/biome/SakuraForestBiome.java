@@ -75,6 +75,11 @@ public class SakuraForestBiome extends Biome {
         return 0x7ab85c;
     }
 
+    @OnlyIn(Dist.CLIENT)
+    public int getSkyColor() {
+        return 15061743;
+    }
+
     @Override
     public Biome getHill(net.minecraft.world.gen.INoiseRandom rand) {
         return HanamiBiomes.SAKURA_ROLLING_HILLS.get();

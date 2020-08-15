@@ -65,12 +65,12 @@ public class HanamiBiomeFeatures {
                         Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.LILAC_CONFIG),
                         Feature.RANDOM_PATCH.withConfiguration(AZALEA_CONFIG),
                         Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.PEONY_CONFIG)), 0))
-                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
+                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(2))));
         biomeIn.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Feature.RANDOM_RANDOM_SELECTOR.withConfiguration(
                 new MultipleWithChanceRandomFeatureConfig(ImmutableList.of(
                         Feature.RANDOM_PATCH.withConfiguration(TULIP_CONFIG),
                         Feature.RANDOM_PATCH.withConfiguration(ALLIUM_CONFIG),
                         Feature.FLOWER.withConfiguration(DefaultBiomeFeatures.LILY_OF_THE_VALLEY_CONFIG)), 0))
-                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(3))));
+                .withPlacement(Placement.COUNT_HEIGHTMAP_32.configure(new FrequencyConfig(2))));
         }
 }
