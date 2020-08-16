@@ -1,11 +1,13 @@
 package com.teamaurora.hanami.common.world.biome;
 
+import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MoodSoundAmbience;
+import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -77,5 +79,10 @@ public class SakuraRollingHillsBiome extends Biome {
     @OnlyIn(Dist.CLIENT)
     public int getSkyColor() {
         return 15061743;
+    }
+
+    @Override
+    public Biome getEdge(INoiseRandom rand, Biome northBiome, Biome westBiome, Biome southBiome, Biome eastBiome) {
+        return HanamiBiomes.SAKURA_FOREST_EDGE.get();
     }
 }

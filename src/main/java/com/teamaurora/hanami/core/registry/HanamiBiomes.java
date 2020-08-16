@@ -1,7 +1,6 @@
 package com.teamaurora.hanami.core.registry;
 
-import com.teamaurora.hanami.common.world.biome.SakuraForestBiome;
-import com.teamaurora.hanami.common.world.biome.SakuraRollingHillsBiome;
+import com.teamaurora.hanami.common.world.biome.*;
 import com.teamaurora.hanami.core.Hanami;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.Biome;
@@ -17,14 +16,24 @@ public class HanamiBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Hanami.MODID);
 
     public static final RegistryObject<Biome> SAKURA_FOREST = BIOMES.register("sakura_forest", SakuraForestBiome::new);
+    public static final RegistryObject<Biome> SAKURA_FOREST_EDGE = BIOMES.register("sakura_forest_edge", SakuraForestEdgeBiome::new);
+    public static final RegistryObject<Biome> SAKURA_PLATEAU = BIOMES.register("sakura_plateau", SakuraPlateauBiome::new);
     public static final RegistryObject<Biome> SAKURA_ROLLING_HILLS = BIOMES.register("sakura_rolling_hills", SakuraRollingHillsBiome::new);
+    public static final RegistryObject<Biome> SAKURA_VALLEY = BIOMES.register("sakura_valley", SakuraValleyBiome::new);
+    public static final RegistryObject<Biome> SAKURA_VALLEY_EDGE = BIOMES.register("sakura_valley_edge", SakuraForestEdgeBiome::new);
 
     public static void registerBiomesToDictionary() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 4));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 3));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_ROLLING_HILLS.get(), 1));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_VALLEY.get(), 1));
     }
 
     public static void addBiomeTypes() {
         BiomeDictionary.addTypes(SAKURA_FOREST.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
-        BiomeDictionary.addTypes(SAKURA_ROLLING_HILLS.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_FOREST_EDGE.get(), BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_PLATEAU.get(), BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLATEAU, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_ROLLING_HILLS.get(), BiomeDictionary.Type.FOREST, BiomeDictionary.Type.RARE, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_VALLEY.get(), BiomeDictionary.Type.SPARSE, BiomeDictionary.Type.RARE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
+        BiomeDictionary.addTypes(SAKURA_VALLEY_EDGE.get(), BiomeDictionary.Type.RARE, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.HILLS, BiomeDictionary.Type.OVERWORLD);
     }
 }
