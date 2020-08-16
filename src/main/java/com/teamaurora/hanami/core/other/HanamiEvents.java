@@ -84,7 +84,7 @@ public class HanamiEvents {
         Vector3d playerPos = player.getPositionVec();
         BlockPos playerBlockPos = new BlockPos(Math.floor(playerPos.getX()), Math.floor(playerPos.getY()), Math.floor(playerPos.getZ()));
         World world = event.player.world;
-        float spawnChance = 0.0015F;
+        float spawnChance = 0.0010F;
         float modifiedSpawnChance = spawnChance;
         if (world.isRaining() || world.isThundering()) modifiedSpawnChance += spawnChance;
         if (world.getCurrentMoonPhaseFactor() == 1.0F) modifiedSpawnChance += 2 * spawnChance;
