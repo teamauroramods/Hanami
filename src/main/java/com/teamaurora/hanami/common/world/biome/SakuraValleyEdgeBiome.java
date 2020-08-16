@@ -7,6 +7,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeAmbience;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.biome.MoodSoundAmbience;
+import net.minecraft.world.gen.INoiseRandom;
 import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -16,7 +17,7 @@ public class SakuraValleyEdgeBiome extends Biome {
         super(new Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.FOREST)
-                .depth(1.25F)
+                .depth(0.45F)
                 .scale(0.3F)
                 .temperature(0.6F)
                 .downfall(0.7F)
@@ -78,5 +79,10 @@ public class SakuraValleyEdgeBiome extends Biome {
     @OnlyIn(Dist.CLIENT)
     public int getSkyColor() {
         return 15061743;
+    }
+
+    @Override
+    public Biome getHill(net.minecraft.world.gen.INoiseRandom rand) {
+        return HanamiBiomes.SAKURA_VALLEY.get();
     }
 }

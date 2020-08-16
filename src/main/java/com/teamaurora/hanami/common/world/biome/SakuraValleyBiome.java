@@ -81,12 +81,12 @@ public class SakuraValleyBiome extends Biome {
         return 15061743;
     }
 
-    @Override
+    /*@Override
     public Biome getEdge(INoiseRandom rand, Biome northBiome, Biome westBiome, Biome southBiome, Biome eastBiome) {
         if (northBiome == this && westBiome == this && southBiome == this && eastBiome == this) {
             return null;
         } else {
             return HanamiBiomes.SAKURA_VALLEY_EDGE.get();
         }
-    }
+    }*/
 }

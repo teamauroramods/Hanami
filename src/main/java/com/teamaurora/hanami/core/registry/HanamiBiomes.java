@@ -26,7 +26,7 @@ public class HanamiBiomes {
     public static void registerBiomesToDictionary() {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), HanamiConfig.COMMON.sakuraForestWeight.get()));
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_ROLLING_HILLS.get(), HanamiConfig.COMMON.sakuraRollingHillsWeight.get()));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_VALLEY.get(), HanamiConfig.COMMON.sakuraValleyWeight.get()));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_VALLEY_EDGE.get(), HanamiConfig.COMMON.sakuraValleyWeight.get()));
     }
 
     public static void addBiomeTypes() {
