@@ -88,6 +88,10 @@ public class SakuraForestBiome extends Biome {
 
     @Override
     public Biome getEdge(INoiseRandom rand, Biome northBiome, Biome westBiome, Biome southBiome, Biome eastBiome) {
-        return HanamiBiomes.SAKURA_FOREST_EDGE.get();
+        if (northBiome == this && westBiome == this && southBiome == this && eastBiome == this) {
+            return null;
+        } else {
+            return HanamiBiomes.SAKURA_FOREST_EDGE.get();
+        }
     }
 }

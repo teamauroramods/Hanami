@@ -2,6 +2,7 @@ package com.teamaurora.hanami.core.registry;
 
 import com.teamaurora.hanami.common.world.biome.*;
 import com.teamaurora.hanami.core.Hanami;
+import com.teamaurora.hanami.core.HanamiConfig;
 import net.minecraft.world.GrassColors;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
@@ -23,9 +24,9 @@ public class HanamiBiomes {
     public static final RegistryObject<Biome> SAKURA_VALLEY_EDGE = BIOMES.register("sakura_valley_edge", SakuraForestEdgeBiome::new);
 
     public static void registerBiomesToDictionary() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), 3));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_ROLLING_HILLS.get(), 1));
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_VALLEY.get(), 1));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), HanamiConfig.COMMON.sakuraForestWeight.get()));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_ROLLING_HILLS.get(), HanamiConfig.COMMON.sakuraRollingHillsWeight.get()));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_VALLEY.get(), HanamiConfig.COMMON.sakuraValleyWeight.get()));
     }
 
     public static void addBiomeTypes() {
