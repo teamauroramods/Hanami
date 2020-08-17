@@ -16,9 +16,9 @@ public class HanamiConfig {
             builder.comment("Values for biome frequencies; lower = more rare. (Requires restart)")
             .push("biome_weights");
 
-            sakuraForestWeight = builder.define("Sakura Forest height", 3);
-            sakuraRollingHillsWeight = builder.define("Sakura Rolling Hills weight", 1);
-            sakuraValleyWeight = builder.define("Sakura Valley weight", 1);
+            sakuraForestWeight = builder.define("Sakura Forest height", 4);
+            sakuraRollingHillsWeight = builder.define("Sakura Rolling Hills weight", 3);
+            sakuraValleyWeight = builder.define("Sakura Valley weight", 2);
 
             builder.pop();
             builder.pop();
