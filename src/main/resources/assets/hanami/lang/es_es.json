@@ -49,10 +49,25 @@
   
   "block.hanami.azalea_bush": "Arbusto de azalea",
   "block.hanami.potted_azalea_bush": "Maceta con arbusto de azalea",
-  "block.hanami.compact_azalea": "Azalea compacta",
 
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_flower": "Flor de sakura",
   "entity.hanami.sakura_blossom": "Flor de sakura",
-  "block.hanami.blomb": "Bomba floral"
+  "block.hanami.blomb": "Bomba floral",
+
+  "item.minecraft.potion.effect.instability": "Poción de inestabilidad",
+  "item.minecraft.potion.effect.instability_strong": "Poción de inestabilidad",
+  "item.minecraft.potion.effect.instability_long": "Poción de inestabilidad",
+
+  "item.minecraft.splash_potion.effect.instability": "Poción de inestabilidad arrojadiza",
+  "item.minecraft.splash_potion.effect.instability_strong": "Poción de inestabilidad arrojadiza",
+  "item.minecraft.splash_potion.effect.instability_long": "Poción de inestabilidad arrojadiza",
+
+  "item.minecraft.lingering_potion.effect.instability": "Poción de inestabilidad persistente",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Poción de inestabilidad persistente",
+  "item.minecraft.lingering_potion.effect.instability_long": "Poción de inestabilidad persistente",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Flecha de inestabilidad",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Flecha de inestabilidad",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Flecha de inestabilidad"
 }
