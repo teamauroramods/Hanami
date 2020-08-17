@@ -21,7 +21,7 @@ public class HanamiBiomes {
     public static final RegistryObject<Biome> SAKURA_PLATEAU = BIOMES.register("sakura_plateau", SakuraPlateauBiome::new);
     public static final RegistryObject<Biome> SAKURA_ROLLING_HILLS = BIOMES.register("sakura_rolling_hills", SakuraRollingHillsBiome::new);
     public static final RegistryObject<Biome> SAKURA_VALLEY = BIOMES.register("sakura_valley", SakuraValleyBiome::new);
-    public static final RegistryObject<Biome> SAKURA_VALLEY_EDGE = BIOMES.register("sakura_valley_edge", SakuraForestEdgeBiome::new);
+    public static final RegistryObject<Biome> SAKURA_VALLEY_EDGE = BIOMES.register("sakura_valley_edge", SakuraValleyEdgeBiome::new);
 
     public static void registerBiomesToDictionary() {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), HanamiConfig.COMMON.sakuraForestWeight.get()));
