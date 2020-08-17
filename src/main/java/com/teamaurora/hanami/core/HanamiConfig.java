@@ -10,7 +10,7 @@ public class HanamiConfig {
         public final ForgeConfigSpec.ConfigValue<Integer> sakuraValleyWeight;
 
         Common(ForgeConfigSpec.Builder builder) {
-            builder.comment("Common configurations for Atmospheric")
+            builder.comment("Common configurations for Hanami")
             .push("common");
 
             builder.comment("Values for biome frequencies; lower = more rare. (Requires restart)")
