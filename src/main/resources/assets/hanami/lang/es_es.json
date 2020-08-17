@@ -45,6 +45,8 @@
 
   "_comment3": "Forest stuff",
   "biome.hanami.sakura_forest": "Bosque de sakuras",
+  "biome.hanami.sakura_forest_edge": "Borde de bosque de sakuras",
+  "biome.hanami.sakura_plateau": "Meseta de sakuras",
   "biome.hanami.sakura_rolling_hills": "Colinas onduladas de sakuras",
   
   "block.hanami.azalea_bush": "Arbusto de azalea",
