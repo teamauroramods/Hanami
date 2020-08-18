@@ -55,7 +55,7 @@ public class HanamiBlocks {
     public static final RegistryObject<Block> SAKURA_LADDER = HELPER.createCompatBlock("quark","sakura_ladder", ()->new AbnormalsLadderBlock(Block.Properties.from(Blocks.LADDER).harvestTool(ToolType.AXE)), ItemGroup.DECORATIONS);
     public static final Pair<RegistryObject<AbnormalsChestBlock>, RegistryObject<AbnormalsTrappedChestBlock>> SAKURA_CHESTS = HELPER.createCompatChestBlocks("sakura", MaterialColor.ADOBE);
 
-    public static final RegistryObject<Block> CHERRY_SAKURA_LEAVES = HELPER.createCompatBlock("fruitful", "cherry_sakura_leaves", ()->new AbnormalsLeavesBlock(Block.Properties.from(SAKURA_LEAVES.get()).notSolid().harvestTool(ToolType.HOE)), ItemGroup.DECORATIONS);
+    public static final RegistryObject<Block> CHERRY_SAKURA_LEAVES = HELPER.createCompatBlock("fruitful", "cherry_sakura_leaves", ()->new CherrySakuraLeavesBlock(Block.Properties.from(SAKURA_LEAVES.get()).notSolid().harvestTool(ToolType.HOE), (LeavesBlock)HanamiBlocks.SAKURA_LEAVES.get(), ()->HanamiItems.SAKURA_CHERRIES.get()), ItemGroup.DECORATIONS);
 
     public static final RegistryObject<Block> SAKURA_BEEHIVE = HELPER.createCompatBlock("buzzier_bees", "sakura_beehive", ()->new AbnormalsBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)), ItemGroup.DECORATIONS);
 
