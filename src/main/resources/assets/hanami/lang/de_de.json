@@ -1,0 +1,75 @@
+{
+  "_comment": "Sakura Wood Set",
+  "block.hanami.stripped_sakura_log": "Entrindeter Sakurastamm",
+  "block.hanami.sakura_log": "Sakurastamm",
+  "block.hanami.stripped_sakura_wood": "Entrindetes Sakuraholz",
+  "block.hanami.sakura_wood": "Sakuraholz",
+  "block.hanami.sakura_planks": "Sakuraholzbretter",
+  "block.hanami.sakura_slab": "Sakuraholzstufe",
+  "block.hanami.sakura_stairs": "Sakuraholztreppe",
+  "block.hanami.sakura_pressure_plate": "Sakuraholzdruckplatte",
+  "block.hanami.sakura_fence": "Sakuraholzzaun",
+  "block.hanami.sakura_fence_gate": "Sakuraholzzauntor",
+  "block.hanami.sakura_button": "Sakuraholzknopf",
+  "block.hanami.sakura_trapdoor": "Sakuraholzfalltür",
+  "block.hanami.sakura_door": "Sakuraholztür",
+  "block.hanami.sakura_sign": "Sakuraholzschild",
+  "block.hanami.sakura_leaves": "Sakuralaub",
+  "block.hanami.sakura_sapling": "Sakurasetzling",
+  "block.hanami.sakura_leaf_carpet": "Sakuralaubteppich",
+  "block.hanami.sakura_bookshelf": "Sakuraholzbücherregal",
+  "block.hanami.sakura_chest": "Sakuraholztruhe",
+  "block.hanami.sakura_trapped_chest": "Redstone-Sakuraholztruhe",
+  "block.hanami.sakura_ladder": "Sakuraholzleiter",
+  "block.hanami.sakura_vertical_slab": "Vertikale Sakuraholzstufe",
+  "block.hanami.vertical_sakura_planks": "Vertikale Sakuraholzbretter",
+  "block.hanami.sakura_beehive": "Sakuraholzbienenstock",
+  "block.hanami.potted_sakura_sapling": "Eingetopfter Sakurasetzling",
+
+  "item.hanami.sakura_boat": "Sakuraholzboot",
+
+  "_comment2": "Food stuff",
+  "effect.hanami.instability": "Labilität",
+  "effect.hanami.nourishing": "Nährend",
+  "effect.hanami.unsalutary": "Ungesund",
+
+  "item.hanami.sakura_cherries": "Sakurakirschen",
+  "item.hanami.sakura_cherry_juice": "Sakurakirschsaft",
+  "item.hanami.sakura_cherry_kombucha": "Sakurakirschkombucha",
+  "item.hanami.sakura_cherry_pie": "Sakurakirschkuchen",
+
+  "block.hanami.black_forest_gateau": "Schwarzwälder Kirschtorte",
+  "block.hanami.sakura_cherry_sack": "Sakurakirschsack",
+
+  "block.hanami.cherry_sakura_leaves": "Kirschsakuralaub",
+
+  "_comment3": "Forest stuff",
+  "biome.hanami.sakura_forest": "Sakurawald",
+  "biome.hanami.sakura_forest_edge": "Sakurawaldrand",
+  "biome.hanami.sakura_plateau": "Sakurahochebene",
+  "biome.hanami.sakura_rolling_hills": "Sakurahügel",
+
+  "block.hanami.azalea_bush": "Azaleestrauch",
+  "block.hanami.potted_azalea_bush": "Eingetopfter Azaleestrauch",
+
+  "_comment4": "Blossoms & other tools",
+  "item.hanami.sakura_flower": "Sakurablume",
+  "entity.hanami.sakura_blossom": "Sakurablüte",
+  "block.hanami.blomb": "Blomb",
+
+  "item.minecraft.potion.effect.instability": "Trank der Labilität",
+  "item.minecraft.potion.effect.instability_strong": "Trank der Labilität",
+  "item.minecraft.potion.effect.instability_long": "Trank der Labilität",
+
+  "item.minecraft.splash_potion.effect.instability": "Wurftrank der Labilität",
+  "item.minecraft.splash_potion.effect.instability_strong": "Wurftrank der Labilität",
+  "item.minecraft.splash_potion.effect.instability_long": "Wurftrank der Labilität",
+
+  "item.minecraft.lingering_potion.effect.instability": "Verweiltrank der Labilität",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Verweiltrank der Labilität",
+  "item.minecraft.lingering_potion.effect.instability_long": "Verweiltrank der Labilität",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Pfeil der Labilität",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Pfeil der Labilität",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Pfeil der Labilität"
+}
