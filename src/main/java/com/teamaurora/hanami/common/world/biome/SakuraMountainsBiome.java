@@ -12,8 +12,8 @@ import net.minecraft.world.gen.surfacebuilders.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class SakuraValleyEdgeBiome extends Biome {
-    public SakuraValleyEdgeBiome() {
+public class SakuraMountainsBiome extends Biome {
+    public SakuraMountainsBiome() {
         super(new Builder()
                 .surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_DIRT_GRAVEL_CONFIG)
                 .precipitation(RainType.RAIN).category(Category.FOREST)

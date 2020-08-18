@@ -7,7 +7,7 @@ public class HanamiConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Integer> sakuraForestWeight;
         public final ForgeConfigSpec.ConfigValue<Integer> sakuraRollingHillsWeight;
-        public final ForgeConfigSpec.ConfigValue<Integer> sakuraValleyWeight;
+        public final ForgeConfigSpec.ConfigValue<Integer> sakuraMountainsWeight;
 
         Common(ForgeConfigSpec.Builder builder) {
             builder.comment("Common configurations for Hanami")
@@ -18,7 +18,7 @@ public class HanamiConfig {
 
             sakuraForestWeight = builder.define("Sakura Forest height", 4);
             sakuraRollingHillsWeight = builder.define("Sakura Rolling Hills weight", 3);
-            sakuraValleyWeight = builder.define("Sakura Valley weight", 2);
+            sakuraMountainsWeight = builder.define("Sakura Mountains weight", 2);
 
             builder.pop();
             builder.pop();
