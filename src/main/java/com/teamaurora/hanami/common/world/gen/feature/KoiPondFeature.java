@@ -1,10 +1,15 @@
 package com.teamaurora.hanami.common.world.gen.feature;
 
 import com.mojang.serialization.Codec;
+import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.passive.fish.TropicalFishEntity;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.state.properties.BambooLeaves;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.math.BlockPos;
@@ -78,6 +83,25 @@ public class KoiPondFeature extends Feature<NoFeatureConfig> {
         if (pond7) placePondAt(worldIn, pos.add(1,0,-3), rand, flowers, flower);
         if (pond8) placePondAt(worldIn, pos.add(-1,0,-3), rand, flowers, flower);
 
+        int numFeesh = rand.nextInt(3) + 1;
+        for (int i = 0; i < numFeesh; i++) {
+            TropicalFishEntity poorFeesh = new TropicalFishEntity(EntityType.TROPICAL_FISH, worldIn.getWorld());
+            poorFeesh.setPosition(pos.getX(), pos.getY(), pos.getZ());
+            int variantIndx = rand.nextInt(3);
+            int variant = 0;
+            if (variantIndx == 0) {
+                variant = 65536;
+            } else if (variantIndx == 1) {
+                variant = 117441280;
+            } else {
+                variant = 117441536;
+            }
+            CompoundNBT feeshNbt = new CompoundNBT();
+            feeshNbt.putInt("BucketVariantTag", variant);
+            poorFeesh.onInitialSpawn(worldIn, worldIn.getDifficultyForLocation(pos), SpawnReason.NATURAL, null, feeshNbt);
+            poorFeesh.enablePersistence();
+            worldIn.addEntity(poorFeesh);
+        }
 
         return true;
     }
