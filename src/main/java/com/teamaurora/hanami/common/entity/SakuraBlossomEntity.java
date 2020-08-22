@@ -132,7 +132,7 @@ public class SakuraBlossomEntity extends LivingEntity {
         }
 
         if (this.getWild()) {
-            if (this.world.getMoonPhase() == 0) {
+            if (this.world.getCurrentMoonPhaseFactor() == 1.0) {
                 this.setMotion(0, Math.max(this.getBreeze(this.getPosX(), this.getPosZ()), this.getMotion().getY() - 0.1F), -0.15F);
             } else {
                 this.setMotion(0, Math.max(this.getBreeze(this.getPosX(), this.getPosZ()), this.getMotion().getY() - 0.1F), -0.085F);

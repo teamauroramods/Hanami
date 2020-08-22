@@ -20,7 +20,7 @@ public class SakuraLeavesBlock extends AbnormalsLeavesBlock {
         super.animateTick(stateIn, worldIn, pos, rand);
         int particleChance = 60;
         if (worldIn.isRaining() || worldIn.isThundering()) particleChance -= 15;
-        if (worldIn.getMoonPhase() == 0) particleChance -= 30;
+        if (worldIn.getCurrentMoonPhaseFactor() == 1.0) particleChance -= 30;
         if (rand.nextInt(particleChance) == 0) {
             BlockPos blockpos = pos.down();
             if (worldIn.isAirBlock(blockpos)) {
@@ -29,7 +29,7 @@ public class SakuraLeavesBlock extends AbnormalsLeavesBlock {
                 double pz = (double)((float)pos.getZ() + rand.nextFloat());
                 double wind = 0;
                 if (worldIn.isRaining() || worldIn.isThundering()) wind += 0.05F;
-                if (worldIn.getMoonPhase() == 0) wind += 0.1F;
+                if (worldIn.getCurrentMoonPhaseFactor() == 1.0) wind += 0.1F;
                 worldIn.addParticle(HanamiParticles.BLOSSOM.get(), px, py, pz, wind, 0.0F, 0.0F);
             }
         }
