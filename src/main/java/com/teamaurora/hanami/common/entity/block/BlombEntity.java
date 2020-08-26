@@ -43,7 +43,6 @@ public class BlombEntity extends TNTEntity {
     @Nullable
     private LivingEntity tntPlacedBy;
     private int fuse = 20;
-    private boolean toYeet = false;
 
     public BlombEntity(EntityType<? extends BlombEntity> type, World worldIn) {
         super(type, worldIn);
@@ -71,7 +70,7 @@ public class BlombEntity extends TNTEntity {
 
     @Override
     public void tick() {
-        toYeet = false;
+        boolean toYeet = false;
         if (!this.hasNoGravity()) {
             this.setMotion(this.getMotion().add(0.0D, -0.04D, 0.0D));
         }
@@ -85,11 +84,7 @@ public class BlombEntity extends TNTEntity {
         --this.fuse;
         if (this.fuse <= 0) {
             this.remove();
-            this.toYeet = true;
-            if (!this.world.isRemote) {
-                //this.yeet();
-                //this.world.playSound(null, this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            }
+            toYeet = true;
         } else {
             this.func_233566_aG_();
             if (this.world.isRemote) {
@@ -115,7 +110,6 @@ public class BlombEntity extends TNTEntity {
         }
         if (this.world.isRemote) {
             this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
-            //DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new BlombParticleHandlerThing.ParticleRunnableBullshit(this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
         } else {
             AxisAlignedBB explosionBB = this.getBoundingBox().grow(5);
             List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
@@ -138,23 +132,6 @@ public class BlombEntity extends TNTEntity {
                 // this is *very* hacky but it works
             }
         }
-        //Minecraft.getInstance().world.addParticle(ParticleTypes.EXPLOSION_EMITTER,false, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-
-        //DistExecutor.safeRunWhenOn(Dist.CLIENT, );
-        //for (int i = 0; i < 128; ++i) {
-            //DistExecutor
-            //DistExecutor.runWhenOn(Dist.CLIENT, ()->Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
-            //DistExecutor.runForDist(()->Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)), ()->());
-            //Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
-            /*DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new DistExecutor.SafeRunnable() {
-                @Override
-                public void run() {
-                    Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
-                }
-            });*/
-            //DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new BlombParticleHandlerThing.ParticleRunnableBullshit(this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
-            //DedicatedServer.
-        //}
     }
 
     private double getParticleOffset(double value) {
