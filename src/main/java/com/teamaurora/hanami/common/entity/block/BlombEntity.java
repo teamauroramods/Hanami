@@ -1,5 +1,6 @@
 package com.teamaurora.hanami.common.entity.block;
 
+import com.teamaurora.hanami.client.BlombParticleHandlerThing;
 import com.teamaurora.hanami.client.particle.HanamiParticles;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
@@ -21,12 +22,16 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
@@ -80,10 +85,10 @@ public class BlombEntity extends TNTEntity {
         --this.fuse;
         if (this.fuse <= 0) {
             this.remove();
+            this.toYeet = true;
             if (!this.world.isRemote) {
                 //this.yeet();
-                this.toYeet = true;
-                this.world.playSound(null, this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                //this.world.playSound(null, this.getPosX(), this.getPosY(), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
         } else {
             this.func_233566_aG_();
@@ -105,8 +110,12 @@ public class BlombEntity extends TNTEntity {
     }
 
     public void yeet() {
+        for (int i=0; i<128; ++i) {
+            this.world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
+        }
         if (this.world.isRemote) {
             this.world.playSound(this.getPosX(), this.getPosYHeight(0.0625), this.getPosZ(), SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 4.0F, (1.0F + (this.world.rand.nextFloat() - this.world.rand.nextFloat()) * 0.2F) * 0.7F, false);
+            //DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new BlombParticleHandlerThing.ParticleRunnableBullshit(this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
         } else {
             AxisAlignedBB explosionBB = this.getBoundingBox().grow(5);
             List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
@@ -130,9 +139,22 @@ public class BlombEntity extends TNTEntity {
             }
         }
         //Minecraft.getInstance().world.addParticle(ParticleTypes.EXPLOSION_EMITTER,false, this.getPosX(), this.getPosY(), this.getPosZ(), 1.0D, 0.0D, 0.0D);
-        for (int i = 0; i < 128; ++i) {
-            Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
-        }
+
+        //DistExecutor.safeRunWhenOn(Dist.CLIENT, );
+        //for (int i = 0; i < 128; ++i) {
+            //DistExecutor
+            //DistExecutor.runWhenOn(Dist.CLIENT, ()->Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
+            //DistExecutor.runForDist(()->Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)), ()->());
+            //Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
+            /*DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new DistExecutor.SafeRunnable() {
+                @Override
+                public void run() {
+                    Minecraft.getInstance().world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
+                }
+            });*/
+            //DistExecutor.safeRunWhenOn(Dist.CLIENT, ()->new BlombParticleHandlerThing.ParticleRunnableBullshit(this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25)));
+            //DedicatedServer.
+        //}
     }
 
     private double getParticleOffset(double value) {
