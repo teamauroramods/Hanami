@@ -1,0 +1,77 @@
+{
+  "_comment": "Sakura Wood Set",
+  "block.hanami.stripped_sakura_log": "Tronco de sakura descascado",
+  "block.hanami.sakura_log": "Tronco de sakura",
+  "block.hanami.stripped_sakura_wood": "Madeira de sakura descascada",
+  "block.hanami.sakura_wood": "Madeira de sakura",
+  "block.hanami.sakura_planks": "Tábuas de sakura",
+  "block.hanami.sakura_slab": "Laje de sakura",
+  "block.hanami.sakura_stairs": "Escadas de sakura",
+  "block.hanami.sakura_pressure_plate": "Placa de pressão de sakura",
+  "block.hanami.sakura_fence": "Cerca de sakura",
+  "block.hanami.sakura_fence_gate": "Portão de sakura",
+  "block.hanami.sakura_button": "Botão de sakura",
+  "block.hanami.sakura_trapdoor": "Alçapão de sakura",
+  "block.hanami.sakura_door": "Porta de sakura",
+  "block.hanami.sakura_sign": "Placa de sakura",
+  "block.hanami.sakura_leaves": "Folhas de sakura",
+  "block.hanami.sakura_sapling": "Muda de sakura",
+  "block.hanami.sakura_leaf_carpet": "Tapete de folhas de sakura",
+  "block.hanami.sakura_bookshelf": "Estante de livros de sakura",
+  "block.hanami.sakura_chest": "Baú de sakura",
+  "block.hanami.sakura_trapped_chest": "Baú de sakura com armadilha",
+  "block.hanami.sakura_ladder": "Escada de mão de sakura",
+  "block.hanami.sakura_vertical_slab": "Laje vertical de sakura",
+  "block.hanami.vertical_sakura_planks": "Tábuas de sakura verticais",
+  "block.hanami.sakura_beehive": "Colmeia artificial de sakura",
+  "block.hanami.potted_sakura_sapling": "Muda de sakura envasada",
+
+  "item.hanami.sakura_boat": "Bote de sakura",
+
+  "_comment2": "Food stuff",
+  "effect.hanami.instability": "Instabilidade",
+  "effect.hanami.nourishing": "Nutritivo",
+  "effect.hanami.unsalutary": "Insalubre",
+
+  "item.hanami.sakura_cherries": "Cerejas de sakura",
+  "item.hanami.sakura_cherry_juice": "Suco de cerejas de sakura",
+  "item.hanami.sakura_cherry_kombucha": "Kombucha de cerejas de sakura",
+  "item.hanami.sakura_cherry_pie": "Torta de cerejas de sakura",
+
+  "block.hanami.black_forest_gateau": "Bolo floresta negra",
+  "block.hanami.sakura_cherry_sack": "Saco de cerejas de sakura",
+
+  "block.hanami.cherry_sakura_leaves": "Folhas de sakura com cerejas",
+
+  "_comment3": "Forest stuff",
+  "biome.hanami.sakura_forest": "Floresta de sakura",
+  "biome.hanami.sakura_forest_edge": "Margem da floresta de sakura",
+  "biome.hanami.sakura_plateau": "Planalto de sakura",
+  "biome.hanami.sakura_rolling_hills": "Colinas de sakura",
+  "biome.hanami.sakura_valley": "Vale de sakura",
+  "biome.hanami.sakura_mountains": "Montanhas de sakura",
+
+  "block.hanami.azalea_bush": "Arbusto de azaleias",
+  "block.hanami.potted_azalea_bush": "Arbusto de azaleias envasado",
+
+  "_comment4": "Blossoms & other tools",
+  "item.hanami.sakura_flower": "Flor de sakura",
+  "entity.hanami.sakura_blossom": "Floração de sakura",
+  "block.hanami.blomb": "Blomba",
+  
+  "item.minecraft.potion.effect.instability": "Poção de instabilidade",
+  "item.minecraft.potion.effect.instability_strong": "Poção de instabilidade",
+  "item.minecraft.potion.effect.instability_long": "Poção de instabilidade",
+
+  "item.minecraft.splash_potion.effect.instability": "Poção arremessável de instabilidade",
+  "item.minecraft.splash_potion.effect.instability_strong": "Poção arremessável de instabilidade",
+  "item.minecraft.splash_potion.effect.instability_long": "Poção arremessável de instabilidade",
+
+  "item.minecraft.lingering_potion.effect.instability": "Poção prolongada de instabilidade",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Poção prolongada de instabilidade",
+  "item.minecraft.lingering_potion.effect.instability_long": "Poção prolongada de instabilidade",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Flecha de instabilidade",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Flecha de instabilidade",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Flecha de instabilidade"
+}
