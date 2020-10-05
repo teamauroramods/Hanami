@@ -16,9 +16,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0'
+version = '1.1.2'
 group = 'com.teamaurora.hanami' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'hanami'
+archivesBaseName = 'Hanami-1.16.1'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -86,6 +86,20 @@ minecraft {
                 }
             }
         }
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "Hanami",
+                "Specification-Vendor": "Team Aurora",
+                "Specification-Version": "1",
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor": "Team Aurora",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
     }
 }
 
