@@ -46,7 +46,7 @@
   "_comment3": "Forest stuff",
   "biome.hanami.sakura_forest": "Лес сакуры",
   "biome.hanami.sakura_forest_edge": "Опушка леса сакуры",
-  "biome.hanami.sakura_plateau": Плато сакуры",
+  "biome.hanami.sakura_plateau": "Плато сакуры",
   "biome.hanami.sakura_rolling_hills": "Холмы сакуры",
   "biome.hanami.sakura_valley": "Долина сакуры",
   "biome.hanami.sakura_mountains": "Горы сакуры",
@@ -57,7 +57,7 @@
   "_comment4": "Blossoms & other tools",
   "item.hanami.sakura_flower": "Цветок сакуры",
   "entity.hanami.sakura_blossom": "Лепесток цветка сакуры",
-  "block.hanami.blomb": "Хлопесток",
+  "block.hanami.blomb": "Хлопецвет",
 
   "item.minecraft.potion.effect.instability": "Зелье нестабильности",
   "item.minecraft.potion.effect.instability_strong": "Зелье нестабильности",
