@@ -1,0 +1,77 @@
+{
+  "_comment": "Sakura Wood Set",
+  "block.hanami.stripped_sakura_log": "Обтёсанное бревно сакуры",
+  "block.hanami.sakura_log": "Бревно сакуры",
+  "block.hanami.stripped_sakura_wood": "Обтёсанная сакура",
+  "block.hanami.sakura_wood": "Сакура",
+  "block.hanami.sakura_planks": "Сакуровые доски",
+  "block.hanami.sakura_slab": "Сакуровая плита",
+  "block.hanami.sakura_stairs": "Сакуровые ступеньки",
+  "block.hanami.sakura_pressure_plate": "Сакуровая нажимная плита",
+  "block.hanami.sakura_fence": "Сакуровый забор",
+  "block.hanami.sakura_fence_gate": "Сакуровая калитка,
+  "block.hanami.sakura_button": "Сакуровая кнопка",
+  "block.hanami.sakura_trapdoor": "Сакуровые люк",
+  "block.hanami.sakura_door": "Сакуровая дверь",
+  "block.hanami.sakura_sign": "Сакуровая табличка",
+  "block.hanami.sakura_leaves": "Листья сакуры",
+  "block.hanami.sakura_sapling": "Саженец сакуры",
+  "block.hanami.sakura_leaf_carpet": "Ковёр из листьев сакуры",
+  "block.hanami.sakura_bookshelf": "Сакуровые книжные полки",
+  "block.hanami.sakura_chest": "Сакуровый сундук",
+  "block.hanami.sakura_trapped_chest": "Сакуровый сундук-ловушка",
+  "block.hanami.sakura_ladder": "Сакуровая лестница",
+  "block.hanami.sakura_vertical_slab": "Сакуровая вертикальная плита",
+  "block.hanami.vertical_sakura_planks": "Сакуровые вертикальные доски",
+  "block.hanami.sakura_beehive": "Сакуровый улей",
+  "block.hanami.potted_sakura_sapling": "Саженец сакуры в горшке",
+
+  "item.hanami.sakura_boat": "Сакуровая лодка",
+
+  "_comment2": "Food stuff",
+  "effect.hanami.instability": "Нестабильность",
+  "effect.hanami.nourishing": "Сытность",
+  "effect.hanami.unsalutary": "Вредность",
+
+  "item.hanami.sakura_cherries": "Вишня",
+  "item.hanami.sakura_cherry_juice": "Вишнёвый сок",
+  "item.hanami.sakura_cherry_kombucha": "Вишнёвая комбуча",
+  "item.hanami.sakura_cherry_pie": "Вишнёвый пирог",
+
+  "block.hanami.black_forest_gateau": "Шварцвальский вишнёвый торт",
+  "block.hanami.sakura_cherry_sack": "Мешок вишни",
+
+  "block.hanami.cherry_sakura_leaves": "Листья сакуры с вишней",
+
+  "_comment3": "Forest stuff",
+  "biome.hanami.sakura_forest": "Лес сакуры",
+  "biome.hanami.sakura_forest_edge": "Опушка леса сакуры",
+  "biome.hanami.sakura_plateau": Плато сакуры",
+  "biome.hanami.sakura_rolling_hills": "Холмы сакуры",
+  "biome.hanami.sakura_valley": "Долина сакуры",
+  "biome.hanami.sakura_mountains": "Горы сакуры",
+
+  "block.hanami.azalea_bush": "Рододендрон",
+  "block.hanami.potted_azalea_bush": "Рододендрон в горшке",
+
+  "_comment4": "Blossoms & other tools",
+  "item.hanami.sakura_flower": "Цветок сакуры",
+  "entity.hanami.sakura_blossom": "Лепесток цветка сакуры",
+  "block.hanami.blomb": "Хлопесток",
+
+  "item.minecraft.potion.effect.instability": "Зелье нестабильности",
+  "item.minecraft.potion.effect.instability_strong": "Зелье нестабильности",
+  "item.minecraft.potion.effect.instability_long": "Зелье нестабильности",
+
+  "item.minecraft.splash_potion.effect.instability": "Взрывное зелье нестабильности",
+  "item.minecraft.splash_potion.effect.instability_strong": "Взрывное зелье нестабильности",
+  "item.minecraft.splash_potion.effect.instability_long": "Взрывное зелье нестабильности",
+
+  "item.minecraft.lingering_potion.effect.instability": "Туманное зелье нестабильности",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Туманное зелье нестабильности",
+  "item.minecraft.lingering_potion.effect.instability_long": "Туманное зелье нестабильности",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Стрела нестабильности",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Стрела нестабильности",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Стрела нестабильности"
+}
