@@ -1,0 +1,77 @@
+{
+  "_comment": "Sakura Wood Set",
+  "block.hanami.stripped_sakura_log": "Slindet Sakuratømmer",
+  "block.hanami.sakura_log": "Sakuratømmer",
+  "block.hanami.stripped_sakura_wood": "Slindet Sakuratre",
+  "block.hanami.sakura_wood": "Sakuratre",
+  "block.hanami.sakura_planks": "Sakuraplanker",
+  "block.hanami.sakura_slab": "Sakurahelle",
+  "block.hanami.sakura_stairs": "Sakuratrapp",
+  "block.hanami.sakura_pressure_plate": "Sakuratrykkplate",
+  "block.hanami.sakura_fence": "Sakuragjerde",
+  "block.hanami.sakura_fence_gate": "Sakuragrind",
+  "block.hanami.sakura_button": "Sakuraknapp",
+  "block.hanami.sakura_trapdoor": "Sakurafallem",
+  "block.hanami.sakura_door": "Sakuradør",
+  "block.hanami.sakura_sign": "Sakuraskilt",
+  "block.hanami.sakura_leaves": "Sakuraløv",
+  "block.hanami.sakura_sapling": "Sakuraspire",
+  "block.hanami.sakura_leaf_carpet": "Sakura-løvteppe",
+  "block.hanami.sakura_bookshelf": "Sakurabokhylle",
+  "block.hanami.sakura_chest": "Sakurakiste",
+  "block.hanami.sakura_trapped_chest": "Sakura redstone-kiste",
+  "block.hanami.sakura_ladder": "Sakurastige",
+  "block.hanami.sakura_vertical_slab": "Vertikal Sakurahelle",
+  "block.hanami.vertical_sakura_planks": "Vertikale Sakuraplanker",
+  "block.hanami.sakura_beehive": "Sakura-biebol",
+  "block.hanami.potted_sakura_sapling": "Sakuraspire potteplante",
+
+  "item.hanami.sakura_boat": "Sakurabåt",
+
+  "_comment2": "Food stuff",
+  "effect.hanami.instability": "Ustabilitet",
+  "effect.hanami.nourishing": "Ernærende",
+  "effect.hanami.unsalutary": "Usunt",
+
+  "item.hanami.sakura_cherries": "Sakurakirsebær",
+  "item.hanami.sakura_cherry_juice": "Sakurakirsebærjuice",
+  "item.hanami.sakura_cherry_kombucha": "Sakurakirsebær kombucha",
+  "item.hanami.sakura_cherry_pie": "Sakurakirsebærpai",
+
+  "block.hanami.black_forest_gateau": "Skurakirsebær-gateau",
+  "block.hanami.sakura_cherry_sack": "Sakurakirsebær-sekk",
+
+  "block.hanami.cherry_sakura_leaves": "Sakuraløv med kirsebær",
+
+  "_comment3": "Forest stuff",
+  "biome.hanami.sakura_forest": "Sakuraskog",
+  "biome.hanami.sakura_forest_edge": "Sakuraskogkant",
+  "biome.hanami.sakura_plateau": "Sakuraplatå",
+  "biome.hanami.sakura_rolling_hills": "Bølgende sakura-åser",
+  "biome.hanami.sakura_valley": "Sakura-dal",
+  "biome.hanami.sakura_mountains": "Sakurafjell",
+
+  "block.hanami.azalea_bush": "Azalea",
+  "block.hanami.potted_azalea_bush": "Azalea potteplante",
+
+  "_comment4": "Blossoms & other tools",
+  "item.hanami.sakura_flower": "Sakurablomst",
+  "entity.hanami.sakura_blossom": "Sakurablomst",
+  "block.hanami.blomb": "Blomb",
+
+  "item.minecraft.potion.effect.instability": "Ustabilitetsbrygg",
+  "item.minecraft.potion.effect.instability_strong": "Ustabilitetsbrygg",
+  "item.minecraft.potion.effect.instability_long": "Ustabilitetsbrygg",
+
+  "item.minecraft.splash_potion.effect.instability": "Kastbart ustabilitetsbrygg",
+  "item.minecraft.splash_potion.effect.instability_strong": "Kastbart ustabilitetsbrygg",
+  "item.minecraft.splash_potion.effect.instability_long": "Kastbart ustabilitetsbrygg",
+
+  "item.minecraft.lingering_potion.effect.instability": "Vedvarende ustabilitetsbrygg",
+  "item.minecraft.lingering_potion.effect.instability_strong": "Vedvarende ustabilitetsbrygg",
+  "item.minecraft.lingering_potion.effect.instability_long": "Vedvarende ustabilitetsbrygg",
+
+  "item.minecraft.tipped_arrow.effect.instability": "Ustabilitets-pil",
+  "item.minecraft.tipped_arrow.effect.instability_strong": "Ustabilitets-pil",
+  "item.minecraft.tipped_arrow.effect.instability_long": "Ustabilitets-pil"
+}
