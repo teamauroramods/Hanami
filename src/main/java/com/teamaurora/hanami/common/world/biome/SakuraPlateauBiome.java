@@ -1,6 +1,5 @@
 package com.teamaurora.hanami.common.world.biome;
 
-import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -26,7 +25,7 @@ public class SakuraPlateauBiome extends Biome {
                         .func_235239_a_(12638463)
                         .func_235243_a_(MoodSoundAmbience.field_235027_b_)
                         .func_235238_a_())
-                .parent((String)null));
+                .parent(null));
 
         DefaultBiomeFeatures.func_235196_b_(this);
         this.func_235063_a_(DefaultBiomeFeatures.field_235187_y_);

@@ -16,22 +16,24 @@ public class SakuraFlowerItem extends Item {
         super(builder);
     }
 
-    // admittedly this code was basically copied from Atmospheric's code. I don't think there's really any better way to do this anyway though lol
-    public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        ItemStack itemStack = playerIn.getHeldItem(handIn);
-        worldIn.playSound((PlayerEntity)null, playerIn.getPosX(), playerIn.getPosY(), playerIn.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
-        if (!worldIn.isRemote) {
-            ThrownSakuraBlossomEntity blossom = new ThrownSakuraBlossomEntity(worldIn, playerIn);
-            blossom.setItem(itemStack);
-            blossom.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
-            worldIn.addEntity(blossom);
-        }
+    // VVV - Not to worry, this code you "borrowed" is already borrowed from vanilla.
 
-        playerIn.addStat(Stats.ITEM_USED.get(this));
-        if (!playerIn.abilities.isCreativeMode) {
+    // admittedly this code was basically copied from Atmospheric's code. I don't think there's really any better way to do this anyway though lol
+    public ActionResult<ItemStack> onItemRightClick(World world, PlayerEntity player, Hand handIn) {
+        ItemStack itemStack = player.getHeldItem(handIn);
+        world.playSound(null, player.getPosX(), player.getPosY(), player.getPosZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (random.nextFloat() * 0.4F + 0.8F));
+
+        if (!world.isRemote) {
+            ThrownSakuraBlossomEntity blossom = new ThrownSakuraBlossomEntity(world, player);
+            blossom.setItem(itemStack);
+            blossom.func_234612_a_(player, player.rotationPitch, player.rotationYaw, 0.0F, 1.5F, 1.0F);
+            world.addEntity(blossom);
+        }
+        player.addStat(Stats.ITEM_USED.get(this));
+
+        if (!player.abilities.isCreativeMode) {
             itemStack.shrink(1);
         }
-
         return ActionResult.resultSuccess(itemStack);
     }
 }

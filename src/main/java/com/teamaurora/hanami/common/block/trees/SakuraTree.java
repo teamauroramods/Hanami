@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class SakuraTree extends Tree {
     @Nullable
-    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean dense) {
+    protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random random, boolean dense) {
         if (ModList.get().isLoaded("fruitful")) {
             if (dense) {
                 return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.DENSE_SAKURA_TREE_WITH_CHERRIES_CONFIG);

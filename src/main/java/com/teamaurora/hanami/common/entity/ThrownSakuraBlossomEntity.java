@@ -25,20 +25,20 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
     private double distance;
     private int age;
 
-    public ThrownSakuraBlossomEntity(EntityType<? extends ThrownSakuraBlossomEntity> entityType, World worldIn) {
-        super(entityType, worldIn);
+    public ThrownSakuraBlossomEntity(EntityType<? extends ThrownSakuraBlossomEntity> entityType, World world) {
+        super(entityType, world);
         distance = 0;
         age = 0;
     }
 
-    public ThrownSakuraBlossomEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityType.SNOWBALL, throwerIn, worldIn);
+    public ThrownSakuraBlossomEntity(World world, LivingEntity thrower) {
+        super(EntityType.SNOWBALL, thrower, world);
         distance = 0;
         age = 0;
     }
 
-    public ThrownSakuraBlossomEntity(World worldIn, double x, double y, double z) {
-        super(EntityType.SNOWBALL, x, y, z, worldIn);
+    public ThrownSakuraBlossomEntity(World world, double x, double y, double z) {
+        super(EntityType.SNOWBALL, x, y, z, world);
         distance = 0;
         age = 0;
     }
@@ -68,8 +68,8 @@ public class ThrownSakuraBlossomEntity extends ProjectileItemEntity {
 
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
-        ItemStack itemstack = this.func_213882_k();
-        return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
+        ItemStack itemStack = this.func_213882_k();
+        return itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemStack);
     }
 
     @OnlyIn(Dist.CLIENT)
