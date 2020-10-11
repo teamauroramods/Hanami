@@ -54,23 +54,26 @@ public class BlackForestGateauBlock extends Block {
         return this.func_226911_a_(worldIn, pos, state, player);
     }
 
-    private ActionResultType func_226911_a_(IWorld p_226911_1_, BlockPos p_226911_2_, BlockState p_226911_3_, PlayerEntity p_226911_4_) {
-        if (!p_226911_4_.canEat(false)) {
+    private ActionResultType func_226911_a_(IWorld world, BlockPos blockPos, BlockState blockState, PlayerEntity playerEntity) {
+        if (!playerEntity.canEat(false)) {
             return ActionResultType.PASS;
         } else {
-            p_226911_4_.addStat(Stats.EAT_CAKE_SLICE);
-            int j = p_226911_4_.isPotionActive(HanamiEffects.UNSALUTARY.get()) ? p_226911_4_.getActivePotionEffect(HanamiEffects.UNSALUTARY.get()).getAmplifier() : -1;
-            int k = p_226911_4_.isPotionActive(HanamiEffects.NOURISHING.get()) ? p_226911_4_.getActivePotionEffect(HanamiEffects.NOURISHING.get()).getAmplifier() : -1;
-            p_226911_4_.getFoodStats().addStats(Math.max(6 - 2 * (j+1) + 2 * (k+1), 0), Math.max(0.3F - 0.2F * (j+1) + 0.2F * (k+1), 0));
-            p_226911_4_.removeActivePotionEffect(HanamiEffects.UNSALUTARY.get());
-            p_226911_4_.addPotionEffect(new EffectInstance(HanamiEffects.UNSALUTARY.get(), 1600, j < 9 ? j + 1 : 9, false, false, true));
-            int i = p_226911_3_.get(BITES);
-            if (i < 13) {
-                p_226911_1_.setBlockState(p_226911_2_, p_226911_3_.with(BITES, Integer.valueOf(i + 1)), 3);
-            } else {
-                p_226911_1_.removeBlock(p_226911_2_, false);
-            }
+            playerEntity.addStat(Stats.EAT_CAKE_SLICE);
 
+            int amplifierUnsalutary = playerEntity.isPotionActive(HanamiEffects.UNSALUTARY.get()) ? playerEntity.getActivePotionEffect(HanamiEffects.UNSALUTARY.get()).getAmplifier() : -1;
+            int amplifierNourishing = playerEntity.isPotionActive(HanamiEffects.NOURISHING.get()) ? playerEntity.getActivePotionEffect(HanamiEffects.NOURISHING.get()).getAmplifier() : -1;
+
+            playerEntity.getFoodStats().addStats(Math.max(6 - 2 * (amplifierUnsalutary + 1) + 2 * (amplifierNourishing + 1), 0), Math.max(0.3F - 0.2F * (amplifierUnsalutary + 1) + 0.2F * (amplifierNourishing + 1), 0));
+            playerEntity.removeActivePotionEffect(HanamiEffects.UNSALUTARY.get());
+            playerEntity.addPotionEffect(new EffectInstance(HanamiEffects.UNSALUTARY.get(), 1600, amplifierUnsalutary < 9 ? amplifierUnsalutary + 1 : 9, false, false, true));
+
+            int bites = blockState.get(BITES);
+
+            if (bites < 13) {
+                world.setBlockState(blockPos, blockState.with(BITES, bites + 1), 3);
+            } else {
+                world.removeBlock(blockPos, false);
+            }
             return ActionResultType.SUCCESS;
         }
     }
@@ -85,8 +88,8 @@ public class BlackForestGateauBlock extends Block {
         return facing == Direction.DOWN && !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return worldIn.getBlockState(pos.down()).getMaterial().isSolid();
+    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
+        return world.getBlockState(pos.down()).getMaterial().isSolid();
     }
 
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
@@ -98,7 +101,7 @@ public class BlackForestGateauBlock extends Block {
      * @deprecated call via {@link(World,BlockPos)} whenever possible.
      * Implementing/overriding is fine.
      */
-    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+    public int getComparatorInputOverride(BlockState blockState, World world, BlockPos pos) {
         return (7 - blockState.get(BITES));
     }
 
@@ -110,7 +113,7 @@ public class BlackForestGateauBlock extends Block {
         return true;
     }
 
-    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+    public boolean allowsMovement(BlockState state, IBlockReader world, BlockPos pos, PathType type) {
         return false;
     }
 }

@@ -50,7 +50,7 @@ public class SakuraBlossomEntity extends LivingEntity {
     private double movCheck3;
 
     public SakuraBlossomEntity(EntityType<? extends SakuraBlossomEntity> blossom, World worldIn) {
-        super(HanamiEntities.SAKURA_BLOSSOM.get(), worldIn);
+        super(blossom, worldIn);
         age = 0;
     }
 
@@ -166,14 +166,14 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    public boolean hitByEntity(Entity entityIn) {
+    public boolean hitByEntity(Entity entity) {
         IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
         for (int i = 0; i < 16; ++i) {
             this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
         }
         if(!this.world.isRemote) {
-            if (entityIn instanceof PlayerEntity) {
-                PlayerEntity player = (PlayerEntity) entityIn;
+            if (entity instanceof PlayerEntity) {
+                PlayerEntity player = (PlayerEntity) entity;
                 if (!player.abilities.isCreativeMode) {
                     Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_FLOWER.get()));
                 }
@@ -187,25 +187,25 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    protected void damageEntity(DamageSource damageSrc, float damageAmount) {
-        if (damageSrc.getImmediateSource() instanceof ThrownSakuraBlossomEntity || damageSrc.getTrueSource() instanceof ThrownSakuraBlossomEntity) return;
+    protected void damageEntity(DamageSource damageSource, float damageAmount) {
+        if (damageSource.getImmediateSource() instanceof ThrownSakuraBlossomEntity || damageSource.getTrueSource() instanceof ThrownSakuraBlossomEntity) return;
         IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
         for (int i = 0; i < 16; ++i) {
             this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
         }
-        if (damageSrc.isProjectile()) {
+        if (damageSource.isProjectile()) {
             if(!this.getEntityWorld().isRemote) {
                 Block.spawnAsEntity(this.world, this.func_233580_cy_(), new ItemStack(HanamiItems.SAKURA_FLOWER.get()));
             }
             this.remove();
-        } else if (damageSrc == DamageSource.IN_WALL) {
+        } else if (damageSource == DamageSource.IN_WALL) {
             this.remove();
         }
-        super.damageEntity(damageSrc, damageAmount);
+        super.damageEntity(damageSource, damageAmount);
     }
 
     @Override
-    public void onDeath(DamageSource cause) {
+    public void onDeath(DamageSource damageSource) {
         IParticleData blossoms = HanamiParticles.BLOSSOM_PETAL.get();
         for (int i = 0; i < 16; ++i) {
             this.world.addParticle(blossoms, this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.05), this.getRandWithMagnitude(0.03), this.getRandWithMagnitude(0.05));
@@ -214,23 +214,23 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    public boolean attackEntityFrom(DamageSource source, float amount) {
-        if (source.getTrueSource() instanceof ArrowEntity || source.getImmediateSource() instanceof ArrowEntity) {
-            damageEntity(source, amount);
-            if (source.getTrueSource() instanceof ArrowEntity) {
-                source.getTrueSource().remove();
+    public boolean attackEntityFrom(DamageSource damageSource, float amount) {
+        if (damageSource.getTrueSource() instanceof ArrowEntity || damageSource.getImmediateSource() instanceof ArrowEntity) {
+            damageEntity(damageSource, amount);
+            if (damageSource.getTrueSource() instanceof ArrowEntity) {
+                damageSource.getTrueSource().remove();
             }
-            if (source.getImmediateSource() instanceof ArrowEntity) {
-                source.getImmediateSource().remove();
+            if (damageSource.getImmediateSource() instanceof ArrowEntity) {
+                damageSource.getImmediateSource().remove();
             }
         }
-        return super.attackEntityFrom(source, amount);
+        return super.attackEntityFrom(damageSource, amount);
     }
 
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
-        ItemStack itemstack = new ItemStack(HanamiItems.SAKURA_FLOWER.get());
-        return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
+        ItemStack itemStack = new ItemStack(HanamiItems.SAKURA_FLOWER.get());
+        return itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemStack);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -249,7 +249,7 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
         return SoundEvents.BLOCK_WOOL_BREAK;
     }
 
@@ -264,14 +264,14 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    protected float getStandingEyeHeight(Pose poseIn, EntitySize size) {
+    protected float getStandingEyeHeight(Pose pose, EntitySize size) {
         return size.height;
     }
 
     @Override
-    public void move(MoverType typeIn, Vector3d pos) {
-        super.move(typeIn, pos);
-        if (typeIn == MoverType.PISTON) {
+    public void move(MoverType type, Vector3d pos) {
+        super.move(type, pos);
+        if (type == MoverType.PISTON) {
             this.playHurtSound(DamageSource.GENERIC);
             this.world.setEntityState(this, (byte)3);
             this.remove();
@@ -361,8 +361,8 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Nullable
-    public AxisAlignedBB getCollisionBox(Entity entityIn) {
-        return entityIn.canBePushed() ? entityIn.getBoundingBox() : null;
+    public AxisAlignedBB getCollisionBox(Entity entity) {
+        return entity.canBePushed() ? entity.getBoundingBox() : null;
     }
 
     @Nullable
@@ -391,7 +391,7 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    public boolean startRiding(Entity entityIn, boolean force) {
+    public boolean startRiding(Entity entity, boolean force) {
         return false;
     }
 
@@ -401,12 +401,12 @@ public class SakuraBlossomEntity extends LivingEntity {
     }
 
     @Override
-    public ItemStack getItemStackFromSlot(EquipmentSlotType slotIn) {
+    public ItemStack getItemStackFromSlot(EquipmentSlotType slot) {
         return ItemStack.EMPTY;
     }
 
     @Override
-    public void setItemStackToSlot(EquipmentSlotType slotIn, ItemStack stack) {}
+    public void setItemStackToSlot(EquipmentSlotType slot, ItemStack stack) {}
 
     @Override
     public HandSide getPrimaryHand() {

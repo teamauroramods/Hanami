@@ -20,19 +20,20 @@ public class CherryKombuchaItem extends Item {
         super(properties);
     }
 
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        super.onItemUseFinish(stack, worldIn, entityLiving);
-        if (entityLiving instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)entityLiving;
+    public ItemStack onItemUseFinish(ItemStack stack, World world, LivingEntity livingEntity) {
+        super.onItemUseFinish(stack, world, livingEntity);
+        if (livingEntity instanceof ServerPlayerEntity) {
+            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)livingEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
             serverplayerentity.addStat(Stats.ITEM_USED.get(this));
         }
 
-        if (entityLiving instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) entityLiving;
+        if (livingEntity instanceof PlayerEntity) {
+            PlayerEntity player = (PlayerEntity) livingEntity;
+
             if (player.isPotionActive(HanamiEffects.INSTABILITY.get())) {
-                int j = player.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier();
-                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 1200, j + 1 < 2 ? j + 1 : 2, false, false, true));
+                int modifier = player.getActivePotionEffect(HanamiEffects.INSTABILITY.get()).getAmplifier();
+                player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 1200, Math.min(modifier + 1, 2), false, false, true));
             } else {
                 player.addPotionEffect(new EffectInstance(HanamiEffects.INSTABILITY.get(), 1200, 0, false, false, true));
             }
@@ -41,9 +42,9 @@ public class CherryKombuchaItem extends Item {
         if (stack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {
-            if (entityLiving instanceof PlayerEntity && !((PlayerEntity)entityLiving).abilities.isCreativeMode) {
+            if (livingEntity instanceof PlayerEntity && !((PlayerEntity)livingEntity).abilities.isCreativeMode) {
                 ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
-                PlayerEntity playerentity = (PlayerEntity)entityLiving;
+                PlayerEntity playerentity = (PlayerEntity)livingEntity;
                 if (!playerentity.inventory.addItemStackToInventory(itemstack)) {
                     playerentity.dropItem(itemstack, false);
                 }
@@ -53,7 +54,7 @@ public class CherryKombuchaItem extends Item {
         }
     }
 
-    public UseAction getUseAction(ItemStack stack) {
+    public UseAction getUseAction(ItemStack itemStack) {
         return UseAction.DRINK;
     }
 

@@ -18,8 +18,8 @@ public class AzaleaBushBlock extends AbnormalsFlowerBlock {
     private static final VoxelShape SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     private final Supplier<Effect> stewEffect;
 
-    public AzaleaBushBlock(Supplier<Effect> effect, int stewEffectDuration, Properties properties) {
-        super(Effects.BLINDNESS, stewEffectDuration, properties);
+    public AzaleaBushBlock(Supplier<Effect> effect, int duration, Properties properties) {
+        super(Effects.BLINDNESS, duration, properties);
         this.stewEffect = effect;
     }
 

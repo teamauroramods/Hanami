@@ -11,26 +11,32 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Random;
 
 public class SakuraLeavesBlock extends AbnormalsLeavesBlock {
+
     public SakuraLeavesBlock(Properties properties) {
         super(properties);
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-        super.animateTick(stateIn, worldIn, pos, rand);
+    public void animateTick(BlockState blockState, World world, BlockPos pos, Random rand) {
+        super.animateTick(blockState, world, pos, rand);
         int particleChance = 60;
-        if (worldIn.isRaining() || worldIn.isThundering()) particleChance -= 15;
-        if (worldIn.getCurrentMoonPhaseFactor() == 1.0) particleChance -= 30;
+
+        if (world.isRaining() || world.isThundering()) particleChance -= 15;
+        if (world.getCurrentMoonPhaseFactor() == 1.0) particleChance -= 30;
+
         if (rand.nextInt(particleChance) == 0) {
             BlockPos blockpos = pos.down();
-            if (worldIn.isAirBlock(blockpos)) {
-                double px = (double)((float)pos.getX() + rand.nextFloat());
-                double py = (double)pos.getY() - 0.05D;
-                double pz = (double)((float)pos.getZ() + rand.nextFloat());
+
+            if (world.isAirBlock(blockpos)) {
+                double x = (float) pos.getX() + rand.nextFloat();
+                double y = (float) pos.getY() - 0.05D;
+                double z = (float) pos.getZ() + rand.nextFloat();
                 double wind = 0;
-                if (worldIn.isRaining() || worldIn.isThundering()) wind += 0.05F;
-                if (worldIn.getCurrentMoonPhaseFactor() == 1.0) wind += 0.1F;
-                worldIn.addParticle(HanamiParticles.BLOSSOM.get(), px, py, pz, wind, 0.0F, 0.0F);
+
+                if (world.isRaining() || world.isThundering()) wind += 0.05F;
+                if (world.getCurrentMoonPhaseFactor() == 1.0) wind += 0.1F;
+
+                world.addParticle(HanamiParticles.BLOSSOM.get(), x, y, z, wind, 0.0F, 0.0F);
             }
         }
     }

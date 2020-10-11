@@ -18,30 +18,30 @@ public class DrinkItem extends Item {
         super(properties);
     }
 
-    public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
-        super.onItemUseFinish(stack, worldIn, entityLiving);
-        if (entityLiving instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)entityLiving;
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, stack);
+    public ItemStack onItemUseFinish(ItemStack itemStack, World world, LivingEntity livingEntity) {
+        super.onItemUseFinish(itemStack, world, livingEntity);
+        if (livingEntity instanceof ServerPlayerEntity) {
+            ServerPlayerEntity serverplayerentity = (ServerPlayerEntity)livingEntity;
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverplayerentity, itemStack);
             serverplayerentity.addStat(Stats.ITEM_USED.get(this));
         }
 
-        if (stack.isEmpty()) {
+        if (itemStack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {
-            if (entityLiving instanceof PlayerEntity && !((PlayerEntity)entityLiving).abilities.isCreativeMode) {
-                ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
-                PlayerEntity playerentity = (PlayerEntity)entityLiving;
-                if (!playerentity.inventory.addItemStackToInventory(itemstack)) {
-                    playerentity.dropItem(itemstack, false);
+            if (livingEntity instanceof PlayerEntity && !((PlayerEntity)livingEntity).abilities.isCreativeMode) {
+                ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
+                PlayerEntity playerentity = (PlayerEntity)livingEntity;
+
+                if (!playerentity.inventory.addItemStackToInventory(bottle)) {
+                    playerentity.dropItem(bottle, false);
                 }
             }
-
-            return stack;
+            return itemStack;
         }
     }
 
-    public UseAction getUseAction(ItemStack stack) {
+    public UseAction getUseAction(ItemStack itemStack) {
         return UseAction.DRINK;
     }
 

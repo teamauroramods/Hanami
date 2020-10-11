@@ -1,15 +1,10 @@
 package com.teamaurora.hanami.common.entity.block;
 
-import com.teamaurora.hanami.client.BlombParticleHandlerThing;
 import com.teamaurora.hanami.client.particle.HanamiParticles;
-import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
-import net.minecraft.block.material.PushReaction;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.TNTEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
@@ -17,21 +12,12 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.network.play.server.SEntityVelocityPacket;
-import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.Effect;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.dedicated.DedicatedServer;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
@@ -40,19 +26,19 @@ import java.util.List;
 public class BlombEntity extends TNTEntity {
     private static final DataParameter<Integer> FUSE = EntityDataManager.createKey(BlombEntity.class, DataSerializers.VARINT);
     private static final DataParameter<Float> POWER = EntityDataManager.createKey(BlombEntity.class, DataSerializers.FLOAT);
-    @Nullable
+
     private LivingEntity tntPlacedBy;
     private int fuse = 20;
 
-    public BlombEntity(EntityType<? extends BlombEntity> type, World worldIn) {
-        super(type, worldIn);
+    public BlombEntity(EntityType<? extends BlombEntity> type, World world) {
+        super(type, world);
         this.preventEntitySpawning = true;
     }
 
-    public BlombEntity(World worldIn, double x, double y, double z, @Nullable LivingEntity igniter) {
-        this(HanamiEntities.BLOMB.get(), worldIn);
+    public BlombEntity(World world, double x, double y, double z, @Nullable LivingEntity igniter) {
+        this(HanamiEntities.BLOMB.get(), world);
         this.setPosition(x, y, z);
-        double d0 = worldIn.rand.nextDouble() * (double)((float)Math.PI * 2F);
+        double d0 = world.rand.nextDouble() * (double)((float)Math.PI * 2F);
         this.setMotion(-Math.sin(d0) * 0.02D, 0.2F, -Math.cos(d0) * 0.02D);
         this.setFuse(20);
         this.setPower(1.0F);
@@ -105,7 +91,7 @@ public class BlombEntity extends TNTEntity {
     }
 
     public void yeet() {
-        for (int i=0; i<128; ++i) {
+        for (int i=0; i < 128; ++i) {
             this.world.addParticle(HanamiParticles.BLOSSOM_PETAL.get(), this.getParticleOffset(this.getPosX()), this.getParticleOffset(this.getPosY()), this.getParticleOffset(this.getPosZ()), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25), this.getRandWithMagnitude(0.25));
         }
         if (this.world.isRemote) {
@@ -113,10 +99,11 @@ public class BlombEntity extends TNTEntity {
         } else {
             AxisAlignedBB explosionBB = this.getBoundingBox().grow(5);
             List<Entity> entitiesAbove = this.world.getEntitiesWithinAABBExcludingEntity(null, explosionBB);
+
             if (!entitiesAbove.isEmpty()) {
                 for (Entity entity : entitiesAbove) {
                     Vector3d offsetVector = vecSub(entity.getPositionVec(), this.getPositionVec()).normalize();
-                    float yeetPower = this.getPower() * (float)(Math.sqrt(18)/Math.sqrt(11));
+                    float yeetPower = this.getPower() * (float)(Math.sqrt(18) / Math.sqrt(11));
                     if (entity instanceof LivingEntity) {
                         LivingEntity living = (LivingEntity) entity;
                         if (living.isPotionActive(HanamiEffects.INSTABILITY.get())) {
