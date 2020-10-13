@@ -10,6 +10,7 @@ import com.teamaurora.hanami.core.other.HanamiRender;
 import com.teamaurora.hanami.core.registry.HanamiBiomes;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import com.teamaurora.hanami.core.registry.HanamiEntities;
+import com.teamaurora.hanami.core.registry.HanamiFeatures;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -46,6 +47,7 @@ public class Hanami
         HanamiBiomes.BIOMES.register(eventBus);
         HanamiEffects.EFFECTS.register(eventBus);
         HanamiEffects.POTIONS.register(eventBus);
+        HanamiFeatures.FEATURES.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

@@ -20,12 +20,12 @@ public class SakuraTree extends Tree {
     protected ConfiguredFeature<BaseTreeFeatureConfig, ?> getTreeFeature(Random random, boolean dense) {
         if (ModList.get().isLoaded("fruitful")) {
             if (dense) {
-                return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.DENSE_SAKURA_TREE_WITH_CHERRIES_CONFIG);
+                return HanamiFeatures.SAKURA_TREE.get().withConfiguration(HanamiBiomeFeatures.DENSE_SAKURA_TREE_WITH_CHERRIES_CONFIG);
             } else {
-                return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.SAKURA_TREE_WITH_CHERRIES_CONFIG);
+                return HanamiFeatures.SAKURA_TREE.get().withConfiguration(HanamiBiomeFeatures.SAKURA_TREE_WITH_CHERRIES_CONFIG);
             }
         } else {
-            return HanamiFeatures.SAKURA_TREE.withConfiguration(HanamiBiomeFeatures.SAKURA_TREE_CONFIG);
+            return HanamiFeatures.SAKURA_TREE.get().withConfiguration(HanamiBiomeFeatures.SAKURA_TREE_CONFIG);
         }
     }
 
