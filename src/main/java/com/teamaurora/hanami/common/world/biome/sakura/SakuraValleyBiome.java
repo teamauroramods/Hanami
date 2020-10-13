@@ -12,6 +12,7 @@ public class SakuraValleyBiome extends AbstractSakuraForestBiome {
     }
 
     public void addFeatures() {
+        super.addFeatures();
         HanamiBiomeFeatures.addSparseSakuraFeatures(this);
     }
 }

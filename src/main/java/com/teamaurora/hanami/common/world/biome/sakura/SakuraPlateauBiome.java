@@ -12,6 +12,7 @@ public class SakuraPlateauBiome extends AbstractSakuraForestBiome {
     }
 
     public void addFeatures() {
+        super.addFeatures();
         HanamiBiomeFeatures.addSakuraHillFeatures(this);
     }
 }
