@@ -63,9 +63,4 @@ public class AbstractSakuraForestBiome extends AbnormalsBiome {
     {
         return 0x7ab85c;
     }
-
-    @OnlyIn(Dist.CLIENT)
-    public int getSkyColor() {
-        return 15061743;
-    }
 }
