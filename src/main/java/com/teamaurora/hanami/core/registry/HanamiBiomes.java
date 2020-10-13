@@ -1,6 +1,7 @@
 package com.teamaurora.hanami.core.registry;
 
-import com.teamaurora.hanami.common.world.biome.*;
+import com.teamaurora.hanami.common.world.biome.HanamiBiomeBuilders;
+import com.teamaurora.hanami.common.world.biome.sakura.*;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.HanamiConfig;
 import net.minecraft.world.biome.Biome;
@@ -15,12 +16,12 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class HanamiBiomes {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Hanami.MODID);
 
-    public static final RegistryObject<Biome> SAKURA_FOREST = BIOMES.register("sakura_forest", SakuraForestBiome::new);
-    public static final RegistryObject<Biome> SAKURA_FOREST_EDGE = BIOMES.register("sakura_forest_edge", SakuraForestEdgeBiome::new);
-    public static final RegistryObject<Biome> SAKURA_PLATEAU = BIOMES.register("sakura_plateau", SakuraPlateauBiome::new);
-    public static final RegistryObject<Biome> SAKURA_ROLLING_HILLS = BIOMES.register("sakura_rolling_hills", SakuraRollingHillsBiome::new);
-    public static final RegistryObject<Biome> SAKURA_VALLEY = BIOMES.register("sakura_valley", SakuraValleyBiome::new);
-    public static final RegistryObject<Biome> SAKURA_MOUNTAINS = BIOMES.register("sakura_mountains", SakuraMountainsBiome::new);
+    public static final RegistryObject<Biome> SAKURA_FOREST        = BIOMES.register("sakura_forest", () -> new SakuraForestBiome(HanamiBiomeBuilders.SAKURA_FOREST));
+    public static final RegistryObject<Biome> SAKURA_FOREST_EDGE   = BIOMES.register("sakura_forest_edge", () -> new SakuraForestEdgeBiome(HanamiBiomeBuilders.SAKURA_FOREST_EDGE));
+    public static final RegistryObject<Biome> SAKURA_PLATEAU       = BIOMES.register("sakura_plateau", () -> new SakuraPlateauBiome(HanamiBiomeBuilders.SAKURA_PLATEAU));
+    public static final RegistryObject<Biome> SAKURA_ROLLING_HILLS = BIOMES.register("sakura_rolling_hills", () -> new SakuraRollingHillsBiome(HanamiBiomeBuilders.SAKURA_ROLLING_HILLS));
+    public static final RegistryObject<Biome> SAKURA_VALLEY        = BIOMES.register("sakura_valley", () -> new SakuraValleyBiome(HanamiBiomeBuilders.SAKURA_VALLEY));
+    public static final RegistryObject<Biome> SAKURA_MOUNTAINS     = BIOMES.register("sakura_mountains", () -> new SakuraMountainsBiome(HanamiBiomeBuilders.SAKURA_MOUNTAINS));
 
     public static void registerBiomesToDictionary() {
         BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAKURA_FOREST.get(), HanamiConfig.COMMON.sakuraForestWeight.get()));
