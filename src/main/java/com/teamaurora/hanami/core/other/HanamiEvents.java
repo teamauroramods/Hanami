@@ -3,10 +3,12 @@ package com.teamaurora.hanami.core.other;
 import com.teamaurora.hanami.client.particle.HanamiParticles;
 import com.teamaurora.hanami.common.entity.SakuraBlossomEntity;
 import com.teamaurora.hanami.common.entity.ThrownSakuraBlossomEntity;
+import com.teamaurora.hanami.common.world.biome.HanamiBiomeFeatures;
 import com.teamaurora.hanami.core.Hanami;
 import com.teamaurora.hanami.core.registry.HanamiBlocks;
 import com.teamaurora.hanami.core.registry.HanamiEffects;
 import net.minecraft.block.AbstractBlock;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.Entity;
@@ -19,6 +21,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.BaseTreeFeatureConfig;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,6 +31,8 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
+import net.minecraftforge.event.world.SaplingGrowTreeEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -130,6 +137,26 @@ public class HanamiEvents {
 
     private double getRandWithMagnitude(double mag, Random rand) {
         return (rand.nextDouble() * 2 * mag) - mag;
+    }
+
+    @SubscribeEvent
+    public void saplingGrowTreeEvent (SaplingGrowTreeEvent event) {
+        if (event.getWorld() instanceof ServerWorld) {
+            ServerWorld world = (ServerWorld) event.getWorld();
+            BlockPos pos = event.getPos();
+            BlockState state = world.getBlockState(pos);
+            Random rand = event.getRand();
+            if (world.getBlockState(pos.down()).getBlock() == Blocks.PODZOL && state.getBlock() == HanamiBlocks.SAKURA_SAPLING.get()) {
+                event.setResult(Event.Result.DENY);
+                world.setBlockState(pos, Blocks.AIR.getDefaultState());
+                ConfiguredFeature<BaseTreeFeatureConfig, ?> configuredFeature;
+                configuredFeature = Feature.field_236291_c_.withConfiguration(HanamiBiomeFeatures.DENSE_SAKURA_TREE_WITH_CHERRIES_CONFIG);
+                // func_236265_a_ = place, currently unmapped
+                if (!configuredFeature.func_236265_a_(world, world.func_241112_a_(), world.getChunkProvider().getChunkGenerator(), rand, pos)) {
+                    world.setBlockState(pos, state);
+                }
+            }
+        }
     }
 
 }
